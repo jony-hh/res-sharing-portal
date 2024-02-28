@@ -39,8 +39,7 @@ export default [
       //调用获取用户信息函数,用于判断是否有此用户
       // @ts-ignore
       const checkUser = userMockList().find(
-        item =>
-          item.username === username && item.password === password,
+        (item) => item.username === username && item.password === password,
       )
       //没有用户返回失败信息
       if (!checkUser) {

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import jonySearch from '@/components/JonySearch.vue'
 import jonySelect from '@/components/JonySelect.vue'
-import { ref, onMounted, provide } from "vue";
+import { ref, onMounted, provide } from 'vue'
 import router from '@/router'
+import ProfileCard from "@/views/user/ProfileCard.vue";
 
 const navData = ref([
   { id: 1, name: '资源', link: '/resource' },
@@ -39,11 +40,7 @@ const jumpToHomePage = () => {
   router.push('/compositive')
 }
 
-const profile = ()=> {
-  disableSlide.value = true
-  window.sessionStorage.setItem('activePath', '/login')
-  router.push('/login')
-}
+
 </script>
 
 <template>
@@ -72,11 +69,10 @@ const profile = ()=> {
         <jony-search></jony-search>
       </v-container>
       <jony-select></jony-select>
-      <v-btn icon="mdi-message-settings"></v-btn>
-      <v-btn icon="mdi-account-heart" @click="profile"></v-btn>
+      <profile-card></profile-card>
     </v-app-bar>
 
-    <v-main style="min-width: 1200px; max-width: 1200px; margin: 0 auto;">
+    <v-main style="min-width: 1200px; max-width: 1200px; margin: 0 auto">
       <router-view></router-view>
     </v-main>
   </v-layout>

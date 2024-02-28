@@ -8,7 +8,7 @@ export const constantRoute = [
     children: [
       {
         path: '/login',
-        component: () => import('@/views/home/SignIn.vue'),
+        component: () => import('@/views/user/SignIn.vue'),
         name: 'login',
       },
       {

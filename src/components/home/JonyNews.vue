@@ -1,15 +1,13 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="news">
-    <div style="display: flex; justify-content: space-between;margin: 10px">
+    <div style="display: flex; justify-content: space-between; margin: 10px">
       <div>资讯要闻</div>
-      <div>查看更多 > </div>
+      <div>查看更多 ></div>
     </div>
     <div style="display: flex; justify-content: space-around">
-      <div style="height: 200px;">
+      <div style="height: 200px">
         <div class="box">
           <a
             target="_blank"
@@ -26,16 +24,14 @@
             </div>
           </a>
         </div>
-        <div style="display: flex;">
+        <div style="display: flex">
           <div class="box">
             <a
               target="_blank"
               title="“新年列车”的守岁人"
               href="/focus_news/detail/9211"
             >
-                  <span class="txt" style="width: 180px">
-                    “新年列车”的守岁人
-                  </span>
+              <span class="txt" style="width: 180px">“新年列车”的守岁人</span>
               <div class="img">
                 <img
                   style="height: 100px; width: 180px; object-fit: cover"
@@ -51,9 +47,7 @@
               title="公益微视频 | 新·声"
               href="/focus_news/detail/9212"
             >
-                  <span style="width: 180px" class="txt">
-                    公益微视频 | 新·声
-                  </span>
+              <span style="width: 180px" class="txt">公益微视频 | 新·声</span>
               <div class="img">
                 <img
                   style="height: 100px; width: 180px; object-fit: cover"
@@ -178,8 +172,8 @@
       Tahoma,
       sans-serif;
   }
-  a:hover{
-    color: #F88B00;
+  a:hover {
+    color: #f88b00;
   }
   a:before {
     content: '';

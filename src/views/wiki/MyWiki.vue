@@ -1,9 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
-    hello wiki
-  </div>
+  <div>hello wiki</div>
 </template>
 
 <style scoped></style>

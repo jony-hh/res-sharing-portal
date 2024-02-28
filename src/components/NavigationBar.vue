@@ -4,7 +4,9 @@
       <v-icon icon="mdi-domain" @click="jumpToHomePage()"></v-icon>
     </v-btn>
 
-    <v-toolbar-title @click="jumpToHomePage()">思政资源共享平台</v-toolbar-title>
+    <v-toolbar-title @click="jumpToHomePage()">
+      思政资源共享平台
+    </v-toolbar-title>
 
     <v-container>
       <v-tabs align-tabs="start">
@@ -35,9 +37,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import router from "@/router";
-import JonySearch from "@/components/JonySearch.vue";
-import JonySelect from "@/components/JonySelect.vue";
+import router from '@/router'
+import JonySearch from '@/components/JonySearch.vue'
+import JonySelect from '@/components/JonySelect.vue'
 
 // 路由跳转
 const navData = ref([
@@ -60,4 +62,3 @@ const jumpToHomePage = () => {
   router.push('/compositive')
 }
 </script>
-

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 用户信息
-import { computed, ref } from "vue";
+import { computed, ref } from 'vue'
 
 // 问题信息
 const questionInfo = ref({
@@ -25,7 +25,14 @@ const formattedTime = computed(() => {
   <v-card class="ma-2">
     <!-- 回答和阅读数部分 -->
     <v-card-actions>
-      <div style="border: 1px solid dodgerblue;padding: 5px;margin: 10px;border-radius: 5px">
+      <div
+        style="
+          border: 1px solid dodgerblue;
+          padding: 5px;
+          margin: 10px;
+          border-radius: 5px;
+        "
+      >
         <v-list-item-title>
           {{ questionInfo.answerCount }}
         </v-list-item-title>
@@ -80,10 +87,7 @@ const formattedTime = computed(() => {
         </template>
       </v-list-item>
     </v-card-actions>
-
   </v-card>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <v-card
@@ -16,8 +14,8 @@
     </template>
 
     <v-card-text class="text-h5 py-2">
-      "Turns out semicolon-less style is easier and safer in TS because
-      most gotcha edge cases are type invalid as well."
+      "Turns out semicolon-less style is easier and safer in TS because most
+      gotcha edge cases are type invalid as well."
     </v-card-text>
 
     <v-card-actions>
@@ -44,6 +42,4 @@
   </v-card>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

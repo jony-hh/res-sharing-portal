@@ -3,7 +3,7 @@ import NewSlideshow from '@/components/NewSlideshow.vue'
 import JonyNews from '@/components/home/JonyNews.vue'
 import JonyInfo from '@/components/home/JonyInfo.vue'
 import JonyAttend from '@/components/home/JonyAttend.vue'
-import JonyFineAtricle from "@/components/home/JonyFineAtricle.vue";
+import JonyFineAtricle from '@/components/home/JonyFineAtricle.vue'
 </script>
 
 <template>

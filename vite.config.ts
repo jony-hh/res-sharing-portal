@@ -2,8 +2,8 @@ import { defineConfig, UserConfig, ConfigEnv, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
-// 引入svg插件
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import ElementPlus from 'unplugin-element-plus/vite'
 
 export default defineConfig(({ command, mode }) => {
   //获取各种环境下的对应的变量
@@ -16,6 +16,8 @@ export default defineConfig(({ command, mode }) => {
         mockPath: './mock', // mock文件存放的位置
         localEnabled: command === 'serve' && mode === 'mock', //在开发环境中启用 mock
       }),
+      // elementplus手动按需导入
+      ElementPlus({}),
       createSvgIconsPlugin({
         // Specify the icon folder to be cached
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
@@ -52,4 +54,3 @@ export default defineConfig(({ command, mode }) => {
     },
   }
 })
-

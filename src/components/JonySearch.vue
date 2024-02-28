@@ -15,8 +15,7 @@
           append-inner-icon="mdi-magnify"
           single-line
           @click:append-inner="search"
-        >
-        </v-text-field>
+        ></v-text-field>
       </template>
       <v-list v-if="items.length > 0" class="border-list" dense>
         <v-list-item
@@ -41,13 +40,13 @@ watch(text, () => {
   inputHandle(text.value)
 })
 
-const getData = ()=>{
+const getData = () => {
   items.value = [
-    {key: '1234', name: '1234'},
-    {key: 'ccc', name: 'ccc',},
-    {key: 'xxx', name: 'xxx',},
-    {key: 'eee', name: 'eee',},
-    {key: 'qqq', name: 'qqq',}
+    { key: '1234', name: '1234' },
+    { key: 'ccc', name: 'ccc' },
+    { key: 'xxx', name: 'xxx' },
+    { key: 'eee', name: 'eee' },
+    { key: 'qqq', name: 'qqq' },
   ]
 }
 

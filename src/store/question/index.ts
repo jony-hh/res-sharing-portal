@@ -8,7 +8,5 @@ export const useUserStore = defineStore({
     isAdmin: true,
   }),
 
-  actions: {
-
-  },
+  actions: {},
 })

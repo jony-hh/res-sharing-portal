@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const loading = ref(false);
-const selection = ref(1);
+const loading = ref(false)
+const selection = ref(1)
 
 const reserve = () => {
-  loading.value = true;
+  loading.value = true
   setTimeout(() => (loading.value = false), 2000)
 }
 </script>

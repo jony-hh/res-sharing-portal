@@ -251,9 +251,9 @@ const getLiClasses = (key: number) => {
 
 <style lang="scss" scoped>
 /* 设定容器大小 */
-$container_height:270px;
-$container_width:960px;
-$img_width:calc($container_width*3/4);
+$container_height: 270px;
+$container_width: 960px;
+$img_width: calc($container_width * 3 / 4);
 
 a {
   text-decoration: none;
@@ -269,7 +269,7 @@ img {
   transition: all 0.5s;
 }
 
-img:hover{
+img:hover {
   transform: scale(1.1);
 }
 
@@ -397,7 +397,7 @@ img:hover{
   position: absolute;
   right: 0;
   bottom: 10px;
-  height: calc($container_height*0.9);
+  height: calc($container_height * 0.9);
   width: 100px;
 }
 
@@ -405,7 +405,7 @@ img:hover{
   position: absolute;
   left: 0;
   bottom: 10px;
-  height: calc($container_height*0.9);
+  height: calc($container_height * 0.9);
   width: 100px;
 }
 </style>
