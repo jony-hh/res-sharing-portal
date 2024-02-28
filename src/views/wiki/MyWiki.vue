@@ -1,5 +1,9 @@
 <script setup lang="ts"></script>
 
-<template>w</template>
+<template>
+  <div>
+    hello wiki
+  </div>
+</template>
 
 <style scoped></style>

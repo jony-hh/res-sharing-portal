@@ -1,5 +1,6 @@
 //进行axios二次封装:使用请求与响应拦截器
 import axios from 'axios'
+import { useUserStore } from "@/store/user";
 //引入用户相关的仓库
 // import useUserStore from '@/store/modules/user'
 
@@ -13,13 +14,13 @@ const request = axios.create({
 //第二步:给axios的实例request添加请求拦截器
 request.interceptors.request.use((config) => {
   // TODO 获取用户相关的小仓库:获取仓库内部token,登录成功以后携带给服务器
-  // const userStore = useUserStore()
-  // if (userStore.token) {
-  //   config.headers.token = userStore.token
-  // }
+  const userStore = useUserStore()
+  if (userStore.token) {
+    config.headers.token = userStore.token
+  }
   //config配置对象,headers属性请求头,经常给服务器端携带公共参数
   // TODO 携带公共请求头
-  config.headers.token = 123
+  config.headers.token = ''
   //返回配置对象,不然发不出去请求
   return config
 })

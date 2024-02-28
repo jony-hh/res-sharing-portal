@@ -10,6 +10,9 @@ import '@/styles/index.scss'
 // 引入路由
 import router from '@/router'
 
+// 引入pinia
+import { createPinia } from 'pinia'
+
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -22,6 +25,8 @@ const vuetify = createVuetify({
 })
 
 const app = createApp(App)
+const pinia = createPinia()
 app.use(router)
 app.use(vuetify)
+app.use(pinia)
 app.mount('#app')

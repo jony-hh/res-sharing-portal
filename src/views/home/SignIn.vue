@@ -1,9 +1,9 @@
 <template>
   <v-sheet width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
-      <v-text-field v-model="username" label="username"></v-text-field>
+      <v-text-field v-model="loginForm.username" label="username"></v-text-field>
 
-      <v-text-field v-model="password" label="Last name"></v-text-field>
+      <v-text-field v-model="loginForm.password" label="Last name"></v-text-field>
 
       <v-btn type="submit" block class="mt-2" @click="submit">Submit</v-btn>
     </v-form>
@@ -13,18 +13,15 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { reqLogin } from '@/api/user'
-import router from "@/router";
-const username = ref('')
+import router from '@/router'
 
-const password = ref('')
-let loginForm = reactive({ username: 'admin', password: 'admin' })
+let loginForm = reactive({ username: 'jony', password: '123456' })
 
 const submit = async () => {
-  loginForm.username = username.value
-  loginForm.password = password.value
-  await reqLogin(loginForm)
-  router.push('/qa')
+  await reqLogin(loginForm).then((res) => {
+    window.sessionStorage.setItem('activePath', '/login')
+    router.push('/qa')
+    console.log(res)
+  })
 }
 </script>
-
-<style scoped lang="scss"></style>

@@ -5,7 +5,7 @@ import { ref, onMounted, provide } from "vue";
 import router from '@/router'
 
 const navData = ref([
-  { id: 1, name: '文章', link: '/article' },
+  { id: 1, name: '资源', link: '/resource' },
   { id: 2, name: '问答', link: '/qa' },
   { id: 3, name: 'wiki', link: '/wiki' },
 ])
@@ -40,6 +40,8 @@ const jumpToHomePage = () => {
 }
 
 const profile = ()=> {
+  disableSlide.value = true
+  window.sessionStorage.setItem('activePath', '/login')
   router.push('/login')
 }
 </script>

@@ -17,9 +17,9 @@ export const constantRoute = [
         name: 'compositive',
       },
       {
-        path: '/article',
-        component: () => import('@/views/article/MyArticle.vue'),
-        name: 'article',
+        path: '/resource',
+        component: () => import('@/views/resource/ResourceLib.vue'),
+        name: 'resource',
       },
       {
         path: '/qa',
