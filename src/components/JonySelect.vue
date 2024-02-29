@@ -2,9 +2,7 @@
   <div class="text-center">
     <v-menu transition="scale-transition">
       <template v-slot:activator="{ props: menu }">
-        <v-tooltip location="top">
-          <template v-slot:activator="{ props: tooltip }">
-            <v-btn color="primary" v-bind="mergeProps(menu, tooltip)">
+            <v-btn variant="outlined" color="primary" v-bind="mergeProps(menu)">
               发布
               <svg
                 viewBox="64 64 896 896"
@@ -21,9 +19,6 @@
                 ></path>
               </svg>
             </v-btn>
-          </template>
-          <span>快去发布吧！</span>
-        </v-tooltip>
       </template>
       <v-list>
         <v-list-item v-for="(item, index) in items" :key="index">

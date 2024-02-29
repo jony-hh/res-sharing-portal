@@ -1,7 +1,7 @@
 // @ts-check
 import { defineStore } from 'pinia'
 
-export const useUserStore = defineStore({
+export const useQuestionStore = defineStore({
   id: 'question',
   state: () => ({
     name: 'Eduardo',

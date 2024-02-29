@@ -2,41 +2,58 @@
 import { ref } from 'vue'
 import router from '@/router'
 import 'element-plus/es/components/message/style/css'
-import { ElMessage } from 'element-plus'
+import { ElMessageBox, ElMessage } from 'element-plus'
+import { useCommonStore } from '@/store/common'
+import { useUserStore } from "@/store/user";
 
 const fav = ref(true)
 const menu = ref(false)
-
-const profile = () => {
-  window.sessionStorage.setItem('activePath', '/login')
-  router.push('/login')
+const common = useCommonStore()
+const useStore = useUserStore()
+const jumpToProfile = () => {
+  common.disableSlide = true
+  router.push('/profile')
 }
 
+const enterProfile = () => {
+  common.disableSlide = true
+  router.push('/profile')
+}
 const logout = () => {
-  // alert("hello")
-  open4('成功退出登录！！！')
+  ElMessageBox.confirm('确定继续退出登录吗？', 'Warning', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
+    .then(() => {
+      useStore.token = ''
+      router.push('/')
+      ElMessage.success("成功退出登录！！！")
+    })
+    .catch(() => {
+      ElMessage.info("取消退出登录！！！")
+    })
 }
 
 const setting = () => {
-  alert('进入设置')
+  open1()
 }
 
 const buttons = ref([
-  { text: '我的主页' },
-  { text: '我的资源' },
-  { text: '我的Wiki' },
-  { text: '我的问答' },
   { text: '我的动态' },
+  { text: '我的资源' },
+  { text: '我的问答' },
+  { text: '我的喜欢' },
+  { text: '我的收藏' },
   { text: '浏览记录' },
 ])
-
 
 const open1 = () => {
   ElMessage('this is a message.')
 }
-const open2 = () => {
+const open2 = (s: string) => {
   ElMessage({
-    message: 'Congrats, this is a success message.',
+    message: s,
     type: 'success',
   })
 }
@@ -46,7 +63,7 @@ const open3 = () => {
     type: 'warning',
   })
 }
-const open4 = (s:string) => {
+const open4 = (s: string) => {
   ElMessage.error(s)
 }
 </script>
@@ -56,7 +73,7 @@ const open4 = (s:string) => {
     <v-menu
       v-model="menu"
       transition="scale-transition"
-      :close-on-content-click="false"
+      :close-on-content-click="true"
     >
       <template v-slot:activator="{ props }">
         <v-btn color="indigo" v-bind="props">个人中心</v-btn>
@@ -89,12 +106,14 @@ const open4 = (s:string) => {
               v-for="(button, index) in buttons"
               :key="index"
             >
-              <v-btn>{{ button.text }}</v-btn>
+              <v-btn @click="jumpToProfile">{{ button.text }}</v-btn>
             </v-col>
           </v-row>
         </v-container>
         <v-card-actions>
-          <v-btn color="primary" variant="text" @click="setting">我的设置</v-btn>
+          <v-btn color="primary" variant="text" @click="enterProfile">
+            进入主页
+          </v-btn>
           <v-spacer></v-spacer>
           <v-btn color="red" variant="text" @click="logout">退出登录</v-btn>
         </v-card-actions>

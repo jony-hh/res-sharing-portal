@@ -115,7 +115,7 @@ const questions = ref([
           <!-- 问题卡片 -->
           <v-container>
             <!-- 遍历问题数据列表，渲染 UserQuestion 组件 -->
-            <QuestionCard
+            <question-card
               v-for="(question, index) in questions"
               :key="index"
               :questionInfo="question"
@@ -126,8 +126,8 @@ const questions = ref([
 
       <!-- Right part -->
       <div class="right-part">
-        <TaskCard></TaskCard>
-        <FeatureCard></FeatureCard>
+        <task-card></task-card>
+        <feature-card></feature-card>
       </div>
     </div>
   </div>

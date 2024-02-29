@@ -12,6 +12,7 @@ import router from '@/router'
 
 // 引入pinia
 import { createPinia } from 'pinia'
+import piniaPersist from "pinia-plugin-persist";
 
 // Vuetify
 import 'vuetify/styles'
@@ -26,6 +27,9 @@ const vuetify = createVuetify({
 
 const app = createApp(App)
 const pinia = createPinia()
+
+pinia.use(piniaPersist)
+
 app.use(router)
 app.use(vuetify)
 app.use(pinia)

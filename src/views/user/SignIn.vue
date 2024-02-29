@@ -20,14 +20,23 @@
 import { reactive, ref } from 'vue'
 import { reqLogin } from '@/api/user'
 import router from '@/router'
+import { useCommonStore } from '@/store/common'
+import { useUserStore } from '@/store/user'
+import { ElMessage } from "element-plus";
 
+const common = useCommonStore()
+const userStore = useUserStore()
 let loginForm = reactive({ username: 'jony', password: '123456' })
 
 const submit = async () => {
   await reqLogin(loginForm).then((res) => {
-    window.sessionStorage.setItem('activePath', '/login')
-    router.push('/qa')
-    console.log(res)
+    if (res.code === 200) {
+      ElMessage.success("登录成功！")
+      router.push('/qa')
+      userStore.token = res.data.token
+      return
+    }
+    ElMessage.error("用户名或密码错误！")
   })
 }
 </script>

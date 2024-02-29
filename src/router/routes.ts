@@ -1,48 +1,105 @@
 // 常量路由
+import { RouteRecordRaw } from "vue-router";
+
+// 根路由404配置
+const rootRoutePage404: RouteRecordRaw[] = [
+  {
+    path: '/404',
+    component: () => import("@/views/not-found/NotFound.vue"),
+    name: "404"
+  },
+  {
+    path: '/:pathMatch(.*)',
+    redirect: '/404',
+    name: "Any Route"
+  },
+]
+
+
+// index子路由404配置
+const indexSubRoute404: RouteRecordRaw[] = [
+  {
+    path: '404',
+    component: () => import("@/views/not-found/NotFound.vue"),
+  },
+  {
+    path: '/:pathMatch(profile/.*)',
+    redirect: '/profile/404',
+  },
+]
+
+// 静态路由
 export const constantRoute = [
   {
     //登录成功以后展示数据的路由
-    path: '/',
-    component: () => import('@/views/home/HomePage.vue'),
-    name: 'home',
+    path: "/",
+    component: () => import("@/views/home/HomePage.vue"),
+    name: "home"
+  },
+  {
+    path: "/signin",
+    component: () => import("@/views/user/SignIn.vue"),
+    name: "signin"
+  },
+  {
+    path: "/resource",
+    component: () => import("@/views/resource/ResourceLib.vue"),
+    name: "resource"
+  },
+  {
+    path: "/qa",
+    component: () => import("@/views/qa/QuestionAnswer.vue"),
+    name: "qa"
+  },
+  {
+    path: "/wiki",
+    component: () => import("@/views/wiki/MyWiki.vue"),
+    name: "wiki"
+  },
+  {
+    path: "/profile",
+    component: () => import("@/views/user/center/ProfileCenter.vue"),
+    name: "profile",
     children: [
       {
-        path: '/login',
-        component: () => import('@/views/user/SignIn.vue'),
-        name: 'login',
+        path: "activity",
+        component: () => import("@/views/user/item/ActivityItem.vue"),
+        name: "activity"
       },
       {
-        path: '/compositive',
-        component: () => import('@/views/home/CompositivePage.vue'),
-        name: 'compositive',
+        path: "res",
+        component: () => import("@/views/user/item/ResItem.vue"),
+        name: "res"
       },
       {
-        path: '/resource',
-        component: () => import('@/views/resource/ResourceLib.vue'),
-        name: 'resource',
+        path: "question",
+        component: () => import("@/views/user/item/QaItem.vue"),
+        name: "question"
       },
       {
-        path: '/qa',
-        component: () => import('@/views/qa/QuestionAnswer.vue'),
-        name: 'qa',
+        path: "like",
+        component: () => import("@/views/user/item/LikeItem.vue"),
+        name: "like"
       },
       {
-        path: '/wiki',
-        component: () => import('@/views/wiki/MyWiki.vue'),
-        name: 'wiki',
+        path: "collection",
+        component: () => import("@/views/user/item/CollectionItem.vue"),
+        name: "collection"
       },
-    ],
+      {
+        path: "history",
+        component: () => import("@/views/user/item/HistoryItem.vue"),
+        name: "history"
+      },
+      ...indexSubRoute404
+    ]
   },
   {
-    //404
-    path: '/404',
-    component: () => import('@/views/not-found/NotFound.vue'),
-    name: '404',
+    path: "/edit",
+    component: () => import("@/views/user/center/EditProfile.vue"),
+    name: "edit"
   },
-  {
-    //任意路由
-    path: '/:pathMatch(.*)*',
-    redirect: '/404',
-    name: 'Any',
-  },
-]
+  ...rootRoutePage404
+];
+
+
