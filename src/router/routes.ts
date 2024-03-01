@@ -60,6 +60,7 @@ export const constantRoute = [
     path: "/profile",
     component: () => import("@/views/user/center/ProfileCenter.vue"),
     name: "profile",
+    redirect:'/profile/activity',
     children: [
       {
         path: "activity",
@@ -87,9 +88,9 @@ export const constantRoute = [
         name: "collection"
       },
       {
-        path: "history",
-        component: () => import("@/views/user/item/HistoryItem.vue"),
-        name: "history"
+        path: "record",
+        component: () => import("@/views/user/item/RecordItem.vue"),
+        name: "record"
       },
       ...indexSubRoute404
     ]

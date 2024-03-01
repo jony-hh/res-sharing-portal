@@ -31,6 +31,13 @@ const displaySlide = () => {
   common.disableSlide = false
 }
 
+const judgeDisplay = (link: string) => {
+  if (link === common.activePath) {
+    return common.disableSlide
+  }
+  return true
+}
+
 </script>
 
 <template>
@@ -46,7 +53,7 @@ const displaySlide = () => {
             v-for="(tab, key, index) in navData"
             :key="index"
             :to="tab.link"
-            :hide-slider="common.disableSlide"
+            :hide-slider="judgeDisplay(tab.link)"
             @click="displaySlide"
         >
           {{ tab.name }}
@@ -58,8 +65,9 @@ const displaySlide = () => {
       <jony-search></jony-search>
     </v-container>
     <jony-select class="mx-3"></jony-select>
-    <v-btn variant="outlined" v-if="!userStore.token" @click="signIn">去登录</v-btn>
-    <profile-card v-else></profile-card>
+    <profile-card v-if="userStore.token"></profile-card>
+    <v-btn variant="outlined" v-else @click="signIn">去登录</v-btn>
+
   </v-app-bar>
 </template>
 

@@ -13,7 +13,7 @@ function apiLogin(a: string, p: string) {
 export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
-    token: 'adf',
+    token: '',
     name: 'Eduardo',
     isAdmin: true,
   }),
@@ -28,6 +28,13 @@ export const useUserStore = defineStore({
       // we could do other stuff like redirecting the user
     },
 
+    setToken(){
+      this.$patch({
+        token: localStorage.getItem("token")
+      })
+
+    },
+
     /**
      * Attempt to login a user
      */
@@ -40,5 +47,9 @@ export const useUserStore = defineStore({
       })
     },
   },
+
+  persist: {
+    enabled: true
+  }
 
 })

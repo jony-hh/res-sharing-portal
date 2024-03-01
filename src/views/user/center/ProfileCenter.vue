@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BusinessCard from '@/views/user/center/BusinessCard.vue'
 import WeatherCard from '@/views/user/center/WeatherCard.vue'
-import ItemBar from "@/views/user/item/ItemBar.vue";
+import ItemBar from "@/views/user/center/ItemBar.vue";
 </script>
 
 <template>

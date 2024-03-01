@@ -26,6 +26,7 @@ const logout = () => {
     type: 'warning',
   })
     .then(() => {
+      localStorage.setItem('token','')
       useStore.token = ''
       router.push('/')
       ElMessage.success("成功退出登录！！！")

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  history
+  record
 </template>
 
 <style scoped>

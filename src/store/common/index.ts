@@ -6,8 +6,9 @@ export const useCommonStore = defineStore({
   state: () => ({
     // 隐藏导航滑动条
     disableSlide: true,
+    // 展示按钮背景
+    displayBackground:true,
     activePath: "/compositive",
-    name:''
   }),
 
   actions: {},

@@ -32,7 +32,8 @@ const submit = async () => {
   await reqLogin(loginForm).then((res) => {
     if (res.code === 200) {
       ElMessage.success("登录成功！")
-      router.push('/qa')
+      router.push('/')
+      localStorage.setItem("token",res.data.token)
       userStore.token = res.data.token
       return
     }
