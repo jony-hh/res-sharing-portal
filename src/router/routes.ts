@@ -1,26 +1,25 @@
 // 常量路由
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from 'vue-router'
 
 // 根路由404配置
 const rootRoutePage404: RouteRecordRaw[] = [
   {
     path: '/404',
-    component: () => import("@/views/not-found/NotFound.vue"),
-    name: "404"
+    component: () => import('@/views/not-found/NotFound.vue'),
+    name: '404',
   },
   {
     path: '/:pathMatch(.*)',
     redirect: '/404',
-    name: "Any Route"
+    name: 'Any Route',
   },
 ]
-
 
 // index子路由404配置
 const indexSubRoute404: RouteRecordRaw[] = [
   {
     path: '404',
-    component: () => import("@/views/not-found/NotFound.vue"),
+    component: () => import('@/views/not-found/NotFound.vue'),
   },
   {
     path: '/:pathMatch(profile/.*)',
@@ -32,75 +31,73 @@ const indexSubRoute404: RouteRecordRaw[] = [
 export const constantRoute = [
   {
     //登录成功以后展示数据的路由
-    path: "/",
-    component: () => import("@/views/home/HomePage.vue"),
-    name: "home"
+    path: '/',
+    component: () => import('@/views/home/HomePage.vue'),
+    name: 'home',
   },
   {
-    path: "/signin",
-    component: () => import("@/views/user/SignIn.vue"),
-    name: "signin"
+    path: '/signin',
+    component: () => import('@/views/user/SignIn.vue'),
+    name: 'signin',
   },
   {
-    path: "/resource",
-    component: () => import("@/views/resource/ResourceLib.vue"),
-    name: "resource"
+    path: '/resource',
+    component: () => import('@/views/resource/ResourceLib.vue'),
+    name: 'resource',
   },
   {
-    path: "/qa",
-    component: () => import("@/views/qa/QuestionAnswer.vue"),
-    name: "qa"
+    path: '/qa',
+    component: () => import('@/views/qa/QuestionAnswer.vue'),
+    name: 'qa',
   },
   {
-    path: "/wiki",
-    component: () => import("@/views/wiki/MyWiki.vue"),
-    name: "wiki"
+    path: '/wiki',
+    component: () => import('@/views/wiki/MyWiki.vue'),
+    name: 'wiki',
   },
   {
-    path: "/profile",
-    component: () => import("@/views/user/center/ProfileCenter.vue"),
-    name: "profile",
-    redirect:'/profile/activity',
+    path: '/profile',
+    component: () => import('@/views/user/center/ProfileCenter.vue'),
+    name: 'profile',
+    redirect: '/profile/activity',
     children: [
       {
-        path: "activity",
-        component: () => import("@/views/user/item/ActivityItem.vue"),
-        name: "activity"
+        path: 'activity',
+        component: () => import('@/views/user/item/ActivityItem.vue'),
+        name: 'activity',
       },
       {
-        path: "res",
-        component: () => import("@/views/user/item/ResItem.vue"),
-        name: "res"
+        path: 'res',
+        component: () => import('@/views/user/item/ResItem.vue'),
+        name: 'res',
       },
       {
-        path: "question",
-        component: () => import("@/views/user/item/QaItem.vue"),
-        name: "question"
+        path: 'question',
+        component: () => import('@/views/user/item/QaItem.vue'),
+        name: 'question',
       },
       {
-        path: "like",
-        component: () => import("@/views/user/item/LikeItem.vue"),
-        name: "like"
+        path: 'like',
+        component: () => import('@/views/user/item/LikeItem.vue'),
+        name: 'like',
       },
       {
-        path: "collection",
-        component: () => import("@/views/user/item/CollectionItem.vue"),
-        name: "collection"
+        path: 'collection',
+        component: () => import('@/views/user/item/CollectionItem.vue'),
+        name: 'collection',
       },
       {
-        path: "record",
-        component: () => import("@/views/user/item/RecordItem.vue"),
-        name: "record"
+        path: 'record',
+        component: () => import('@/views/user/item/RecordItem.vue'),
+        name: 'record',
       },
-      ...indexSubRoute404
-    ]
+      ...indexSubRoute404,
+    ],
   },
   {
-    path: "/edit",
-    component: () => import("@/views/user/center/EditProfile.vue"),
-    name: "edit"
+    path: '/edit',
+    component: () => import('@/views/user/center/EditProfile.vue'),
+    name: 'edit',
   },
-  ...rootRoutePage404
-];
-
-
+  ...rootRoutePage404,
+]

@@ -28,11 +28,10 @@ export const useUserStore = defineStore({
       // we could do other stuff like redirecting the user
     },
 
-    setToken(){
+    setToken() {
       this.$patch({
-        token: localStorage.getItem("token")
+        token: localStorage.getItem('token'),
       })
-
     },
 
     /**
@@ -49,7 +48,6 @@ export const useUserStore = defineStore({
   },
 
   persist: {
-    enabled: true
-  }
-
+    enabled: true,
+  },
 })

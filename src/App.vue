@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppBar from "@/views/home/AppBar.vue";
+import AppBar from '@/views/home/AppBar.vue'
 </script>
 
 <template>
@@ -10,7 +10,6 @@ import AppBar from "@/views/home/AppBar.vue";
       <!--路由占位-->
       <router-view></router-view>
     </v-main>
-
   </v-layout>
 </template>
 

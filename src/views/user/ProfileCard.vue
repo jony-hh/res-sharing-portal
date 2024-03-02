@@ -4,7 +4,7 @@ import router from '@/router'
 import 'element-plus/es/components/message/style/css'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { useCommonStore } from '@/store/common'
-import { useUserStore } from "@/store/user";
+import { useUserStore } from '@/store/user'
 
 const fav = ref(true)
 const menu = ref(false)
@@ -26,13 +26,13 @@ const logout = () => {
     type: 'warning',
   })
     .then(() => {
-      localStorage.setItem('token','')
+      localStorage.setItem('token', '')
       useStore.token = ''
       router.push('/')
-      ElMessage.success("成功退出登录！！！")
+      ElMessage.success('成功退出登录！！！')
     })
     .catch(() => {
-      ElMessage.info("取消退出登录！！！")
+      ElMessage.info('取消退出登录！！！')
     })
 }
 

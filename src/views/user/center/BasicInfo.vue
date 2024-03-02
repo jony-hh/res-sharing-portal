@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { ElMessage } from "element-plus";
-import router from "@/router";
+import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
+import router from '@/router'
 
-const saveProfile = ()=> {
+const saveProfile = () => {
   // 在这里处理保存个人信息的逻辑，可以通过 API 请求将数据发送到后端
   ElMessage.success('修改成功！！！')
   router.push('/profile')
@@ -11,15 +11,12 @@ const saveProfile = ()=> {
 }
 
 const profile = ref({
-    username: '不吃香菜',
-    profession: 'Java开发',
-    company: 'Jony',
-    introduction: 'blblblblblblblblblblblblblblb',
-    interests: 'coding',
-  }
-)
-
-
+  username: '不吃香菜',
+  profession: 'Java开发',
+  company: 'Jony',
+  introduction: 'blblblblblblblblblblblblblblb',
+  interests: 'coding',
+})
 </script>
 
 <template>
@@ -29,7 +26,10 @@ const profile = ref({
       <v-text-field v-model="profile.username" label="用户名"></v-text-field>
 
       <!-- 职业方向 -->
-      <v-text-field v-model="profile.profession" label="职业方向"></v-text-field>
+      <v-text-field
+        v-model="profile.profession"
+        label="职业方向"
+      ></v-text-field>
 
       <!-- 职位公司 -->
       <v-text-field v-model="profile.company" label="职位公司"></v-text-field>
@@ -46,6 +46,4 @@ const profile = ref({
   </v-sheet>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

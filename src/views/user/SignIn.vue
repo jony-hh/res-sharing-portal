@@ -22,7 +22,7 @@ import { reqLogin } from '@/api/user'
 import router from '@/router'
 import { useCommonStore } from '@/store/common'
 import { useUserStore } from '@/store/user'
-import { ElMessage } from "element-plus";
+import { ElMessage } from 'element-plus'
 
 const common = useCommonStore()
 const userStore = useUserStore()
@@ -31,13 +31,13 @@ let loginForm = reactive({ username: 'jony', password: '123456' })
 const submit = async () => {
   await reqLogin(loginForm).then((res) => {
     if (res.code === 200) {
-      ElMessage.success("登录成功！")
+      ElMessage.success('登录成功！')
       router.push('/')
-      localStorage.setItem("token",res.data.token)
+      localStorage.setItem('token', res.data.token)
       userStore.token = res.data.token
       return
     }
-    ElMessage.error("用户名或密码错误！")
+    ElMessage.error('用户名或密码错误！')
   })
 }
 </script>

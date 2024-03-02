@@ -1,11 +1,5 @@
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
+<template>collection</template>
 
-<template>
-  collection
-</template>
-
-<style scoped>
-
-</style>
+<style scoped></style>

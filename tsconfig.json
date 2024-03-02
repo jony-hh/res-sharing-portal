@@ -9,7 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noUnusedLocals": false,   // TS6133: 定义不使用的变量
+    "noUnusedLocals": false, // TS6133: 定义不使用的变量
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {

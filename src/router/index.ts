@@ -1,8 +1,8 @@
 //通过vue-router插件实现模板路由配置
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { constantRoute } from './routes'
-import { useCommonStore } from "@/store/common";
-import { useUserStore } from "@/store/user";
+import { useCommonStore } from '@/store/common'
+import { useUserStore } from '@/store/user'
 //创建路由器
 export const router = createRouter({
   //路由模式hash
@@ -10,7 +10,7 @@ export const router = createRouter({
   routes: constantRoute,
 })
 
-const blackList = ['/profile','/logout']
+const blackList = ['/profile', '/logout']
 
 router.beforeEach((to, from, next) => {
   const common = useCommonStore()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import router from "@/router";
-import { useCommonStore } from "@/store/common";
+import router from '@/router'
+import { useCommonStore } from '@/store/common'
 
 const common = useCommonStore()
 const jumpToEditProfile = () => {

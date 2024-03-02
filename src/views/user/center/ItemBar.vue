@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import router from "@/router";
-import { useCommonStore } from "@/store/common";
+import router from '@/router'
+import { useCommonStore } from '@/store/common'
 
 const drawer = ref(false)
 
@@ -12,8 +12,8 @@ const navItems = [
   { name: '问答', url: '/profile/question' },
   { name: '喜欢', url: '/profile/like' },
   { name: '收藏集', url: '/profile/collection' },
-  { name: '浏览记录', url: '/profile/record' }
-];
+  { name: '浏览记录', url: '/profile/record' },
+]
 const common = useCommonStore()
 // Function to handle navigation
 const navigateRouter = (url: string) => {
@@ -21,7 +21,7 @@ const navigateRouter = (url: string) => {
   router.push(url)
 }
 
-const judgeDisplay = (url:string) => {
+const judgeDisplay = (url: string) => {
   if (url === common.activePath) {
     return common.displayBackground
   }
@@ -34,7 +34,7 @@ const judgeDisplay = (url:string) => {
     <v-container>
       <v-row>
         <v-col cols="12">
-          <div class="d-flex" style="background-color: #CFD8DC">
+          <div class="d-flex" style="background-color: #cfd8dc">
             <!-- Your navigation items -->
             <v-btn
               variant="text"
