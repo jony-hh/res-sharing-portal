@@ -1,10 +1,9 @@
-
 <template>
   <div style="display: flex">
     <!--【markdown内容】-->
-    <div v-html="html" style="flex: 3;border: 1px red solid"></div>
+    <div v-html="html" style="flex: 3; border: 1px red solid"></div>
     <!--目录-->
-    <div class="category" style="flex: 1;border: 1px red solid">
+    <div class="category" style="flex: 1; border: 1px red solid">
       <ul>
         <!-- 这里为了设置各级标题的不同样式，添加了类，h1标签类为item-1，h2标签类为item-2 -->
         <li
@@ -13,19 +12,18 @@
           :class="`item-${item.tagName.charAt(1)}`"
           @click="locate(item.id)"
         >
-          {{item.id}}
+          {{ item.id }}
         </li>
       </ul>
     </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref } from "vue";
+import { nextTick, ref } from 'vue'
 import { marked } from 'marked'
-import { renderer } from "@/utils/render";
-import data from "@/views/wiki/data.json";
+import { renderer } from '@/utils/render'
+import data from '@/views/wiki/data.json'
 
 // 配置【marked实例】
 marked.use({
@@ -51,7 +49,7 @@ nextTick(() => {
   tocData.value = initToc()
 })
 
-const locate = (id:string) => {
+const locate = (id: string) => {
   let anchorElement = document.getElementById(id)
   console.log(id)
   if (anchorElement) {
@@ -59,11 +57,10 @@ const locate = (id:string) => {
     anchorElement.scrollIntoView()
   }
 }
-
 </script>
 
 <style scoped>
-.category ul li:hover{
+.category ul li:hover {
   color: red;
 }
 </style>

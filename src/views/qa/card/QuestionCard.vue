@@ -1,24 +1,7 @@
 <script setup lang="ts">
-// 用户信息
-import { computed, ref } from 'vue'
+// 使用 defineProps 来声明props
+const props = defineProps(['questionInfo']);
 
-// 问题信息
-const questionInfo = ref({
-  avatar: 'Han Solo 的头像链接',
-  nickname: '空心',
-  title: '简历导出的时候会出现一些问题，这如何解决',
-  tags: ['浏览器'],
-  answerCount: 1,
-  viewCount: 14,
-  askedTime: '19小时前提问',
-})
-
-// 计算属性，格式化时间
-const formattedTime = computed(() => {
-  // 实现时间格式化逻辑
-  // 例如，可以使用 day.js 进行格式化
-  return questionInfo.value.askedTime
-})
 </script>
 
 <template>
@@ -81,7 +64,7 @@ const formattedTime = computed(() => {
             <v-col>
               <!-- 用户昵称和发问时间 -->
               <div>{{ questionInfo.nickname }}</div>
-              <div>{{ formattedTime }}</div>
+              <div>{{ questionInfo.askedTime }}</div>
             </v-col>
           </v-row>
         </template>

@@ -7,7 +7,7 @@ import type {
 } from '@/api/user/type.ts'
 
 //项目用户相关的请求地址
-enum API {
+enum USER_API {
   LOGIN_URL = '/sys/auth/login',
   USERINFO_URL = '/user/info',
   LOGOUT_URL = '/user/logout',
@@ -15,11 +15,11 @@ enum API {
 
 //登录接口
 export const reqLogin = (data: loginForm) =>
-  request.post<any, loginResponseData>(API.LOGIN_URL, data)
+  request.post<any, loginResponseData>(USER_API.LOGIN_URL, data)
 
 //获取用户信息
 export const reqUserInfo = () =>
-  request.get<any, userResponseData>(API.USERINFO_URL)
+  request.get<any, userResponseData>(USER_API.USERINFO_URL)
 
 //退出登录
-export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
+export const reqLogout = () => request.post<any, any>(USER_API.LOGOUT_URL)

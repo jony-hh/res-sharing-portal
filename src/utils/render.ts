@@ -15,9 +15,9 @@ export const renderer = {
    *
    * @param text
    */
-  paragraph(text: string): string{
+  paragraph(text: string): string {
     // 【样式：p标签自动换行】
     let style = 'word-break: break-all;word-wrap: break-word;'
-    return `<p style="${style}">${"&nbsp&nbsp&nbsp&nbsp&nbsp"+text}</p>`
-  }
+    return `<p style="${style}">${'&nbsp&nbsp&nbsp&nbsp&nbsp' + text}</p>`
+  },
 }

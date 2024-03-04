@@ -52,7 +52,7 @@ export default [
   },
   // 获取用户信息
   {
-    url: '/api/user/info',
+    url: '/sys/user/info',
     method: 'get',
     response: (request) => {
       //获取请求头携带token

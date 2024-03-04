@@ -10,9 +10,9 @@ const fav = ref(true)
 const menu = ref(false)
 const common = useCommonStore()
 const useStore = useUserStore()
-const jumpToProfile = () => {
+const jumpToProfile = (url:string) => {
   common.disableSlide = true
-  router.push('/profile')
+  router.push(url)
 }
 
 const enterProfile = () => {
@@ -41,12 +41,12 @@ const setting = () => {
 }
 
 const buttons = ref([
-  { text: '我的动态' },
-  { text: '我的资源' },
-  { text: '我的问答' },
-  { text: '我的喜欢' },
-  { text: '我的收藏' },
-  { text: '浏览记录' },
+  { text: '我的动态', url: '/profile/activity' },
+  { text: '我的资源', url: '/profile/res'  },
+  { text: '我的问答', url: '/profile/question' },
+  { text: '我的喜欢' , url: '/profile/like' },
+  { text: '我的收藏', url: '/profile/collection' },
+  { text: '浏览记录', url: '/profile/record'  },
 ])
 
 const open1 = () => {
@@ -107,7 +107,7 @@ const open4 = (s: string) => {
               v-for="(button, index) in buttons"
               :key="index"
             >
-              <v-btn @click="jumpToProfile">{{ button.text }}</v-btn>
+              <v-btn @click="jumpToProfile(button.url)">{{ button.text }}</v-btn>
             </v-col>
           </v-row>
         </v-container>

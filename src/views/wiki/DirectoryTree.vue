@@ -17,8 +17,8 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-import { ElTree,ElInput } from 'element-plus'
-import treeData from "@/views/wiki/wiki1"
+import { ElTree, ElInput } from 'element-plus'
+import treeData from '@/views/wiki/wiki1'
 interface Tree {
   [key: string]: any
 }
@@ -40,6 +40,5 @@ const filterNode = (value: string, data: Tree) => {
   return data.label.includes(value)
 }
 
-const data:Tree=treeData.data
+const data: Tree = treeData.data
 </script>
-

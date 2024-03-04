@@ -1,12 +1,10 @@
 <template>
   <textarea v-model="value" @input="change(value)" />
   <div v-html="markdownToHtml" class="markdown-body"></div>
-
 </template>
 <script lang="ts" setup>
-import { marked } from 'marked';
-import { ref, shallowRef } from 'vue';
-
+import { marked } from 'marked'
+import { ref, shallowRef } from 'vue'
 
 const render = new marked.Renderer()
 marked.setOptions({
@@ -21,16 +19,14 @@ marked.use({
   async: true,
   pedantic: false,
   gfm: true,
-});
+})
 
 const value = ref('**Hello,World**')
-const markdownToHtml = shallowRef<any>("")
+const markdownToHtml = shallowRef<any>('')
 markdownToHtml.value = marked(value.value)
 
 const change = (value: string) => {
   markdownToHtml.value = marked(value)
 }
-
 </script>
-<style>
-</style>
+<style></style>

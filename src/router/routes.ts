@@ -52,8 +52,13 @@ export const constantRoute = [
   },
   {
     path: '/wiki',
-    component: () => import('@/views/wiki/MyWiki.vue'),
+    component: () => import('@/views/wiki/WikiBook.vue'),
     name: 'wiki',
+  },
+  {
+    path: '/wiki/bookDetail',
+    component: () => import('@/views/wiki/BookDetail.vue'),
+    name: 'bookDetail',
   },
   {
     path: '/profile',

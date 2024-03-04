@@ -27,11 +27,6 @@ const changeStatus = (status: string) => {
 const changeTag = (tag: string) => {
   activeTag.value = tag
 }
-// 用户信息
-const userInfo = ref({
-  avatar: 'Han Solo 的头像链接',
-  nickname: '空心',
-})
 
 // 问题数据列表
 const questions = ref([
@@ -40,8 +35,8 @@ const questions = ref([
     nickname: '空心',
     title: '简历导出的时候会出现一些问题，这如何解决',
     tags: ['浏览器'],
-    answerCount: 1,
-    viewCount: 14,
+    answerCount: '1',
+    viewCount: '13',
     askedTime: '19小时前提问',
   },
   {
@@ -49,8 +44,8 @@ const questions = ref([
     nickname: '空心',
     title: '简历导出的时候会出现一些问题，这如何解决',
     tags: ['浏览器'],
-    answerCount: 1,
-    viewCount: 14,
+    answerCount: '45',
+    viewCount: '36',
     askedTime: '19小时前提问',
   },
   {
@@ -58,8 +53,8 @@ const questions = ref([
     nickname: '空心',
     title: '简历导出的时候会出现一些问题，这如何解决',
     tags: ['浏览器'],
-    answerCount: 1,
-    viewCount: 14,
+    answerCount: '1',
+    viewCount: '34',
     askedTime: '19小时前提问',
   },
   // 添加更多问题...
