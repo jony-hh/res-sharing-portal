@@ -1,0 +1,59 @@
+<script setup lang="ts">
+import DocumentCard from '@/views/resource/video/DocumentCard.vue'
+import BookCard from '@/views/wiki/BookCard.vue'
+import DocNavBar from '@/views/resource/docment/DocNavBar.vue'
+
+const documents = [
+  {
+    id: '101',
+    typeUrl:
+      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
+    tags: ['科技', '创新'],
+    author: 'jony',
+  },
+  {
+    id: '101',
+    typeUrl:
+      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
+    tags: ['科技', '创新'],
+    author: 'leapsss',
+  },
+  {
+    id: '101',
+    typeUrl:
+      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
+    tags: ['科技', '创新'],
+    author: 'leapsss',
+  },
+  {
+    id: '101',
+    typeUrl:
+      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
+    tags: ['科技', '创新'],
+    author: 'leapsss',
+  },
+]
+
+const sendDocumentId = (id: string) => {}
+</script>
+
+<template>
+  <div>
+    <doc-nav-bar></doc-nav-bar>
+    <v-container>
+      <v-row>
+        <v-col
+          class="pa-0"
+          cols="6"
+          v-for="(ducument, index) in documents"
+          :key="index"
+          @click="sendDocumentId(ducument.id)"
+        >
+          <document-card :documentInfo="ducument"></document-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+</template>
+
+<style scoped></style>

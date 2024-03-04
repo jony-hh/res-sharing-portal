@@ -10,7 +10,7 @@ const fav = ref(true)
 const menu = ref(false)
 const common = useCommonStore()
 const useStore = useUserStore()
-const jumpToProfile = (url:string) => {
+const jumpToProfile = (url: string) => {
   common.disableSlide = true
   router.push(url)
 }
@@ -42,11 +42,11 @@ const setting = () => {
 
 const buttons = ref([
   { text: '我的动态', url: '/profile/activity' },
-  { text: '我的资源', url: '/profile/res'  },
+  { text: '我的资源', url: '/profile/res' },
   { text: '我的问答', url: '/profile/question' },
-  { text: '我的喜欢' , url: '/profile/like' },
+  { text: '我的喜欢', url: '/profile/like' },
   { text: '我的收藏', url: '/profile/collection' },
-  { text: '浏览记录', url: '/profile/record'  },
+  { text: '浏览记录', url: '/profile/record' },
 ])
 
 const open1 = () => {
@@ -72,6 +72,7 @@ const open4 = (s: string) => {
 <template>
   <div class="text-center">
     <v-menu
+      location="bottom"
       v-model="menu"
       transition="scale-transition"
       :close-on-content-click="true"
@@ -80,7 +81,7 @@ const open4 = (s: string) => {
         <v-btn color="indigo" v-bind="props">个人中心</v-btn>
       </template>
 
-      <v-card max-width="300" style="top: 20px">
+      <v-card max-width="300" style="top: 20px;">
         <v-list>
           <v-list-item
             prepend-avatar="https://cdn.vuetifyjs.com/images/john.jpg"
@@ -107,7 +108,9 @@ const open4 = (s: string) => {
               v-for="(button, index) in buttons"
               :key="index"
             >
-              <v-btn @click="jumpToProfile(button.url)">{{ button.text }}</v-btn>
+              <v-btn @click="jumpToProfile(button.url)">
+                {{ button.text }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-container>

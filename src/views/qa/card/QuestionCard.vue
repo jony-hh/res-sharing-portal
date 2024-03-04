@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // 使用 defineProps 来声明props
-const props = defineProps(['questionInfo']);
-
+const props = defineProps(['questionInfo'])
 </script>
 
 <template>

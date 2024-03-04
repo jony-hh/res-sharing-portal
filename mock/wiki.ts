@@ -2,12 +2,12 @@
 function wikiMockList() {
   return [
     {
-      id:'10001',
-      msg:'success'
+      id: '10001',
+      msg: 'success',
     },
     {
-      id:'10002',
-      msg:'success'
+      id: '10002',
+      msg: 'success',
     },
   ]
 }

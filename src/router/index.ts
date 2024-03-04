@@ -22,7 +22,10 @@ router.beforeEach((to, from, next) => {
   user.setToken()
   if (!user.token) {
     for (let i = 0; i++; i < blackList.length) {
+      console.log(to.path)
+      console.log(to.path.indexOf(blackList[i]))
       if (to.path.indexOf(blackList[i]) !== -1) {
+
         next('/')
       }
     }
