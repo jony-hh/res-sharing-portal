@@ -81,7 +81,7 @@ const open4 = (s: string) => {
         <v-btn color="indigo" v-bind="props">个人中心</v-btn>
       </template>
 
-      <v-card max-width="300" style="top: 20px;">
+      <v-card max-width="300" style="top: 20px">
         <v-list>
           <v-list-item
             prepend-avatar="https://cdn.vuetifyjs.com/images/john.jpg"

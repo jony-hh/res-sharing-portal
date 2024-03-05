@@ -21,17 +21,18 @@ router.beforeEach((to, from, next) => {
 
   user.setToken()
   if (!user.token) {
-    for (let i = 0; i++; i < blackList.length) {
-      console.log(to.path)
-      console.log(to.path.indexOf(blackList[i]))
+    for (let i = 0; i < blackList.length; i++) {
       if (to.path.indexOf(blackList[i]) !== -1) {
-
         next('/')
+        break
+      }
+      if (i===blackList.length-1){
+        next()
       }
     }
-    next()
+  } else {
+    next();
   }
-  next()
 })
 
 export default router

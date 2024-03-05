@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="model-label-box">
@@ -20,5 +18,14 @@
 </template>
 
 <style scoped>
+.model-label-box{
+  display: flex;
+  border: 1px red solid;
+  padding: 10px;
+}
+.category-list{
+  display: flex;
+}
+
 
 </style>

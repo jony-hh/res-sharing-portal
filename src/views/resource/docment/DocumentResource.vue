@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import DocumentCard from '@/views/resource/video/DocumentCard.vue'
-import BookCard from '@/views/wiki/BookCard.vue'
+
 import DocNavBar from '@/views/resource/docment/DocNavBar.vue'
+import DocumentCard from "@/views/resource/docment/DocumentCard.vue";
 
 const documents = [
   {
