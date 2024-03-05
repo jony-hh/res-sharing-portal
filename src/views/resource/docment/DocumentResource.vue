@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
 import DocNavBar from '@/views/resource/docment/DocNavBar.vue'
-import DocumentCard from "@/views/resource/docment/DocumentCard.vue";
+import DocumentCard from '@/views/resource/docment/DocumentCard.vue'
 
 const documents = [
   {

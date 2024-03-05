@@ -26,12 +26,12 @@ router.beforeEach((to, from, next) => {
         next('/')
         break
       }
-      if (i===blackList.length-1){
+      if (i === blackList.length - 1) {
         next()
       }
     }
   } else {
-    next();
+    next()
   }
 })
 

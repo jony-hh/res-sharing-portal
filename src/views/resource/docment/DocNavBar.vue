@@ -18,14 +18,12 @@
 </template>
 
 <style scoped>
-.model-label-box{
+.model-label-box {
   display: flex;
   border: 1px red solid;
   padding: 10px;
 }
-.category-list{
+.category-list {
   display: flex;
 }
-
-
 </style>

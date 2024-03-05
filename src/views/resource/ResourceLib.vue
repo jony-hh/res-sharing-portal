@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DocumentResource from "@/views/resource/docment/DocumentResource.vue";
+import DocumentResource from '@/views/resource/docment/DocumentResource.vue'
 </script>
 
 <template>

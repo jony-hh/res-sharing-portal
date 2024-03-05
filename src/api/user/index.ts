@@ -4,7 +4,7 @@ import type {
   loginForm,
   loginResponseData,
   userResponseData,
-} from '@/api/user/type.ts'
+} from '@/api/user/type'
 
 //项目用户相关的请求地址
 enum USER_API {
