@@ -1,10 +1,16 @@
 <script setup lang="ts">
-const docTypes = [
+import { ref } from 'vue'
+
+const VideoTypes = [
   '新闻传播大类',
   '教育与体育大类',
   '装备制造大类',
   '电子与信息大类',
 ]
+const activeTag = ref('default')
+const activateTag = (tag: string) => {
+  activeTag.value = tag
+}
 
 const viewMore = () => {
   alert('hello')
@@ -17,13 +23,21 @@ const viewMore = () => {
       <img src="https://s21.ax1x.com/2024/03/05/pFDTmVA.png" alt="" />
       <div class="px-4 j-doc-title">课程思政示范课程</div>
       <div class="d-flex ml-10">
-        <div class="mx-2 px-4 j-item">推荐</div>
         <div
           class="mx-2 px-4 j-item"
-          v-for="(doctype, index) in docTypes"
-          :key="index"
+          :class="{ 'j-active': activeTag === 'default' }"
+          @click="activateTag('default')"
         >
-          {{ doctype }}
+          推荐
+        </div>
+        <div
+          class="mx-2 px-4 j-item"
+          :class="{ 'j-active': activeTag === videotype }"
+          v-for="(videotype, index) in VideoTypes"
+          :key="index"
+          @click="activateTag(videotype)"
+        >
+          {{ videotype }}
         </div>
       </div>
     </div>
@@ -53,7 +67,8 @@ const viewMore = () => {
   border: 1px solid transparent;
   cursor: pointer;
 }
-.j-item:hover {
+.j-item:hover,
+.j-active {
   font-weight: 700;
   color: #ee373d;
   background: #fff;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DocumentResource from '@/views/resource/docment/DocumentResource.vue'
 import VideoResource from '@/views/resource/video/VideoResource.vue'
-import TopicResource from "@/views/resource/topic/TopicResource.vue";
+import TopicResource from '@/views/resource/topic/TopicResource.vue'
 </script>
 
 <template>

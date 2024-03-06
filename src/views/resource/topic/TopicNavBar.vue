@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const docTypes = [
+import { ref } from 'vue'
+
+const topicTypes = [
   '新闻传播大类',
   '教育与体育大类',
   '装备制造大类',
@@ -9,6 +11,11 @@ const docTypes = [
 const viewMore = () => {
   alert('hello')
 }
+
+const activeTag = ref('default')
+const activateTag = (tag: string) => {
+  activeTag.value = tag
+}
 </script>
 
 <template>
@@ -17,13 +24,21 @@ const viewMore = () => {
       <img src="https://s21.ax1x.com/2024/03/05/pFDTmVA.png" alt="" />
       <div class="px-4 j-doc-title">思政元素内涵理解</div>
       <div class="d-flex ml-10">
-        <div class="mx-2 px-4 j-item">推荐</div>
         <div
           class="mx-2 px-4 j-item"
-          v-for="(doctype, index) in docTypes"
-          :key="index"
+          :class="{ 'j-active': activeTag === 'default' }"
+          @click="activateTag('default')"
         >
-          {{ doctype }}
+          推荐
+        </div>
+        <div
+          class="mx-2 px-4 j-item"
+          :class="{ 'j-active': activeTag === topictype }"
+          v-for="(topictype, index) in topicTypes"
+          :key="index"
+          @click="activateTag(topictype)"
+        >
+          {{ topictype }}
         </div>
       </div>
     </div>
@@ -53,7 +68,8 @@ const viewMore = () => {
   border: 1px solid transparent;
   cursor: pointer;
 }
-.j-item:hover {
+.j-item:hover,
+.j-active {
   font-weight: 700;
   color: #ee373d;
   background: #fff;

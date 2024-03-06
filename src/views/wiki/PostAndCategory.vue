@@ -23,7 +23,6 @@
 import { nextTick, ref } from 'vue'
 import { marked } from 'marked'
 import { renderer } from '@/utils/render'
-import data from '@/views/wiki/data.json'
 
 // 配置【marked实例】
 marked.use({
@@ -33,7 +32,8 @@ marked.use({
 })
 
 // 【文章内容】
-const content = "# h1 hello\nasddddddddddddddddddasdfasdgasgasdgasdgbvvgjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkvvvvvvvvvvvvvvvvvvawerrrrrrrrrrrrrrrrrrrrrrdddddddddddddddddddddddd\n## h2 hello\n*p2 hello*\n# h1 hello\n*p1*\n## h2 hello\n*p2 hello*"
+const content =
+  '# h1 hello\nasddddddddddddddddddasdfasdgasgasdgasdgbvvgjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkvvvvvvvvvvvvvvvvvvawerrrrrrrrrrrrrrrrrrrrrrdddddddddddddddddddddddd\n## h2 hello\n*p2 hello*\n# h1 hello\n*p1*\n## h2 hello\n*p2 hello*'
 const html = ref(marked.parse(content))
 
 // 存放 toc 目录数据

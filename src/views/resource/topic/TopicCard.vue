@@ -7,7 +7,6 @@ const props = defineProps(['topicInfo'])
     <v-img
       class="bg-white position-relative"
       :src="topicInfo.backgroundUrl"
-
       aria-controls
     >
       <div v-text="topicInfo.title" class="j-el-title"></div>
