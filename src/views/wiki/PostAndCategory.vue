@@ -33,8 +33,8 @@ marked.use({
 })
 
 // 【文章内容】
-const content = ref(data.content)
-const html = ref(marked.parse(content.value))
+const content = "# h1 hello\nasddddddddddddddddddasdfasdgasgasdgasdgbvvgjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkvvvvvvvvvvvvvvvvvvawerrrrrrrrrrrrrrrrrrrrrrdddddddddddddddddddddddd\n## h2 hello\n*p2 hello*\n# h1 hello\n*p1*\n## h2 hello\n*p2 hello*"
+const html = ref(marked.parse(content))
 
 // 存放 toc 目录数据
 const tocData = ref<any>(null)

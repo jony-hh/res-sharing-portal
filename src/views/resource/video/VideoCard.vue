@@ -3,13 +3,13 @@ const props = defineProps(['VideoInfo'])
 </script>
 
 <template>
-  <v-card>
+  <v-card class="ma-1">
     <div class="ma-2 position-relative">
       <div class="">国家示范</div>
       <div class="txtbox">海南大学</div>
       <div class="imgbox">
         <img
-          style="height: 165px;width: 280px"
+          style="height: 165px; width: 280px"
           src="http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png"
           alt=""
         />

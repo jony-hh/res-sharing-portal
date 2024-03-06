@@ -15,7 +15,7 @@ const viewMore = () => {
   <div class="d-flex justify-lg-space-between ma-2 align-center">
     <div class="d-flex align-center">
       <img src="https://s21.ax1x.com/2024/03/05/pFDTmVA.png" alt="" />
-      <div class="px-4 j-doc-title">课程思政文档库</div>
+      <div class="px-4 j-doc-title">思政元素内涵理解</div>
       <div class="d-flex ml-10">
         <div class="mx-2 px-4 j-item">推荐</div>
         <div

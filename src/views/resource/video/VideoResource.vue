@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import VideoNavBar from "@/views/resource/video/VideoNavBar.vue";
-import VideoCard from "@/views/resource/video/VideoCard.vue";
+import VideoNavBar from '@/views/resource/video/VideoNavBar.vue'
+import VideoCard from '@/views/resource/video/VideoCard.vue'
 
 const documents = [
   {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import DirectoryTree from '@/views/wiki/DirectoryTree.vue'
-import PostAndCategory from '@/views/wiki/PostAndCategory.vue'
+
+import DirectoryTree from "@/views/wiki/DirectoryTree.vue";
+import PostAndCategory from "@/views/wiki/PostAndCategory.vue";
 </script>
 
 <template>

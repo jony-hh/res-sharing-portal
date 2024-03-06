@@ -111,11 +111,6 @@ const sendId = async (id: string) => {
       </v-col>
     </v-row>
   </v-container>
-  <!--<book-card-->
-  <!--  v-for="(book,index) in books"-->
-  <!--  :key="index"-->
-  <!--  :bookInfo="book">-->
-  <!--</book-card>-->
 </template>
 
 <style scoped></style>
