@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
-import SlideshowBox from "@/views/home/content/SlideshowBox.vue";
-import NewsBox from "@/views/home/content/NewsBox.vue";
-import AttendCard from "@/views/home/content/AttendCard.vue";
-import InfoCard from "@/views/home/content/InfoCard.vue";
+import SlideshowBox from '@/views/home/content/SlideshowBox.vue'
+import NewsBox from '@/views/home/content/NewsBox.vue'
+import AttendCard from '@/views/home/content/AttendCard.vue'
+import InfoCard from '@/views/home/content/InfoCard.vue'
 </script>
 
 <template>
@@ -24,9 +23,7 @@ import InfoCard from "@/views/home/content/InfoCard.vue";
         <info-card></info-card>
       </div>
     </div>
-    <div class="j-part2">
-
-    </div>
+    <div class="j-part2"></div>
   </div>
 </template>
 

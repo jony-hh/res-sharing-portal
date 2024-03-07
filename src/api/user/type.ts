@@ -14,7 +14,7 @@ export interface userResponseData {
 // 登录接口返回数据类型
 export interface loginResponseData {
   code: number
-  message:string
+  message: string
   data: dataType
 }
 

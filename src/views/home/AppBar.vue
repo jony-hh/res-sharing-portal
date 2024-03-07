@@ -5,8 +5,8 @@ import { ref } from 'vue'
 import { useUserStore } from '@/store/user'
 import { useCommonStore } from '@/store/common'
 import router from '@/router'
-import SearchBar from "@/views/home/bar/SearchBar.vue";
-import SelectMenu from "@/views/home/bar/SelectMenu.vue";
+import SearchBar from '@/views/home/bar/SearchBar.vue'
+import SelectMenu from '@/views/home/bar/SelectMenu.vue'
 
 const navData = ref([
   { id: 1, name: '资源', link: '/resource' },
