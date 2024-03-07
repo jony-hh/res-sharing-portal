@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "mock": "vite --mode mock --force",
+    "mock:local": "vite --mode mock_local --force",
+    "mock:cloud": "vite --mode test",
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit --skipLibCheck  && vite build",
     "preview": "vite preview",
@@ -16,8 +17,8 @@
     "prepare": "husky install",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
     "preinstall": "node ./scripts/preinstall.js",
-    "build:test": "vue-tsc && vite build --mode test",
-    "build:pro": "vue-tsc && vite build --mode production"
+    "build:test": "vue-tsc --noEmit --skipLibCheck && vite build --mode test",
+    "build:prod": "vue-tsc --noEmit --skipLibCheck && vite build --mode production"
   },
   "dependencies": {
     "@types/marked": "^6.0.0",

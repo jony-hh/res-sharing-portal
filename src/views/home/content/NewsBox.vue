@@ -2,11 +2,11 @@
 
 <template>
   <div class="news">
-    <div style="display: flex; justify-content: space-between; margin: 10px">
+    <div class="d-flex justify-lg-space-between my-2 mx-10">
       <div>资讯要闻</div>
       <div>查看更多 ></div>
     </div>
-    <div style="display: flex; justify-content: space-around">
+    <div class="d-flex justify-lg-space-around">
       <div style="height: 200px">
         <div class="box">
           <a

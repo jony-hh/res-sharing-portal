@@ -32,7 +32,7 @@ export const constantRoute = [
   {
     //登录成功以后展示数据的路由
     path: '/',
-    component: () => import('@/views/home/HomePage.vue'),
+    component: () => import('@/views/home/MainContent.vue'),
     name: 'home',
   },
   {

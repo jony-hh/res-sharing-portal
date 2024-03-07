@@ -1,5 +1,8 @@
 // @ts-check
 import { defineStore } from 'pinia'
+import request from '@/utils/request'
+import { userResponseData } from '@/api/user/type'
+import user from '~/mock/user'
 
 /**
  * Simulate a login
@@ -16,6 +19,7 @@ export const useUserStore = defineStore({
     token: '',
     name: 'Eduardo',
     isAdmin: true,
+    test: '',
   }),
 
   actions: {
@@ -31,6 +35,14 @@ export const useUserStore = defineStore({
     setToken() {
       this.$patch({
         token: localStorage.getItem('token'),
+      })
+    },
+
+    async testMock() {
+      const res = await request.get<any, userResponseData>('/hedge/index')
+      const { msg } = res
+      this.$patch({
+        test: msg,
       })
     },
 

@@ -28,7 +28,7 @@ export default defineConfig(({ command, mode }) => {
       vue(),
       viteMockServe({
         mockPath: './mock', // mock文件存放的位置
-        localEnabled: command === 'serve' && mode === 'mock', //在开发环境中启用 mock
+        localEnabled: command === 'serve' && mode === 'mock_local', //在开发环境中启用 mock
       }),
       // elementplus手动按需导入
       ElementPlus({}),
@@ -61,8 +61,6 @@ export default defineConfig(({ command, mode }) => {
           target: env.VITE_SERVE,
           //需要代理跨域
           changeOrigin: true,
-          //路径重写
-          rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },

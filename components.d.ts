@@ -7,17 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    JonyAttend: typeof import('./src/components/home/JonyAttend.vue')['default']
-    JonyFineAtricle: typeof import('./src/components/home/JonyFineAtricle.vue')['default']
-    JonyFooter: typeof import('./src/components/JonyFooter.vue')['default']
-    JonyInfo: typeof import('./src/components/home/JonyInfo.vue')['default']
-    JonyNews: typeof import('./src/components/home/JonyNews.vue')['default']
-    JonySearch: typeof import('./src/components/JonySearch.vue')['default']
-    JonySelect: typeof import('./src/components/JonySelect.vue')['default']
-    JonySlideshow: typeof import('./src/components/JonySlideshow.vue')['default']
-    NavigationBar: typeof import('./src/components/NavigationBar.vue')['default']
-    NewSlideshow: typeof import('./src/components/NewSlideshow.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
+
   }
 }

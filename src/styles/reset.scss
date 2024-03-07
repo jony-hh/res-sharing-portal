@@ -1,192 +1,104 @@
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
-
-  outline: none;
-}
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-//h1,
-//h2,
-//h3,
-//h4,
-//h5,
-//h6,
-//p,
-blockquote,
+/* 清除内外边距 */
+/* structural elements 结构元素 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,
+  /* list elements 列表元素 */
+dl, dt, dd, ul, ol, li,
+  /* text formatting elements 文本格式元素 */
 pre,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  font: inherit;
-  font-size: 100%;
-
+  /* form elements 表单元素 */
+fieldset, button, input, textarea,
+  /* table elements 表格元素 */
+th, td {
   margin: 0;
   padding: 0;
-
-  vertical-align: baseline;
-
-  border: 0;
-  user-select: none;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
+/* 设置默认字体 */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
-body {
-  line-height: 1;
+h1 {
+  font-size: 18px; /* 18px / 12px = 1.5 */
+}
+h2 {
+  font-size: 16px;
+}
+h3 {
+  font-size: 14px;
+}
+h4,
+h5,
+h6 {
+  font-size: 100%;
 }
 
+/* 将斜体扶正 */
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+
+/* 统一等宽字体 */
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* 小于 12px 的中文很难阅读，让 small 正常化 */
+small {
+  font-size: 12px;
+}
+
+/* 重置列表元素 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 重置文本格式元素 */
 a {
   text-decoration: none;
   outline: none;
   color: #000;
 }
-
-ol,
-ul {
-  list-style: none;
+a:hover {
+  text-decoration: none;
 }
 
-blockquote,
-q {
-  quotes: none;
-
-  &:before,
-  &:after {
-    content: '';
-    content: none;
-  }
+/* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
 }
 
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-
-  position: relative;
-
-  vertical-align: baseline;
+/* img 搭车：让链接里的 img 无边框 */
+fieldset,
+img {
+  border: none;
 }
 
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
+/* 重置表格元素 */
 table {
-  border-spacing: 0;
   border-collapse: collapse;
+  border-spacing: 0;
 }
 
-input,
-textarea,
-button {
-  font-family: inhert;
-  font-size: inherit;
-
-  color: inherit;
-}
-
-select {
-  text-indent: 0.01px;
-  text-overflow: '';
-
-  border: 0;
-  border-radius: 0;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
-code,
-pre {
-  font-family: monospace, monospace;
-  font-size: 1em;
+/* 重置 hr */
+hr {
+  border: none;
+  height: 1px;
 }

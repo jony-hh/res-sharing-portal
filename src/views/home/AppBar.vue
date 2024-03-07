@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import JonySearch from '@/components/JonySearch.vue'
-import JonySelect from '@/components/JonySelect.vue'
 import ProfileCard from '@/views/user/ProfileCard.vue'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 import { useUserStore } from '@/store/user'
 import { useCommonStore } from '@/store/common'
 import router from '@/router'
+import SearchBar from "@/views/home/bar/SearchBar.vue";
+import SelectMenu from "@/views/home/bar/SelectMenu.vue";
 
 const navData = ref([
   { id: 1, name: '资源', link: '/resource' },
@@ -61,9 +61,9 @@ const judgeDisplay = (link: string) => {
     </v-container>
 
     <v-container>
-      <jony-search></jony-search>
+      <search-bar></search-bar>
     </v-container>
-    <jony-select class="mx-3"></jony-select>
+    <select-menu class="mx-3"></select-menu>
     <profile-card v-if="userStore.token"></profile-card>
     <v-btn variant="outlined" v-else @click="signIn">去登录</v-btn>
   </v-app-bar>

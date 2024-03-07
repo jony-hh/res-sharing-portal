@@ -7,12 +7,14 @@ export interface loginForm {
 // 获取用户信息
 export interface userResponseData {
   code: number
+  msg: string
   data: user
 }
 
 // 登录接口返回数据类型
 export interface loginResponseData {
   code: number
+  message:string
   data: dataType
 }
 

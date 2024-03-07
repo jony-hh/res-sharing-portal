@@ -37,7 +37,7 @@ const submit = async () => {
       userStore.token = res.data.token
       return
     }
-    ElMessage.error('用户名或密码错误！')
+    ElMessage.error(res.message)
   })
 }
 </script>

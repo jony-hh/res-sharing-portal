@@ -4,7 +4,6 @@ import { computed, ref } from 'vue'
 const loading = ref(false)
 
 const calcResidue = (month: any, day: any) => {
-  console.log(sortedFestivals.value)
   // 获取当前日期
   let currentDate = new Date()
 
