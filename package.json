@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "mock:local": "vite --mode mock_local --force",
-    "mock:cloud": "vite --mode test",
+    "mock:cloud": "vite --mode mock",
+    "build:mock": "vue-tsc --noEmit --skipLibCheck && vite build --mode mock",
     "dev": "vite --mode development",
-    "build": "vue-tsc --noEmit --skipLibCheck  && vite build --mode test",
+    "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "preview": "vite preview",
     "lint": "eslint src",
     "fix": "eslint src --fix",
@@ -18,7 +19,7 @@
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
     "preinstall": "node ./scripts/preinstall.js",
     "build:test": "vue-tsc --noEmit --skipLibCheck && vite build --mode test",
-    "build:prod": "vue-tsc --noEmit --skipLibCheck && vite build --mode production"
+    "build:dev": "vue-tsc --noEmit --skipLibCheck && vite build --mode development"
   },
   "dependencies": {
     "@types/marked": "^6.0.0",

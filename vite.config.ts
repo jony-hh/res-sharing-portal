@@ -1,4 +1,4 @@
-import { defineConfig, UserConfig, ConfigEnv, loadEnv } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -29,13 +29,11 @@ export default defineConfig(({ command, mode }) => {
       viteMockServe({
         mockPath: './mock', // mock文件存放的位置
         localEnabled: command === 'serve' && mode === 'mock_local', //在开发环境中启用 mock
-      }),
-      // elementplus手动按需导入
+      }), // elementplus手动按需导入
       ElementPlus({}),
       createSvgIconsPlugin({
         // Specify the icon folder to be cached
-        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-        // Specify symbolId format
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')], // Specify symbolId format
         symbolId: 'icon-[dir]-[name]',
       }),
     ],
@@ -51,15 +49,14 @@ export default defineConfig(({ command, mode }) => {
           additionalData: '@import "./src/styles/variable.scss";',
         },
       },
-    },
-    //代理跨域
+    }, //代理跨域
     server: {
       host: '0.0.0.0',
+      port: 8899,
       proxy: {
         [env.VITE_APP_BASE_API]: {
           //获取数据的服务器地址设置
-          target: env.VITE_SERVE,
-          //需要代理跨域
+          target: env.VITE_SERVER, //需要代理跨域
           changeOrigin: true,
         },
       },
