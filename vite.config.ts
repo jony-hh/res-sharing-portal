@@ -58,6 +58,12 @@ export default defineConfig(({ command, mode }) => {
           //获取数据的服务器地址设置
           target: env.VITE_SERVER, //需要代理跨域
           changeOrigin: true,
+          bypass(req, res, options: any) {
+            const realUrl =
+              options.target + (options.rewrite ? options.rewrite(req.url) : '')
+            //console.log(realUrl); // 在终端显示
+            res.setHeader('A-Real-Url', realUrl) // 添加响应标头(A-Real-Url为自定义命名)，在浏览器中显示
+          },
         },
       },
     },

@@ -4,7 +4,7 @@ import { useUserStore } from '@/store/user'
 
 // 第一步:利用axios对象的create方法,去创建axios实例(其他的配置:基础路径、超时的时间)
 const request = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API,
+  baseURL: import.meta.env.VITE_SERVER + import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 })
 
@@ -34,6 +34,7 @@ request.interceptors.response.use(
     // 定义一个变量:存储网络错误信息
     let message = ''
     // http状态码
+    console.log(error)
     const status = error.response.status
     switch (status) {
       case 401:
