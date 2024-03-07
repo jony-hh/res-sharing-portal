@@ -7,7 +7,7 @@
     "mock:local": "vite --mode mock_local --force",
     "mock:cloud": "vite --mode test",
     "dev": "vite --mode development",
-    "build": "vue-tsc --noEmit --skipLibCheck  && vite build",
+    "build": "vue-tsc --noEmit --skipLibCheck  && vite build --mode test",
     "preview": "vite preview",
     "lint": "eslint src",
     "fix": "eslint src --fix",
