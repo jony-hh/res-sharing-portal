@@ -23,7 +23,6 @@ export default defineConfig(({ command, mode }) => {
     base: './', // 这里更改打包相对绝对路径
     minify: true, // 是否压缩代码
     sourceMap: true, // 是否生成sourceMap
-
     plugins: [
       vue(),
       viteMockServe({

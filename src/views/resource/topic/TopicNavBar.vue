@@ -58,6 +58,7 @@ const activateTag = (tag: string) => {
   font-weight: 700;
   color: #cf0d04;
 }
+
 .j-item {
   padding: 5px 20px;
   color: #676f7f;
@@ -68,6 +69,7 @@ const activateTag = (tag: string) => {
   border: 1px solid transparent;
   cursor: pointer;
 }
+
 .j-item:hover,
 .j-active {
   font-weight: 700;
@@ -76,6 +78,7 @@ const activateTag = (tag: string) => {
   border: 1px solid #eaeaea;
   box-shadow: 0 0 8px 0 hsla(0, 0%, 51%, 0.2);
 }
+
 .j-more:hover {
   color: #ee373d;
   background: #f6f7f9;

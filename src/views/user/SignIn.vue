@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { reqLogin } from '@/api/user'
 import router from '@/router'
 import { useCommonStore } from '@/store/common'

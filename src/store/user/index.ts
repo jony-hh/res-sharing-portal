@@ -2,7 +2,6 @@
 import { defineStore } from 'pinia'
 import request from '@/utils/request'
 import { userResponseData } from '@/api/user/type'
-import user from '~/mock/user'
 
 /**
  * Simulate a login

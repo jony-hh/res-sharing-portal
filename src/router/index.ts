@@ -19,9 +19,6 @@ router.beforeEach((to, from, next) => {
   common.disableSlide = false
   common.activePath = to.path
 
-  user.setToken()
-  user.testMock()
-  console.log(user.test)
   if (!user.token) {
     for (let i = 0; i < blackList.length; i++) {
       if (to.path.indexOf(blackList[i]) !== -1) {

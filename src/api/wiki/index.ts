@@ -5,6 +5,7 @@ import { userResponseData } from '@/api/user/type'
 enum WIKI_API {
   WIKI_BOOK = '/sys/wiki',
 }
+
 export const querryWikiById = (id: string) => {
   const param = {
     params: {

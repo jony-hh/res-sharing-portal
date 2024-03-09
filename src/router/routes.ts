@@ -41,6 +41,11 @@ export const constantRoute = [
     name: 'signin',
   },
   {
+    path: '/test',
+    component: () => import('@/views/test/TestScreen.vue'),
+    name: 'test',
+  },
+  {
     path: '/resource',
     component: () => import('@/views/resource/ResourceLib.vue'),
     name: 'resource',

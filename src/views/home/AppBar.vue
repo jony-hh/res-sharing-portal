@@ -1,18 +1,11 @@
 <script setup lang="ts">
 import ProfileCard from '@/views/user/ProfileCard.vue'
-import { ref } from 'vue'
-
 import { useUserStore } from '@/store/user'
 import { useCommonStore } from '@/store/common'
 import router from '@/router'
 import SearchBar from '@/views/home/bar/SearchBar.vue'
 import SelectMenu from '@/views/home/bar/SelectMenu.vue'
-
-const navData = ref([
-  { id: 1, name: '资源', link: '/resource' },
-  { id: 2, name: '问答', link: '/qa' },
-  { id: 3, name: 'wiki', link: '/wiki' },
-])
+import { navData } from '@/constant/appBar'
 
 const userStore = useUserStore()
 const common = useCommonStore()

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import router from '@/router'
 import 'element-plus/es/components/message/style/css'
-import { ElMessageBox, ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { useCommonStore } from '@/store/common'
 import { useUserStore } from '@/store/user'
 

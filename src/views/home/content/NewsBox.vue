@@ -159,6 +159,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 15px 20px;
+
   a {
     text-decoration: none;
     color: #333;
@@ -172,9 +173,11 @@
       Tahoma,
       sans-serif;
   }
+
   a:hover {
     color: #f88b00;
   }
+
   a:before {
     content: '';
     display: block;

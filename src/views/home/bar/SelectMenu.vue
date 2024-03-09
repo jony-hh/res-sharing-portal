@@ -30,12 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { mergeProps, ref } from 'vue'
-
-const items = ref([
-  { title: '传资源' },
-  { title: '写回答' },
-  { title: '提问题' },
-  { title: '建Wiki' },
-])
+import { mergeProps } from 'vue'
+import { items } from '@/constant/selectMenu'
 </script>

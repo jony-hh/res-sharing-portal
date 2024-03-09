@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import UserQuestion from '@/views/qa/card/QuestionCard.vue'
+import { ref } from 'vue'
 import QuestionCard from '@/views/qa/card/QuestionCard.vue'
 import TaskCard from '@/views/qa/card/TaskCard.vue'
 import FeatureCard from '@/views/qa/card/FeatureCard.vue'
