@@ -28,7 +28,7 @@ const logout = () => {
     .then(() => {
       localStorage.setItem('token', '')
       useStore.token = ''
-      router.push('/')
+      router.push('/home')
       ElMessage.success('成功退出登录！！！')
     })
     .catch(() => {
@@ -78,7 +78,7 @@ const open4 = (s: string) => {
       :close-on-content-click="true"
     >
       <template v-slot:activator="{ props }">
-        <v-btn color="indigo" v-bind="props">个人中心</v-btn>
+        <v-btn color="white" v-bind="props">个人中心</v-btn>
       </template>
 
       <v-card max-width="300" style="top: 20px">

@@ -1,4 +1,4 @@
-export const banners = [
+const banners = [
   {
     name: 'hello',
     pictureUrl: 'https://wj008.xhsz.tisapi.com/upfiles/1681187967155.jpg',

@@ -8,23 +8,23 @@
     </div>
     <div class="d-flex justify-lg-space-around">
       <div style="height: 200px">
-        <div class="box">
+        <div class="box mb-2">
           <a
             target="_blank"
             title="拥抱美好的2024"
             href="/focus_news/detail/9210"
           >
-            <span class="txt" style="width: 360px">拥抱美好的2024</span>
+            <span class="txt" style="width: 370px">拥抱美好的2024</span>
             <div class="img" style="height: 200px">
               <img
-                style="height: 200px; width: 360px; object-fit: cover"
+                style="height: 200px; width: 370px; object-fit: cover"
                 src="https://wj008.xhsz.tisapi.com/upfiles/1704163353389.png"
                 alt=""
               />
             </div>
           </a>
         </div>
-        <div style="display: flex">
+        <div style="display: flex; justify-content: space-between">
           <div class="box">
             <a
               target="_blank"
@@ -59,7 +59,7 @@
           </div>
         </div>
       </div>
-      <div style="width: 420px">
+      <div style="width: 480px">
         <div class="item">
           <div class="tit">
             <a

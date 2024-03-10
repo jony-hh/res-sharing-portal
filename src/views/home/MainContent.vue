@@ -6,8 +6,8 @@ import SlideshowBox from '@/views/home/content/SlideshowBox.vue'
 </script>
 
 <template>
-  <div class="j-page">
-    <div class="j-part1">
+  <div>
+    <div class="d-flex justify-center">
       <!-- 左侧栏目-->
       <div>
         <!-- 轮播图 -->
@@ -27,9 +27,4 @@ import SlideshowBox from '@/views/home/content/SlideshowBox.vue'
   </div>
 </template>
 
-<style scoped>
-.j-part1 {
-  display: flex;
-  justify-content: center;
-}
-</style>
+<style scoped></style>

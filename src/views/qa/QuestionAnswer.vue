@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import QuestionCard from '@/views/qa/card/QuestionCard.vue'
 import TaskCard from '@/views/qa/card/TaskCard.vue'
 import FeatureCard from '@/views/qa/card/FeatureCard.vue'
+import { feachTopicResource } from '@/api/res'
+import { feachQuestion } from '@/api/qa'
 
 const tags = ref([
   '师资力量',
@@ -58,6 +60,15 @@ const questions = ref([
   },
   // 添加更多问题...
 ])
+
+const getQuestionData = async () => {
+  const res = await feachQuestion()
+  questions.value.push(...res.data)
+}
+
+onMounted(async () => {
+  await getQuestionData()
+})
 </script>
 
 <template>
@@ -67,12 +78,10 @@ const questions = ref([
       <!-- 按问题的标签搜索 -->
       <nav class="tag-nav">
         <ul>
-          <li
-            v-for="(tag, index) in tags"
-            :key="index"
-            :class="{ active: activeTag === tag }"
-          >
-            <a @click="changeTag(tag)">{{ tag }}</a>
+          <li v-for="(tag, index) in tags" :key="index">
+            <a :class="{ active: activeTag === tag }" @click="changeTag(tag)">
+              {{ tag }}
+            </a>
           </li>
         </ul>
       </nav>
@@ -83,7 +92,7 @@ const questions = ref([
       <!-- Left part -->
       <div class="left-part">
         <!-- 最新、未解决、已解决 -->
-        <div class="status-nav">
+        <div class="d-flex mb-5 status-nav rounded">
           <!-- 按解决状态搜索 -->
           <div
             :class="{ active: activeStatus === '最新' }"
@@ -138,6 +147,7 @@ body {
 /* Navigation styling */
 .navigation {
   background-color: #333;
+  border-radius: 10px;
   padding: 10px;
 }
 
@@ -152,6 +162,7 @@ body {
 }
 
 .tag-nav a {
+  user-select: none;
   text-decoration: none;
   color: white;
   padding: 10px;
@@ -160,6 +171,7 @@ body {
 }
 
 .tag-nav a:hover {
+  cursor: pointer;
   background-color: #555;
 }
 
@@ -176,11 +188,6 @@ body {
 .left-part {
   flex: 3;
   padding: 20px;
-}
-
-.status-nav {
-  display: flex;
-  margin-bottom: 20px;
 }
 
 .status-nav div {

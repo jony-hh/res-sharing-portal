@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import DocNavBar from '@/views/resource/docment/DocNavBar.vue'
 import DocumentCard from '@/views/resource/docment/DocumentCard.vue'
+import { feachDocumentResource } from '@/api/res'
+import { onMounted, ref } from 'vue'
 
-const documents = [
+const documents = ref<any>([
   {
     id: '101',
     typeUrl:
@@ -31,9 +33,18 @@ const documents = [
     tags: ['科技', '创新'],
     author: 'leapsss',
   },
-]
+])
 
 const sendDocumentId = (id: string) => {}
+
+const getDocumentData = async () => {
+  const res = await feachDocumentResource()
+  documents.value.push(...res.data)
+}
+
+onMounted(async () => {
+  await getDocumentData()
+})
 </script>
 
 <template>

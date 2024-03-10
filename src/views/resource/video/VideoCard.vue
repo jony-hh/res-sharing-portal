@@ -1,18 +1,15 @@
 <script setup lang="ts">
-const props = defineProps(['VideoInfo'])
+const props = defineProps(['videoInfo'])
 </script>
 
 <template>
   <v-card class="ma-1">
-    <v-img
-      src="http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png"
-      class="position-relative"
-    >
+    <v-img :src="videoInfo.coverUrl" class="position-relative">
       <div
         class="position-absolute ma-1 pa-1 rounded"
         style="background: #ee7c6e; color: #fff; right: 0"
       >
-        国家示范
+        {{ videoInfo.sign }}
       </div>
       <div
         class="position-absolute pa-1"
@@ -23,28 +20,24 @@ const props = defineProps(['VideoInfo'])
           color: white;
         "
       >
-        海南大学
+        {{ videoInfo.college }}
       </div>
     </v-img>
 
     <div class="content">
       <div class="title">
-        <a
-          href="/curriculum/detail/983"
-          title="细胞生物学"
-          style="font-size: 20px"
-        >
-          细胞生物学
+        <a style="font-size: 20px">
+          {{ videoInfo.course_name }}
         </a>
       </div>
       <div class="d-flex justify-lg-space-between">
-        <div class="teacher">教师：闵义</div>
+        <div class="teacher">{{ videoInfo.lecturer }}</div>
         <div class="d-flex">
           <img
             src="https://xhsz.news.cn/static/home1/images/nxincourse.png"
             alt=""
           />
-          <div class="student">17357人</div>
+          <div class="student">{{ videoInfo.student_num }}人</div>
         </div>
       </div>
     </div>

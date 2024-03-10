@@ -12,7 +12,7 @@ const common = useCommonStore()
 
 const jumpToHomePage = () => {
   common.disableSlide = true
-  router.push('/')
+  router.push('/home')
 }
 
 const signIn = () => {
@@ -33,7 +33,7 @@ const judgeDisplay = (link: string) => {
 </script>
 
 <template>
-  <v-app-bar color="indigo-lighten-4">
+  <v-app-bar color="#960A11">
     <v-icon icon="mdi-domain"></v-icon>
     <v-btn style="user-select: none" @click="jumpToHomePage">
       思政资源共享平台
@@ -58,7 +58,9 @@ const judgeDisplay = (link: string) => {
     </v-container>
     <select-menu class="mx-3"></select-menu>
     <profile-card v-if="userStore.token"></profile-card>
-    <v-btn variant="outlined" v-else @click="signIn">去登录</v-btn>
+    <v-btn color="white" variant="outlined" v-else @click="signIn">
+      去登录
+    </v-btn>
   </v-app-bar>
 </template>
 

@@ -6,12 +6,7 @@
       src="https://s21.ax1x.com/2024/03/10/pFy4iZ9.png"
     ></v-img>
 
-    <v-card
-      class="mx-auto pa-12 pb-8"
-      elevation="8"
-      max-width="448"
-      rounded="lg"
-    >
+    <v-card class="mx-auto pa-6" elevation="8" max-width="448" rounded="lg">
       <div class="text-subtitle-1 text-medium-emphasis">Account</div>
 
       <v-text-field
@@ -22,23 +17,23 @@
         variant="outlined"
       ></v-text-field>
 
-      <div
-        class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between"
-      >
-        Password
-
-        <a
-          class="text-caption text-decoration-none text-blue"
-          href="#"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          忘记密码？
-        </a>
-      </div>
+      <div class="text-subtitle-1 text-medium-emphasis">Password</div>
 
       <v-text-field
         v-model="loginForm.password"
+        :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+        :type="visible ? 'text' : 'password'"
+        density="compact"
+        placeholder="Enter your password"
+        prepend-inner-icon="mdi-lock-outline"
+        variant="outlined"
+        @click:append-inner="visible = !visible"
+      ></v-text-field>
+
+      <div class="text-subtitle-1 text-medium-emphasis">Confirm Password</div>
+
+      <v-text-field
+        v-model="loginForm.confirmPassword"
         :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
         :type="visible ? 'text' : 'password'"
         density="compact"
@@ -56,16 +51,16 @@
         variant="tonal"
         @click="submit"
       >
-        Log In
+        Sign Up
       </v-btn>
 
-      <v-card-text class="text-center">
+      <v-card-text class="text-center pa-0">
         <p
           class="text-blue"
           style="user-select: none"
-          @click="router.push('/signup')"
+          @click="router.push('/signin')"
         >
-          没有账号，去注册
+          已有账号，去登陆
           <v-icon icon="mdi-chevron-right"></v-icon>
         </p>
       </v-card-text>
@@ -82,9 +77,17 @@ import { ElMessage } from 'element-plus'
 
 const visible = ref(false)
 const userStore = useUserStore()
-let loginForm = reactive({ username: 'jony', password: '123456' })
+let loginForm = reactive({
+  username: 'jony',
+  password: '123456',
+  confirmPassword: '',
+})
 
 const submit = async () => {
+  if (loginForm.password !== loginForm.confirmPassword) {
+    ElMessage.error('请输入一样的密码！')
+    return
+  }
   await reqLogin(loginForm).then((res) => {
     if (res.code === 200) {
       ElMessage.success('登录成功！')

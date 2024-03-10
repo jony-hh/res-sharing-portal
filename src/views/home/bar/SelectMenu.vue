@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-menu transition="scale-transition">
       <template v-slot:activator="{ props: menu }">
-        <v-btn variant="outlined" color="primary" v-bind="mergeProps(menu)">
+        <v-btn variant="outlined" color="white" v-bind="mergeProps(menu)">
           发布
           <svg
             viewBox="64 64 896 896"

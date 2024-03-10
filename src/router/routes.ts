@@ -32,6 +32,12 @@ export const constantRoute = [
   {
     //登录成功以后展示数据的路由
     path: '/',
+    name: 'root',
+    redirect: '/home',
+  },
+  {
+    //登录成功以后展示数据的路由
+    path: '/home',
     component: () => import('@/views/home/MainContent.vue'),
     name: 'home',
   },
@@ -39,6 +45,11 @@ export const constantRoute = [
     path: '/signin',
     component: () => import('@/views/user/SignIn.vue'),
     name: 'signin',
+  },
+  {
+    path: '/signup',
+    component: () => import('@/views/user/SignUp.vue'),
+    name: 'signup',
   },
   {
     path: '/test',
@@ -62,7 +73,7 @@ export const constantRoute = [
   },
   {
     path: '/wiki/bookDetail',
-    component: () => import('@/views/wiki/BookDetail.vue'),
+    component: () => import('@/views/wiki/book/BookDetail.vue'),
     name: 'bookDetail',
   },
   {
