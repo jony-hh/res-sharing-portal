@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 const banners = ref([
   {
     name: 'hello',
@@ -20,26 +19,22 @@ const banners = ref([
   },
 ])
 const addBannersId = ref(
-  banners.value.map((item: object, index: number) => ({ id: index, ...item })),
+  banners.value.map((item, index) => ({ id: index, ...item })),
 )
 const initialFirstElementId = ref<number>(addBannersId.value[0].id)
 //获取元素
 const leftBtn = ref(null)
 const rightBtn = ref(null)
 const dots = ref(null)
-
 // 存储setInterval返回的ID
 const autoTurn = ref(0)
-
 onMounted(() => {
   initializeColor()
   autoTurn.value = setInterval(rightf, 3000)
 })
-
 onBeforeUnmount(() => {
   clearInterval(autoTurn.value)
 })
-
 //左右按钮的出现
 const handleMouseEnter = () => {
   if (leftBtn.value) {
@@ -54,7 +49,6 @@ const handleMouseEnter = () => {
   clearInterval(autoTurn.value)
   autoTurn.value = 0
 }
-
 //左右按钮的消失
 const handleMouseLeave = () => {
   if (leftBtn.value) {
@@ -71,7 +65,6 @@ const handleMouseLeave = () => {
     rightf()
   }, 3000)
 }
-
 // 鼠标移到小圆点变色且切换图片
 const handleMouseEnterDot = (key: number) => {
   // 1更改颜色
@@ -102,7 +95,6 @@ const handleMouseEnterDot = (key: number) => {
     }
   }
 }
-
 // 把一个数组的前n个元素倒序放在数组的后面，然后删除
 const reverseAndMove = (array: any, n: number) => {
   // 检查 n 是否合理
@@ -110,19 +102,14 @@ const reverseAndMove = (array: any, n: number) => {
     console.error('Invalid value for n')
     return
   }
-
   // 取前 n 个元素并倒序
   const reversed = array.slice(0, n).reverse()
-
   // 将倒序的元素添加到数组的末尾
   array.push(...reversed)
-
   // 删除原来的前 n 个元素
   array.splice(0, n)
-
   return array
 }
-
 // 初始化颜色函数
 const initializeColor = () => {
   if (addBannersId.value[0].id === 0) {
@@ -133,7 +120,6 @@ const initializeColor = () => {
     }
   }
 }
-
 // 变色函数
 const colors = () => {
   if (dots.value) {
@@ -148,7 +134,6 @@ const colors = () => {
     }
   }
 }
-
 // 右翻页，显示右边的图片
 const rightf = () => {
   if (addBannersId.value.length) {
@@ -163,7 +148,6 @@ const rightf = () => {
   initialFirstElementId.value = addBannersId.value[0].id
   colors()
 }
-
 // 左翻页
 const leftf = () => {
   // 移除最后一个元素并保存
@@ -176,16 +160,13 @@ const leftf = () => {
   initialFirstElementId.value = addBannersId.value[0].id
   colors()
 }
-
 //点击图片实现翻页,这里我是通过在左右两边添加一个盒子来实现的
 const handleLeftDivClick = () => {
   leftf()
 }
-
 const handleRightDivClick = () => {
   rightf()
 }
-
 // 动态获取class选择器
 const getLiClasses = (key: number) => {
   if (key === 0) return 'img1'
@@ -203,7 +184,7 @@ const getLiClasses = (key: number) => {
   >
     <!-- 左侧按钮 -->
     <a
-      href="javascript:"
+      href="javascript:;"
       ref="leftBtn"
       class="left"
       @click="handleLeftDivClick"
@@ -212,7 +193,7 @@ const getLiClasses = (key: number) => {
     </a>
     <!-- 右侧按钮 -->
     <a
-      href="javascript:"
+      href="javascript:;"
       ref="rightBtn"
       class="right"
       @click="handleRightDivClick"
@@ -251,14 +232,12 @@ const getLiClasses = (key: number) => {
 
 <style lang="scss" scoped>
 /* 设定容器大小 */
-$container_height: 270px;
-$container_width: 960px;
-$img_width: calc($container_width * 3 / 4);
-
+$container_height:270px;
+$container_width:960px;
+$img_width:calc($container_width*3/4);
 a {
   text-decoration: none;
 }
-
 /* 更改图片的大小  TODO 过度效果bug */
 img {
   width: 100%;
@@ -268,11 +247,9 @@ img {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.5s;
 }
-
-img:hover {
+img:hover{
   transform: scale(1.1);
 }
-
 /* 确定盒子的大小 */
 .slideshow {
   position: relative;
@@ -280,7 +257,6 @@ img:hover {
   height: $container_height;
   margin: 20px 0;
 }
-
 .imgs {
   position: absolute;
   width: $img_width;
@@ -289,13 +265,11 @@ img:hover {
   left: 50%;
   transform: translate(-50%, 0%);
 }
-
 /* 让图片都叠在一起 */
 .imgs li {
   position: absolute;
   width: $img_width;
 }
-
 /* 给左右按钮设计样式，和定位 */
 .slideshow .left {
   position: absolute;
@@ -310,11 +284,10 @@ img:hover {
   /* 添加半透明 */
   opacity: 0.3;
   top: 50%;
-  left: 10px;
+  left: 0;
   z-index: 999;
   display: none;
 }
-
 .slideshow .right {
   position: absolute;
   font-size: 24px;
@@ -328,43 +301,36 @@ img:hover {
   /* 添加半透明 */
   opacity: 0.3;
   top: 50%;
-  right: 10px;
+  right: 0;
   z-index: 999;
   display: none;
 }
-
 /* 给左右按钮添加鼠标移入样式 */
 .left:hover {
   /* 把透明度挑高一点，让按钮看起来更亮一些 */
   opacity: 0.7;
 }
-
 .right:hover {
   opacity: 0.7;
 }
-
 /* 第一张图片在中间，层级最高 */
 .imgs .img1 {
   z-index: 99;
 }
-
 /* 第二张图片在右边 */
 .imgs .img2 {
   transform: translateX(150px) scale(0.9);
   z-index: 2;
 }
-
 /* 第三张到n-1张图片在中间，层级低不显示 */
 .imgs .img3 {
   z-index: 1;
 }
-
 /* 最后一张 */
 .imgs .img4 {
   transform: translateX(-150px) scale(0.9);
   z-index: 0;
 }
-
 /* 设计小圆圈 */
 /* 定位 */
 .list {
@@ -375,7 +341,6 @@ img:hover {
   transform: translateX(-50%);
   z-index: 777;
 }
-
 /* 设计样式 */
 .list li {
   float: left;
@@ -386,26 +351,23 @@ img:hover {
   margin: 0 6px;
   cursor: pointer;
 }
-
 /* 小圆圈改变后的样式 */
 .list .change {
   background-color: rgb(236, 65, 65);
 }
-
 /* 左右两边各一个盒子 */
 .rights {
   position: absolute;
   right: 0;
   bottom: 10px;
-  height: calc($container_height * 0.9);
+  height: calc($container_height*0.9);
   width: 100px;
 }
-
 .lefts {
   position: absolute;
   left: 0;
   bottom: 10px;
-  height: calc($container_height * 0.9);
+  height: calc($container_height*0.9);
   width: 100px;
 }
 </style>

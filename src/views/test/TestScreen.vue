@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import SlideshowBox from '@/views/home/content/SlideshowBox.vue'
+import DirectoryTree from "@/views/wiki/book/DirectoryTree.vue";
 
 const cards = ref([
   {

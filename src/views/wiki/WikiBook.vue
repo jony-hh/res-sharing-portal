@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import BookCard from '@/views/wiki/BookCard.vue'
 import { ElMessage } from 'element-plus'
-import { querryWikiById } from '@/api/wiki'
+import { feachBookById, feachWIkiBooks } from "@/api/wiki";
 import router from '@/router'
+import { onMounted, ref } from "vue";
 
-const books = [
+const books =ref( [
   {
     id: '10001',
     coverUrl:
@@ -83,18 +84,28 @@ const books = [
     summary:
       '包含不限于Vue面试题，React面试题，JS面试题，HTTP面试题，工程化面试题，CSS面试题，算法面试题，大厂面试题，高频面试题',
   },
-]
+])
 
 const sendId = async (id: string) => {
-  await querryWikiById(id).then((res) => {
+  await feachBookById(id).then((res) => {
     if (res.code === 200) {
       ElMessage.success('请求成功！')
       router.push('/wiki/bookDetail')
       return
     }
-    ElMessage.error('请求错误！')
+    ElMessage.error('暂无数据！')
   })
 }
+
+const getBookData = async () => {
+  const res = await feachWIkiBooks()
+  books.value.push(...res.data)
+}
+
+onMounted(async ()=>{
+  await getBookData()
+})
+
 </script>
 
 <template>

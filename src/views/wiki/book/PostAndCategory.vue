@@ -3,7 +3,7 @@
     <!--【markdown内容】-->
     <div v-html="html" style="flex: 3; border: 1px red solid"></div>
     <!--目录-->
-    <div class="category" style="flex: 1; border: 1px red solid">
+    <div class="category ml-4" style="flex: 1; border: 1px red solid">
       <ul>
         <!-- 这里为了设置各级标题的不同样式，添加了类，h1标签类为item-1，h2标签类为item-2 -->
         <li
