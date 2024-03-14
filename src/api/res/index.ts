@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 
 enum RES_API {
-  VIDEO_RESOURCE = '/res/video',
-  TOPIC_RESOURCE = '/res/topic',
-  DOCUMENT_RESOURCE = '/res/document',
+  VIDEO_RESOURCE = '/res/video/pagingQuery',
+  TOPIC_RESOURCE = '/res/topic/pagingQuery',
+  DOCUMENT_RESOURCE = '/res/document/pagingQuery',
 }
 
 export enum RES_PARAM_CONSTANT {

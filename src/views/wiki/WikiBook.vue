@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import BookCard from '@/views/wiki/BookCard.vue'
 import { ElMessage } from 'element-plus'
-import { feachBookById, feachWIkiBooks } from "@/api/wiki";
+import { feachBookById, feachWIkiBooks } from '@/api/wiki'
 import router from '@/router'
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from 'vue'
 
-const books =ref( [
+const books = ref([
   {
     id: '10001',
     coverUrl:
@@ -102,10 +102,9 @@ const getBookData = async () => {
   books.value.push(...res.data)
 }
 
-onMounted(async ()=>{
+onMounted(async () => {
   await getBookData()
 })
-
 </script>
 
 <template>

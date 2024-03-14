@@ -8,9 +8,9 @@ import type {
 
 //项目用户相关的请求地址
 enum USER_API {
-  LOGIN_URL = '/sys/auth/login',
-  USERINFO_URL = '/user/info',
-  LOGOUT_URL = '/user/logout',
+  LOGIN_URL = '/user/center/localLogin',
+  USERINFO_URL = '/user/center/info',
+  LOGOUT_URL = '/user/center/localLogout',
 }
 
 //登录接口
