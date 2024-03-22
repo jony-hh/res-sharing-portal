@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 enum QA_API {
-  QA_QUESTION = '/qa/question',
+  QA_QUESTION = '/qa/question/pagingQuery',
 }
 
 export enum QA_PARAM_CONSTANT {

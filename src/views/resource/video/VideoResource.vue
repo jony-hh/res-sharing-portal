@@ -70,7 +70,10 @@ onMounted(async () => {
           v-for="(video, index) in videos"
           :key="index"
         >
-          <video-card :videoInfo="video"></video-card>
+          <video-card
+            :videoInfo="video"
+            style="cursor: pointer; user-select: none"
+          ></video-card>
         </v-col>
       </v-row>
     </v-container>

@@ -30,7 +30,9 @@
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
-    "vuetify": "^3.4.9"
+    "vuetify": "^3.4.9",
+    "pdfjs-dist": "^3.4.120",
+    "vue-class-component": "^8.0.0-0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.9",

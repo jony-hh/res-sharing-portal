@@ -62,6 +62,11 @@ export const constantRoute = [
     name: 'resource',
   },
   {
+    path: '/document/detail',
+    component: () => import('@/views/resource/docment/DisplayDocument.vue'),
+    name: 'document_detail',
+  },
+  {
     path: '/qa',
     component: () => import('@/views/qa/QuestionAnswer.vue'),
     name: 'qa',

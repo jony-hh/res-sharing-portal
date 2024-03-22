@@ -50,7 +50,10 @@ onMounted(async () => {
           v-for="(topic, index) in topics"
           :key="index"
         >
-          <topic-card :topicInfo="topic"></topic-card>
+          <topic-card
+            :topicInfo="topic"
+            style="cursor: pointer; user-select: none"
+          ></topic-card>
         </v-col>
       </v-row>
     </v-container>

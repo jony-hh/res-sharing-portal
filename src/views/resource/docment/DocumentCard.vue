@@ -3,7 +3,7 @@ const props = defineProps(['documentInfo'])
 </script>
 
 <template>
-  <v-card height="120" class="ma-1">
+  <v-card height="120" class="ma-1" style="cursor: pointer; user-select: none">
     <!-- 用户头像 -->
     <div class="d-flex align-center ml-1">
       <img

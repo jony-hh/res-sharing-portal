@@ -4,7 +4,7 @@ const props = defineProps(['videoInfo'])
 
 <template>
   <v-card class="ma-1">
-    <v-img :src="videoInfo.coverUrl" class="position-relative">
+    <v-img :src="videoInfo.coverUrl" class="position-relative j-largen">
       <div
         class="position-absolute ma-1 pa-1 rounded"
         style="background: #ee7c6e; color: #fff; right: 0"
