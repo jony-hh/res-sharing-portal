@@ -2,14 +2,12 @@
 import videojs from 'video.js'
 import 'video.js/dist/video-js.css'
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useCommonStore } from '@/store/common'
 
 const videoPlayer = ref<any>(null)
 const myPlayer = ref<any>(null)
-const common = useCommonStore()
 
+const props = defineProps(['video_url'])
 onMounted(() => {
-  console.log(common.currentVideo.video_url)
   myPlayer.value = videojs(
     videoPlayer.value,
     {
@@ -17,7 +15,7 @@ onMounted(() => {
       controls: true,
       sources: [
         {
-          src: common.currentVideo.video_url,
+          src: props.video_url,
           type: 'video/mp4',
         },
       ],
@@ -41,10 +39,10 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <video ref="videoPlayer" class="video-js"></video>
+  <video ref="videoPlayer" class="video-js j-video"></video>
 </template>
 <style lang="scss" scoped>
-.vjs_video_3-dimensions {
+.j-video {
   width: 100%;
   height: 100%;
 }

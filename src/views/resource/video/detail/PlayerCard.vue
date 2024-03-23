@@ -16,7 +16,7 @@ interface course {
   course_name: string
   video_list: [{ video_name: string; video_url: string }]
 }
-
+const flag = ref(false)
 const router = useRouter()
 const courseInfo = ref<course>({
   id: 0,
@@ -33,16 +33,18 @@ const currentVideo = ref({
   video_name: '',
   video_url: '',
 })
+const common = useCommonStore()
 
 const getSingleVideoData = async (id: string | null | LocationQueryValue[]) => {
   const res = await fetchSingVideoResource(id)
   courseInfo.value = { ...res.data }
   currentVideo.value = { ...courseInfo.value.video_list[0] }
+  common.setCurrentVideo(currentVideo.value)
+  console.log(currentVideo.value)
 }
-const common = useCommonStore()
 onMounted(async () => {
   await getSingleVideoData(router.currentRoute.value.query.id)
-  common.setCurrentVideo(currentVideo.value)
+  flag.value = true
 })
 </script>
 
@@ -127,7 +129,7 @@ onMounted(async () => {
       class="playerWrap"
       style="width: 100%; height: 420px; border: 1px red solid"
     >
-      <my-video />
+      <my-video v-if="flag" :video_url="currentVideo.video_url" />
     </div>
 
     <div class="arc_toolbar_report">
