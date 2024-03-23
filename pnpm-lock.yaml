@@ -26,6 +26,9 @@ dependencies:
   pinia-plugin-persist:
     specifier: ^1.0.0
     version: 1.0.0(pinia@2.1.7)(vue@3.3.4)
+  undraw-ui:
+    specifier: 1.0.7
+    version: 1.0.7
   video.js:
     specifier: ^8.10.0
     version: 8.10.0
@@ -6613,6 +6616,15 @@ packages:
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
     dev: true
+
+  /undraw-ui@1.0.7:
+    resolution: {integrity: sha512-oYTM+TwtfT3izT/14wyetO9/ucRX3GV5JWb4zhx0+HH5wMzsWaaE6vyT9rR/SlQGSpQJpz0CTRFu02SxgBTkLA==}
+    dependencies:
+      element-plus: 2.5.6(vue@3.3.4)
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
 
   /union-value@1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}

@@ -12,7 +12,7 @@
 import { nextTick, onMounted, reactive } from 'vue'
 import * as PDF from 'pdfjs-dist'
 // 在assect目录下的pdf
-import pdf from '@/assets/static/三方协议网签操作流程.pdf'
+import pdf from '@/assets/document/三方协议网签操作流程.pdf'
 
 const pdfjsWorker = import('pdfjs-dist/build/pdf.worker.entry')
 PDF.GlobalWorkerOptions.workerSrc = await pdfjsWorker

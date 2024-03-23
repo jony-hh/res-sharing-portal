@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PlayerCard from '@/views/resource/video/detail/PlayerCard.vue'
 import CommentPart from '@/views/resource/video/detail/CommentPart.vue'
+import UploaderCard from '@/views/resource/video/detail/UploaderCard.vue'
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import CommentPart from '@/views/resource/video/detail/CommentPart.vue'
     </div>
 
     <div class="right-container ma-1" style="flex: 1; border: 1px red solid">
-      course_category & recommend video
+      <uploader-card></uploader-card>
     </div>
   </div>
 </template>
