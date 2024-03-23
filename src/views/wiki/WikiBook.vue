@@ -89,7 +89,6 @@ const books = ref([
 const sendId = async (id: string) => {
   await fetchBookById(id).then((res) => {
     if (res.code === 200) {
-      ElMessage.success('请求成功！')
       router.push('/wiki/bookDetail')
       return
     }

@@ -9,9 +9,19 @@ export const useCommonStore = defineStore({
     // 展示按钮背景
     displayBackground: true,
     activePath: '/compositive',
+    currentVideo: {
+      video_url: '',
+      video_name: '',
+    },
   }),
 
-  actions: {},
+  actions: {
+    setCurrentVideo(currentVideo: {}) {
+      this.$patch({
+        currentVideo: currentVideo,
+      })
+    },
+  },
   // 开启会话存储
   persist: {
     enabled: true,
