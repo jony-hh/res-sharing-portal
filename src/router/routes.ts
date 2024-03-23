@@ -67,6 +67,16 @@ export const constantRoute = [
     name: 'document_detail',
   },
   {
+    path: '/video/detail',
+    component: () => import('@/views/resource/video/detail/CourseVideo.vue'),
+    name: 'video_detail',
+  },
+  {
+    path: '/topic/detail',
+    component: () => import('@/views/resource/topic/detail/TopicElement.vue'),
+    name: 'topic_detail',
+  },
+  {
     path: '/qa',
     component: () => import('@/views/qa/QuestionAnswer.vue'),
     name: 'qa',

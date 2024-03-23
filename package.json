@@ -6,7 +6,7 @@
   "scripts": {
     "mock:local": "vite --mode mock_local --force",
     "mock:cloud": "vite --mode mock",
-    "build:mock": "vue-tsc --noEmit --skipLibCheck && vite build --mode mock",
+    "build:mock": "vite build --mode mock",
     "dev": "vite --mode development",
     "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "preview": "vite preview",

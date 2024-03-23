@@ -3,10 +3,12 @@ import VideoNavBar from '@/views/resource/video/VideoNavBar.vue'
 import VideoCard from '@/views/resource/video/VideoCard.vue'
 import { feachVideoResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
+import { ElMessage } from "element-plus";
+import { useRouter } from "vue-router";
 
 const videos = ref([
   {
-    id: '101',
+    id: 101,
     coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
     college: '海南大学',
     author: 'jony',
@@ -16,7 +18,7 @@ const videos = ref([
     course_name: '细胞生物学',
   },
   {
-    id: '101',
+    id: 102,
     coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
     college: '海南大学',
     author: 'jony',
@@ -26,7 +28,7 @@ const videos = ref([
     course_name: '细胞生物学',
   },
   {
-    id: '101',
+    id: 103,
     coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
     college: '海南大学',
     author: 'jony',
@@ -36,7 +38,7 @@ const videos = ref([
     course_name: '细胞生物学',
   },
   {
-    id: '101',
+    id: 104,
     coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
     college: '海南大学',
     author: 'jony',
@@ -46,8 +48,17 @@ const videos = ref([
     course_name: '细胞生物学',
   },
 ])
-
-const sendDocumentId = (id: string) => {}
+const router = useRouter()
+const sendVideoId = (id: number) => {
+  if (id === null || id === undefined) {
+    ElMessage.info('数据错误')
+    return
+  }
+  router.push({
+    path: '/video/detail',
+    query: { id: id },
+  })
+}
 
 const getVideoData = async () => {
   const res = await feachVideoResource()
@@ -69,6 +80,7 @@ onMounted(async () => {
           cols="3"
           v-for="(video, index) in videos"
           :key="index"
+          @click="sendVideoId(video.id)"
         >
           <video-card
             :videoInfo="video"

@@ -3,31 +3,42 @@ import TopicNavBar from '@/views/resource/topic/TopicNavBar.vue'
 import TopicCard from '@/views/resource/topic/TopicCard.vue'
 import { feachDocumentResource, feachTopicResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
+import { ElMessage } from "element-plus";
+import { useRouter } from "vue-router";
 
 const topics = ref([
   {
-    id: '101',
+    id: 101,
     backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng5.0ae3783f.jpg',
     title: '应急管理',
   },
   {
-    id: '102',
+    id: 102,
     backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng3.a41960d3.jpg',
     title: '公共安全',
   },
   {
-    id: '103',
+    id: 103,
     backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng4.4305f6d7.jpg',
     title: '职业道德',
   },
   {
-    id: '104',
+    id: 104,
     backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng2.9e6f562c.jpg',
     title: '职业健康',
   },
 ])
-
-const sendDocumentId = (id: string) => {}
+const router = useRouter()
+const sendTopicId = (id: number) => {
+  if (id === null || id === undefined) {
+    ElMessage.info('数据错误')
+    return
+  }
+  router.push({
+    path: '/topic/detail',
+    query: { id: id },
+  })
+}
 
 const getTopicData = async () => {
   const res = await feachTopicResource()
@@ -49,6 +60,7 @@ onMounted(async () => {
           cols="3"
           v-for="(topic, index) in topics"
           :key="index"
+          @click="sendTopicId(topic.id)"
         >
           <topic-card
             :topicInfo="topic"

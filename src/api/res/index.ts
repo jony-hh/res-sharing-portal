@@ -6,6 +6,8 @@ enum RES_API {
   TOPIC_RESOURCE = '/res/topic/pagingQuery',
   DOCUMENT_RESOURCE = '/res/document/pagingQuery',
   SINGLE_DOCUMENT_RESOURCE = '/res/document/single',
+  SINGLE_VIDEO_RESOURCE = '/res/video/single',
+  SINGLE_TOPIC_RESOURCE='/res/topic/single',
 }
 
 export enum RES_PARAM_CONSTANT {
@@ -26,12 +28,26 @@ export const feachVideoResource = (
     params: { page_size: page_size, page_num: page_num },
   })
 
+export const feachSingVideoResource = (
+  id: string | null | LocationQueryValue[],
+) =>
+  request.get<any, any>(RES_API.SINGLE_VIDEO_RESOURCE, {
+    params: { id: id },
+  })
+
 export const feachTopicResource = (
   page_size: number = RES_PARAM_CONSTANT.PAGE_SIZE,
   page_num: number = RES_PARAM_CONSTANT.PAGE_NUM,
 ) =>
   request.get<any, any>(RES_API.TOPIC_RESOURCE, {
     params: { page_size: page_size, page_num: page_num },
+  })
+
+export const feachSingTopicResource = (
+  id: string | null | LocationQueryValue[],
+) =>
+  request.get<any, any>(RES_API.SINGLE_TOPIC_RESOURCE, {
+    params: { id: id },
   })
 
 export const feachDocumentResource = (
