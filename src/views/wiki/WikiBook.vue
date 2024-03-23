@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BookCard from '@/views/wiki/BookCard.vue'
 import { ElMessage } from 'element-plus'
-import { feachBookById, feachWIkiBooks } from '@/api/wiki'
+import { fetchBookById, fetchWIkiBooks } from '@/api/wiki'
 import router from '@/router'
 import { onMounted, ref } from 'vue'
 
@@ -87,7 +87,7 @@ const books = ref([
 ])
 
 const sendId = async (id: string) => {
-  await feachBookById(id).then((res) => {
+  await fetchBookById(id).then((res) => {
     if (res.code === 200) {
       ElMessage.success('请求成功！')
       router.push('/wiki/bookDetail')
@@ -98,7 +98,7 @@ const sendId = async (id: string) => {
 }
 
 const getBookData = async () => {
-  const res = await feachWIkiBooks()
+  const res = await fetchWIkiBooks()
   books.value.push(...res.data)
 }
 

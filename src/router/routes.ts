@@ -82,6 +82,11 @@ export const constantRoute = [
     name: 'qa',
   },
   {
+    path: '/question/detail',
+    component: () => import('@/views/qa/detail/QaDetail.vue'),
+    name: 'question_detail',
+  },
+  {
     path: '/wiki',
     component: () => import('@/views/wiki/WikiBook.vue'),
     name: 'wiki',

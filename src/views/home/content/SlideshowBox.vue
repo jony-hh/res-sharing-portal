@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+
 const banners = ref([
   {
     name: 'hello',

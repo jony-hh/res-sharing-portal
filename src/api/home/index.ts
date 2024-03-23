@@ -7,8 +7,8 @@ enum NEWS_API {
 }
 
 export enum NEWS_PARAM_CONSTANT {
-  FEACH_SLIDESHOW_FLAG = 'slideshow',
-  FEACH_GRiD_FLAG = 'grid',
+  FETCH_SLIDESHOW_FLAG = 'slideshow',
+  FETCH_GRiD_FLAG = 'grid',
   FEATCH_DEFAULT_FLAG = 'default',
 }
 
@@ -16,11 +16,11 @@ export enum NEWS_PARAM_CONSTANT {
  * @feat 获取轮播图信息
  * @param flag slideshow
  */
-export const feachSlideshow = (flag: string) =>
+export const fetchSlideshow = (flag: string) =>
   request.get<any, any>(NEWS_API.NEWS_SLIDESHOW, { params: { flag: flag } })
 
-export const feachGrid = (flag: string) =>
+export const fetchGrid = (flag: string) =>
   request.get<any, any>(NEWS_API.NEWS_GRID, { params: { flag: flag } })
 
-export const feachDefault = (flag: string) =>
+export const fetchDefault = (flag: string) =>
   request.get<any, any>(NEWS_API.NEWS_DEFAULT, { params: { flag: flag } })

@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-import { userResponseData } from '@/api/user/type'
 
 //项目用户相关的请求地址
 enum WIKI_API {
@@ -13,10 +12,10 @@ export enum WIKI_PARAM_CONSTANT {
   STATUS = '最新',
 }
 
-export const feachBookById = (id: string) =>
+export const fetchBookById = (id: string) =>
   request.get<any, any>(WIKI_API.WIKI_BOOK_ID + `/${id}`)
 
-export const feachWIkiBooks = (
+export const fetchWIkiBooks = (
   page_size: number = WIKI_PARAM_CONSTANT.PAGE_SIZE,
   page_num: number = WIKI_PARAM_CONSTANT.PAGE_NUM,
 ) =>

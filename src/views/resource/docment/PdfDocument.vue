@@ -9,15 +9,15 @@
   </div>
 </template>
 <script setup>
-import { reactive, nextTick, onMounted } from 'vue'
+import { nextTick, onMounted, reactive } from 'vue'
 import * as PDF from 'pdfjs-dist'
+// 在assect目录下的pdf
+import pdf from '@/assets/static/三方协议网签操作流程.pdf'
+
 const pdfjsWorker = import('pdfjs-dist/build/pdf.worker.entry')
 PDF.GlobalWorkerOptions.workerSrc = await pdfjsWorker
 
 const props = defineProps(['pdf_url'])
-
-// 在assect目录下的pdf
-import pdf from '@/assets/static/三方协议网签操作流程.pdf'
 
 const state = reactive({
   pdfPath: pdf, // 本地PDF文件路径放在/public中

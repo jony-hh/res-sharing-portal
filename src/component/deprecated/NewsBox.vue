@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { feachDefault, feachGrid, NEWS_PARAM_CONSTANT } from '@/api/home'
+import { fetchDefault, fetchGrid, NEWS_PARAM_CONSTANT } from '@/api/home'
 
 const gridData = ref<any>([])
 const defaultData = ref<any>([])
 
 // 获取栅格数据
 const getGridData = async () => {
-  const { data } = await feachGrid(NEWS_PARAM_CONSTANT.FEACH_GRiD_FLAG)
+  const { data } = await fetchGrid(NEWS_PARAM_CONSTANT.FETCH_GRiD_FLAG)
   console.log(data)
   gridData.value = data
 }
 
 // 获取默认数据
 const getDefaultData = async () => {
-  const { data } = await feachDefault(NEWS_PARAM_CONSTANT.FEATCH_DEFAULT_FLAG)
+  const { data } = await fetchDefault(NEWS_PARAM_CONSTANT.FEATCH_DEFAULT_FLAG)
   console.log(data)
   defaultData.value = data
 }

@@ -3,8 +3,9 @@ import { onMounted, ref } from 'vue'
 import QuestionCard from '@/views/qa/card/QuestionCard.vue'
 import TaskCard from '@/views/qa/card/TaskCard.vue'
 import FeatureCard from '@/views/qa/card/FeatureCard.vue'
-import { feachTopicResource } from '@/api/res'
-import { feachQuestion } from '@/api/qa'
+import { fetchQuestion } from '@/api/qa'
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
 
 const tags = ref([
   '师资力量',
@@ -32,7 +33,9 @@ const changeTag = (tag: string) => {
 // 问题数据列表
 const questions = ref([
   {
-    avatar: 'Han Solo 的头像链接',
+    id: 101,
+    avatar:
+      'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132',
     nickname: '空心',
     title: '简历导出的时候会出现一些问题，这如何解决',
     tags: ['浏览器'],
@@ -41,7 +44,9 @@ const questions = ref([
     askedTime: '19小时前提问',
   },
   {
-    avatar: 'Han Solo 的头像链接',
+    id: 102,
+    avatar:
+      'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132',
     nickname: '空心',
     title: '简历导出的时候会出现一些问题，这如何解决',
     tags: ['浏览器'],
@@ -50,7 +55,9 @@ const questions = ref([
     askedTime: '19小时前提问',
   },
   {
-    avatar: 'Han Solo 的头像链接',
+    id: 103,
+    avatar:
+      'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132',
     nickname: '空心',
     title: '简历导出的时候会出现一些问题，这如何解决',
     tags: ['浏览器'],
@@ -60,9 +67,20 @@ const questions = ref([
   },
   // 添加更多问题...
 ])
+const router = useRouter()
+const sendQuestionId = (id: number) => {
+  if (id === null || id === undefined) {
+    ElMessage.info('数据错误')
+    return
+  }
+  router.push({
+    path: '/question/detail',
+    query: { id: id },
+  })
+}
 
 const getQuestionData = async () => {
-  const res = await feachQuestion()
+  const res = await fetchQuestion()
   questions.value.push(...res.data)
 }
 
@@ -122,6 +140,7 @@ onMounted(async () => {
               v-for="(question, index) in questions"
               :key="index"
               :questionInfo="question"
+              @click="sendQuestionId(question.id)"
             />
           </v-container>
         </div>

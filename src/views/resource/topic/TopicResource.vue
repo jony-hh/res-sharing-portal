@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import TopicNavBar from '@/views/resource/topic/TopicNavBar.vue'
 import TopicCard from '@/views/resource/topic/TopicCard.vue'
-import { feachDocumentResource, feachTopicResource } from '@/api/res'
+import { fetchTopicResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
-import { ElMessage } from "element-plus";
-import { useRouter } from "vue-router";
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
 
 const topics = ref([
   {
@@ -41,7 +41,7 @@ const sendTopicId = (id: number) => {
 }
 
 const getTopicData = async () => {
-  const res = await feachTopicResource()
+  const res = await fetchTopicResource()
   topics.value.push(...res.data)
 }
 

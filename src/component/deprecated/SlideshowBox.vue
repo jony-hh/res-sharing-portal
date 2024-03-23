@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { feachSlideshow, NEWS_PARAM_CONSTANT } from '@/api/home'
+import { fetchSlideshow, NEWS_PARAM_CONSTANT } from '@/api/home'
 
 const show_index = ref(0)
 const banners = ref<any>([])
 const getSlideshowData = async () => {
-  const res = await feachSlideshow(NEWS_PARAM_CONSTANT.FEACH_SLIDESHOW_FLAG)
+  const res = await fetchSlideshow(NEWS_PARAM_CONSTANT.FETCH_SLIDESHOW_FLAG)
   banners.value = res.data
   console.log(res.data)
 }

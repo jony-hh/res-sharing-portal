@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LocationQueryValue, useRouter } from 'vue-router'
-import { feachSingVideoResource } from '@/api/res'
+import { fetchSingVideoResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 
 interface course {
@@ -18,17 +18,17 @@ interface course {
 const router = useRouter()
 const courseInfo = ref<course>({
   id: 0,
-  coverUrl: "",
+  coverUrl: '',
   college: '',
   author: '',
   student_num: 0,
   lecturer: '',
   sign: '',
   course_name: '',
-  video_list: [{ video_name: '', video_url: '' }]
+  video_list: [{ video_name: '', video_url: '' }],
 })
 const getSingleVideoData = async (id: string | null | LocationQueryValue[]) => {
-  const res = await feachSingVideoResource(id)
+  const res = await fetchSingVideoResource(id)
   courseInfo.value = { ...res.data }
 }
 
@@ -48,7 +48,6 @@ onMounted(async () => {
               <svg
                 class="view-icon"
                 style="width: 20px; height: 20px"
-
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 20 20"
@@ -70,7 +69,6 @@ onMounted(async () => {
               <svg
                 class="dm-icon"
                 style="width: 20px; height: 20px"
-
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 20 20"
@@ -102,9 +100,7 @@ onMounted(async () => {
             </span>
             <span class="pubdate-ip item">
               <span class="pubdate">
-                <span class="pubdate-text">
-                  2024-03-20 08:00:00
-                </span>
+                <span class="pubdate-text">2024-03-20 08:00:00</span>
               </span>
               <!---->
             </span>
@@ -112,9 +108,7 @@ onMounted(async () => {
             <!---->
             <span class="copyright item">
               <i class="van-icon-info_prohibit"></i>
-              <span class="item-text">
-                未经作者授权，禁止转载
-              </span>
+              <span class="item-text">未经作者授权，禁止转载</span>
             </span>
           </div>
           <!---->

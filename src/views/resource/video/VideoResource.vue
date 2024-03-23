@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import VideoNavBar from '@/views/resource/video/VideoNavBar.vue'
 import VideoCard from '@/views/resource/video/VideoCard.vue'
-import { feachVideoResource } from '@/api/res'
+import { fetchVideoResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
-import { ElMessage } from "element-plus";
-import { useRouter } from "vue-router";
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
 
 const videos = ref([
   {
@@ -61,7 +61,7 @@ const sendVideoId = (id: number) => {
 }
 
 const getVideoData = async () => {
-  const res = await feachVideoResource()
+  const res = await fetchVideoResource()
   videos.value.push(...res.data)
 }
 

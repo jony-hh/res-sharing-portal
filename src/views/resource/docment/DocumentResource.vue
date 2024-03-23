@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DocNavBar from '@/views/resource/docment/DocNavBar.vue'
 import DocumentCard from '@/views/resource/docment/DocumentCard.vue'
-import { feachDocumentResource } from '@/api/res'
+import { fetchDocumentResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -62,7 +62,7 @@ const sendDocumentId = (id: number) => {
 }
 
 const getDocumentData = async () => {
-  const res = await feachDocumentResource()
+  const res = await fetchDocumentResource()
   documents.value.push(...res.data)
 }
 

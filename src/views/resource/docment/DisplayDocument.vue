@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { LocationQueryValue, useRouter } from 'vue-router'
-import { feachSingDocumentResource } from '@/api/res'
+import { fetchSingDocumentResource } from '@/api/res'
 
 const docRes = ref<any>({
   id: 0,
@@ -16,7 +16,7 @@ const router = useRouter()
 const getSingleDocumentData = async (
   id: string | null | LocationQueryValue[],
 ) => {
-  const res = await feachSingDocumentResource(id)
+  const res = await fetchSingDocumentResource(id)
   docRes.value = { ...res.data }
 }
 

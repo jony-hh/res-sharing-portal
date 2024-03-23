@@ -4,7 +4,7 @@ const props = defineProps(['questionInfo'])
 </script>
 
 <template>
-  <v-card class="ma-2">
+  <v-card class="ma-2" style="user-select: none">
     <!-- 回答和阅读数部分 -->
     <v-card-actions>
       <div
@@ -54,10 +54,7 @@ const props = defineProps(['questionInfo'])
             <v-col cols="auto">
               <v-avatar>
                 <!-- 用户头像 -->
-                <img
-                  src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132"
-                  alt="头像"
-                />
+                <img :src="questionInfo.avatar" alt="头像" />
               </v-avatar>
             </v-col>
             <v-col>
