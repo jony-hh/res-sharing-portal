@@ -15,8 +15,8 @@ const rootRoutePage404: RouteRecordRaw[] = [
   },
 ]
 
-// index子路由404配置
-const indexSubRoute404: RouteRecordRaw[] = [
+// profile子路由404配置
+const profileRoute404: RouteRecordRaw[] = [
   {
     path: '404',
     component: () => import('@/views/not-found/NotFound.vue'),
@@ -24,6 +24,17 @@ const indexSubRoute404: RouteRecordRaw[] = [
   {
     path: '/:pathMatch(profile/.*)',
     redirect: '/profile/404',
+  },
+]
+
+const searchRoute404: RouteRecordRaw[] = [
+  {
+    path: '404',
+    component: () => import('@/views/not-found/NotFound.vue'),
+  },
+  {
+    path: '/:pathMatch(search/.*)',
+    redirect: '/search/404',
   },
 ]
 
@@ -50,6 +61,40 @@ export const constantRoute = [
     path: '/signup',
     component: () => import('@/views/user/SignUp.vue'),
     name: 'signup',
+  },
+  {
+    path: '/search',
+    component: () => import('@/views/search/SearchResult.vue'),
+    name: 'search',
+    redirect: '/search/composite',
+    children: [
+      {
+        path: 'composite',
+        component: () => import('@/views/search/item/SearchComposite.vue'),
+        name: 'SearchComposite',
+      },
+      {
+        path: 'res',
+        component: () => import('@/views/search/item/SearchResource.vue'),
+        name: 'searchRes',
+      },
+      {
+        path: 'qa',
+        component: () => import('@/views/search/item/SearchQa.vue'),
+        name: 'searchQa',
+      },
+      {
+        path: 'wiki',
+        component: () => import('@/views/search/item/SearchWiki.vue'),
+        name: 'searchWiki',
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/search/item/SearchUser.vue'),
+        name: 'searchUser',
+      },
+      ...searchRoute404,
+    ],
   },
   {
     path: '/test',
@@ -132,7 +177,7 @@ export const constantRoute = [
         component: () => import('@/views/user/item/RecordItem.vue'),
         name: 'record',
       },
-      ...indexSubRoute404,
+      ...profileRoute404,
     ],
   },
   {

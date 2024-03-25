@@ -3,9 +3,9 @@ import ProfileCard from '@/views/user/ProfileCard.vue'
 import { useUserStore } from '@/store/user'
 import { useCommonStore } from '@/store/common'
 import router from '@/router'
-import SearchBar from '@/views/home/bar/SearchBar.vue'
 import SelectMenu from '@/views/home/bar/SelectMenu.vue'
 import { navData } from '@/constant/appBar'
+import NewSearchBar from '@/views/home/bar/NewSearchBar.vue'
 
 const userStore = useUserStore()
 const common = useCommonStore()
@@ -33,7 +33,7 @@ const judgeDisplay = (link: string) => {
 </script>
 
 <template>
-  <v-app-bar color="#960A11">
+  <v-app-bar color="#960A11" style="overflow: visible">
     <v-icon icon="mdi-domain"></v-icon>
     <v-btn style="user-select: none" @click="jumpToHomePage">
       思政资源共享平台
@@ -54,7 +54,7 @@ const judgeDisplay = (link: string) => {
     </v-container>
 
     <v-container>
-      <search-bar></search-bar>
+      <new-search-bar></new-search-bar>
     </v-container>
     <select-menu class="mx-3"></select-menu>
     <profile-card v-if="userStore.token"></profile-card>
