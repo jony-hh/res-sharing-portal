@@ -39,15 +39,23 @@ const jumpToEditProfile = () => {
         </v-card-text>
       </v-card-item>
 
-      <div class="justify-self-end">
-        <v-icon class="me-1" icon="mdi-heart"></v-icon>
-        <span class="subheading me-2">256</span>
-        <span class="me-1">·</span>
-        <v-icon class="me-1" icon="mdi-share-variant"></v-icon>
-        <span class="subheading">45</span>
+      <div class="d-flex justify-lg-space-between">
+        <div class="d-flex">
+          <div class="mx-5">
+            <v-icon class="me-1" icon="mdi-heart"></v-icon>
+            <span class="subheading me-2">256</span>
+          </div>
+
+          <div class="mx-5">
+            <v-icon class="me-1" icon="mdi-share-variant"></v-icon>
+            <span class="subheading">45</span>
+          </div>
+        </div>
+
+
         <v-btn
-          class="float-lg-right"
-          color="blue-lighten-3"
+          class="mx-5"
+          color="#E8F5E9"
           @click="jumpToEditProfile"
         >
           修改资料
