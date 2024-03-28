@@ -92,7 +92,7 @@ onMounted(async () => {
 <template>
   <div>
     <!-- 导航分类 -->
-    <div class="navigation">
+    <div class="navigation ma-2">
       <!-- 按问题的标签搜索 -->
       <nav class="tag-nav">
         <ul>
@@ -110,7 +110,7 @@ onMounted(async () => {
       <!-- Left part -->
       <div class="left-part">
         <!-- 最新、未解决、已解决 -->
-        <div class="d-flex mb-5 status-nav rounded">
+        <div class="d-flex mx-5 status-nav">
           <!-- 按解决状态搜索 -->
           <div
             :class="{ active: activeStatus === '最新' }"
@@ -165,7 +165,7 @@ body {
 
 /* Navigation styling */
 .navigation {
-  background-color: #333;
+  background-color: #fafafa;
   border-radius: 10px;
   padding: 10px;
 }
@@ -183,7 +183,7 @@ body {
 .tag-nav a {
   user-select: none;
   text-decoration: none;
-  color: white;
+  color: black;
   padding: 10px;
   border-radius: 5px;
   transition: background-color 0.3s;
@@ -191,11 +191,13 @@ body {
 
 .tag-nav a:hover {
   cursor: pointer;
-  background-color: #555;
+  background-color: #777;
+  color: white;
 }
 
 .tag-nav .active {
-  background-color: #555;
+  background-color: #777;
+  color: white;
 }
 
 /* Main content styling */
@@ -206,17 +208,17 @@ body {
 /* Left part styling */
 .left-part {
   flex: 3;
-  padding: 20px;
+  padding: 5px;
 }
 
 .status-nav div {
   flex: 1;
+  border-radius: 10px;
   text-align: center;
   padding: 10px;
-  background-color: #555;
-  color: white;
+  background-color: white;
+  color: black;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .status-nav div:hover {

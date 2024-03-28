@@ -1,65 +1,140 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
+import { useUserStore } from '@/store/user'
+import { ref } from 'vue'
 
-const saveProfile = () => {
+const formData = ref<any>({})
+const requiredRules = [(v: any) => !!v || 'Please fill out this field!']
+const numberRules = [
+  (v: any) => !!v || 'Please fill out this field!',
+  (v: any) => Number.isInteger(Number(v)) || 'Please enter numbers only!',
+]
+const emailRules = [
+  (v: any) => !!v || 'Please fill out the field!',
+  (v: any) =>
+    !v ||
+    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+    'E-mail must be valid',
+]
+
+const userStore = useUserStore()
+
+const saveProfile = async () => {
   // 在这里处理保存个人信息的逻辑，可以通过 API 请求将数据发送到后端
-  ElMessage.success('修改成功！！！')
-  router.push('/profile')
+  //const res = await reqUpdateUser(userStore.loginUser)
+  const res = 200
+  if (res === 200) {
+    ElMessage.success('修改成功！！！')
+    await router.push('/profile')
+    return
+  }
+  ElMessage.success('修改失败！！！')
   // 在这里添加保存个人信息的逻辑，可以使用axios或其他HTTP库发送请求
 }
 
-const profile = ref({
-  username: '不吃香菜',
-  profession: 'Java开发',
-  company: 'Jony',
-  introduction: 'blblblblblblblblblblblblblblb',
-  interests: 'coding',
-})
+const cancel = () => {
+  router.push('/profile')
+}
 </script>
 
 <template>
   <div>
-    <v-sheet class="ma-5" width="1000">
-      <v-form @submit.prevent="saveProfile">
-        <!-- 用户名 -->
-        <v-text-field v-model="profile.username" label="用户名"></v-text-field>
+    <v-form
+      style="width: 1000px"
+      lazy-validation
+      class="elevation-5 rounded-lg px-5 py-7"
+    >
+      <v-row>
+        <v-col cols="6" md="6">
+          <!-- 用户名 -->
+          <v-text-field
+            v-model="userStore.loginUser.nickname"
+            label="用户名"
+            :rules="requiredRules"
+            variant="outlined"
+          />
+        </v-col>
+        <v-col cols="6" md="6">
+          <!-- 职业方向 -->
+          <v-text-field
+            v-model="userStore.loginUser.profession"
+            label="职业方向"
+            :rules="requiredRules"
+            variant="outlined"
+          />
+        </v-col>
 
-        <!-- 职业方向 -->
-        <v-text-field
-          v-model="profile.profession"
-          label="职业方向"
-        ></v-text-field>
+        <v-col cols="12" md="6">
+          <!-- 职位公司 -->
+          <v-text-field
+            v-model="userStore.loginUser.company"
+            label="职位公司"
+            :rules="requiredRules"
+            variant="outlined"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <!-- 兴趣标签 -->
+          <v-text-field
+            v-model="userStore.loginUser.interests"
+            label="兴趣标签"
+            :rules="requiredRules"
+            variant="outlined"
+          />
+        </v-col>
+        <v-col cols="12" md="12">
+          <!-- 兴趣标签 -->
+          <v-textarea
+            v-model="userStore.loginUser.introduction"
+            label="我的介绍"
+            :rules="requiredRules"
+            variant="outlined"
+          />
+        </v-col>
 
-        <!-- 职位公司 -->
-        <v-text-field v-model="profile.company" label="职位公司"></v-text-field>
+        <!--<v-col cols="12" md="6" class="mb-0">-->
+        <!--  <v-text-field-->
+        <!--    label="First Name"-->
+        <!--    v-model="formData.firstName"-->
+        <!--    prepend-inner-icon="mdi-account-arrow-right-outline"-->
+        <!--    :rules="requiredRules"-->
+        <!--    variant="outlined"/>-->
+        <!--</v-col>-->
+        <!--<v-col cols="12" md="6">-->
+        <!--  <v-text-field-->
+        <!--    label="Last Name"-->
+        <!--    v-model="formData.lastName"-->
+        <!--    prepend-inner-icon="mdi-account-arrow-left-outline"-->
+        <!--    :rules="requiredRules"-->
+        <!--    variant="outlined"/>-->
+        <!--</v-col>-->
 
-        <!-- 个人介绍 -->
-        <v-textarea
-          v-model="profile.introduction"
-          label="个人介绍"
-        ></v-textarea>
-
-        <!-- 兴趣标签 -->
-        <v-text-field
-          v-model="profile.interests"
-          label="兴趣标签"
-        ></v-text-field>
-
-        <!-- 提交按钮 -->
-        <v-btn class="float-lg-right" type="submit" color="primary">保存</v-btn>
-      </v-form>
-    </v-sheet>
+        <!--<v-col cols="12" md="6">-->
+        <!--  <v-text-field-->
+        <!--    label="E-Mail"-->
+        <!--    v-model="formData.email"-->
+        <!--    :rules="emailRules"-->
+        <!--    prepend-inner-icon="mdi-email-outline"-->
+        <!--    variant="outlined"/>-->
+        <!--</v-col>-->
+        <!--<v-col cols="12" md="6">-->
+        <!--  <v-text-field-->
+        <!--    label="Phone Number"-->
+        <!--    v-model="formData.phoneNumber"-->
+        <!--    :rules="numberRules"-->
+        <!--    prepend-inner-icon="mdi-cellphone"-->
+        <!--    variant="outlined"/>-->
+        <!--</v-col>-->
+      </v-row>
+      <v-row>
+        <v-col cols="12" class="d-flex justify-lg-space-between">
+          <v-btn variant="outlined" @click="cancel">取消</v-btn>
+          <v-btn color="primary" @click="saveProfile">保存</v-btn>
+        </v-col>
+      </v-row>
+    </v-form>
   </div>
 </template>
 
-<style scoped>
-/* remove unnecessary spacing in navigation for dark mode*/
-.v-input--switch .v-messages {
-  display: none;
-}
-.v-input--switch .v-input__slot {
-  margin-bottom: 0px;
-}
-</style>
+<style scoped></style>

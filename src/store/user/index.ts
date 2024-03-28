@@ -18,25 +18,19 @@ export const useUserStore = defineStore({
     token: '',
     nickname: '',
     isAdmin: false,
-    test: '',
     loginUser: {
       nickname: '',
       motto: '',
       avatar: '',
+      profession: '',
+      company: '',
+      introduction: '',
+      interests: '',
     },
   }),
 
   actions: {
-    logout() {
-      this.$patch({
-        name: '',
-        isAdmin: false,
-      })
-
-      // we could do other stuff like redirecting the user
-    },
-
-    setToken() {
+    setToken(token: string) {
       this.$patch({
         token: localStorage.getItem('token'),
       })
@@ -47,26 +41,6 @@ export const useUserStore = defineStore({
         name: loginUser.nickname,
         isAdmin: false,
         loginUser: loginUser,
-      })
-    },
-
-    async testMock() {
-      const res = await request.get<any, userResponseData>('/hedge/index')
-      const { msg } = res
-      this.$patch({
-        test: msg,
-      })
-    },
-
-    /**
-     * Attempt to login a user
-     */
-    async login(user: string, password: string) {
-      const userData = await apiLogin(user, password)
-
-      this.$patch({
-        name: user,
-        ...userData,
       })
     },
   },
