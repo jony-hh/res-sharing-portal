@@ -1,7 +1,7 @@
 // @ts-check
 import { defineStore } from 'pinia'
 import request from '@/utils/request'
-import { userResponseData } from '@/api/user/type'
+import { userInfo, userResponseData } from '@/api/user/type'
 
 /**
  * Simulate a login
@@ -16,9 +16,14 @@ export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
     token: '',
-    name: 'Eduardo',
-    isAdmin: true,
+    nickname: '',
+    isAdmin: false,
     test: '',
+    loginUser: {
+      nickname: '',
+      motto: '',
+      avatar: '',
+    },
   }),
 
   actions: {
@@ -34,6 +39,14 @@ export const useUserStore = defineStore({
     setToken() {
       this.$patch({
         token: localStorage.getItem('token'),
+      })
+    },
+
+    setLoginUser(loginUser: userInfo) {
+      this.$patch({
+        name: loginUser.nickname,
+        isAdmin: false,
+        loginUser: loginUser,
       })
     },
 

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import router from '@/router'
 import { useCommonStore } from '@/store/common'
+import { useUserStore } from '@/store/user'
 
 const common = useCommonStore()
+const user = useUserStore()
 const jumpToEditProfile = () => {
   common.disableSlide = true
-  console.log(111)
   router.push('/edit')
 }
 </script>
@@ -21,43 +22,25 @@ const jumpToEditProfile = () => {
     <div>
       <v-card-actions>
         <v-avatar color="grey" rounded="0" size="150">
-          <v-img
-            src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-            cover
-          ></v-img>
+          <v-img :src="user.loginUser.avatar" cover></v-img>
         </v-avatar>
       </v-card-actions>
-      <v-card-text class="pa-0 ml-2">不吃香菜</v-card-text>
+      <v-card-text class="pa-0 ml-2">{{ user.loginUser.nickname }}</v-card-text>
     </div>
 
-    <div>
+    <div
+      style="width: 100%"
+      class="d-flex flex-column justify-lg-space-between"
+    >
       <v-card-item>
-        <v-card-title>座右铭：</v-card-title>
         <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {{ user.loginUser.motto }}
         </v-card-text>
       </v-card-item>
 
       <div class="d-flex justify-lg-space-between">
-        <div class="d-flex">
-          <div class="mx-5">
-            <v-icon class="me-1" icon="mdi-heart"></v-icon>
-            <span class="subheading me-2">256</span>
-          </div>
-
-          <div class="mx-5">
-            <v-icon class="me-1" icon="mdi-share-variant"></v-icon>
-            <span class="subheading">45</span>
-          </div>
-        </div>
-
-
-        <v-btn
-          class="mx-5"
-          color="#E8F5E9"
-          @click="jumpToEditProfile"
-        >
+        <div></div>
+        <v-btn class="ma-5" color="#E8F5E9" @click="jumpToEditProfile">
           修改资料
         </v-btn>
       </div>

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useUserStore } from '@/store/user'
+import router from '@/router'
+import { ElMessage } from 'element-plus'
 
+const user = useUserStore()
 const loading = ref(false)
 
 const calcResidue = (month: any, day: any) => {
@@ -64,6 +68,31 @@ const sortedFestivals = computed(() => {
     }))
     .sort((a: any, b: any) => a.targetDate - b.targetDate)
 })
+
+// 签到
+const attend = () => {
+  if (user.token!=='') {
+    // ...
+    ElMessage.success('签到成功')
+    return
+  }
+  ElMessage.info("请先登录哦！")
+  setTimeout(()=>{
+    router.push('/signin')
+  },1000)
+}
+
+const checkCalendar = () => {
+  loading.value = !loading.value
+  if (user.token!=='') {
+    router.push('/profile')
+    return
+  }
+  ElMessage.info("请先登录哦！")
+  setTimeout(()=>{
+    router.push('/signin')
+  },1000)
+}
 </script>
 
 <template>
@@ -93,7 +122,7 @@ const sortedFestivals = computed(() => {
           class="text-none mb-4"
           color="indigo-darken-3"
           size="x-middle"
-          @click="loading = !loading"
+          @click="checkCalendar"
         >
           查看签到日历
         </v-btn>
@@ -101,6 +130,7 @@ const sortedFestivals = computed(() => {
           style="position: absolute; right: 0; margin: 0 10px"
           variant="flat"
           color="deep-purple-accent-4"
+          @click="attend"
         >
           今日签到
         </v-btn>

@@ -9,7 +9,7 @@ import { useUserStore } from '@/store/user'
 const fav = ref(true)
 const menu = ref(false)
 const common = useCommonStore()
-const useStore = useUserStore()
+const userStore = useUserStore()
 const jumpToProfile = (url: string) => {
   common.disableSlide = true
   router.push(url)
@@ -27,7 +27,7 @@ const logout = () => {
   })
     .then(() => {
       localStorage.setItem('token', '')
-      useStore.token = ''
+      userStore.token = ''
       router.push('/home')
       ElMessage.success('成功退出登录！！！')
     })
@@ -84,9 +84,9 @@ const open4 = (s: string) => {
       <v-card max-width="300" style="top: 20px">
         <v-list>
           <v-list-item
-            prepend-avatar="https://cdn.vuetifyjs.com/images/john.jpg"
-            title="John Leider"
-            subtitle="Founder of Vuetify"
+            :prepend-avatar="userStore.loginUser.avatar"
+            :title="userStore.loginUser.nickname"
+            :subtitle="userStore.isAdmin ? '已开通 vip 特权' : '普通用户'"
           >
             <template v-slot:append>
               <v-btn

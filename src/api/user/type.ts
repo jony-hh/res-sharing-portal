@@ -22,9 +22,11 @@ interface dataType {
   token: string
 }
 
-interface userInfo {
+export interface userInfo {
   userId: string
   avatar: string
+  motto: string
+  nickname: string
   username: string
   password: string
   desc: string
@@ -36,5 +38,5 @@ interface userInfo {
 
 // 定义服务器返回用户信息相关的数据类型
 interface user {
-  checkUser: userInfo
+  loginUser: userInfo
 }

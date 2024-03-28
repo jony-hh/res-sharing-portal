@@ -20,30 +20,46 @@ const profile = ref({
 </script>
 
 <template>
-  <v-sheet class="ma-5" width="1000">
-    <v-form @submit.prevent="saveProfile">
-      <!-- 用户名 -->
-      <v-text-field v-model="profile.username" label="用户名"></v-text-field>
+  <div>
+    <v-sheet class="ma-5" width="1000">
+      <v-form @submit.prevent="saveProfile">
+        <!-- 用户名 -->
+        <v-text-field v-model="profile.username" label="用户名"></v-text-field>
 
-      <!-- 职业方向 -->
-      <v-text-field
-        v-model="profile.profession"
-        label="职业方向"
-      ></v-text-field>
+        <!-- 职业方向 -->
+        <v-text-field
+          v-model="profile.profession"
+          label="职业方向"
+        ></v-text-field>
 
-      <!-- 职位公司 -->
-      <v-text-field v-model="profile.company" label="职位公司"></v-text-field>
+        <!-- 职位公司 -->
+        <v-text-field v-model="profile.company" label="职位公司"></v-text-field>
 
-      <!-- 个人介绍 -->
-      <v-textarea v-model="profile.introduction" label="个人介绍"></v-textarea>
+        <!-- 个人介绍 -->
+        <v-textarea
+          v-model="profile.introduction"
+          label="个人介绍"
+        ></v-textarea>
 
-      <!-- 兴趣标签 -->
-      <v-text-field v-model="profile.interests" label="兴趣标签"></v-text-field>
+        <!-- 兴趣标签 -->
+        <v-text-field
+          v-model="profile.interests"
+          label="兴趣标签"
+        ></v-text-field>
 
-      <!-- 提交按钮 -->
-      <v-btn class="float-lg-right" type="submit" color="primary">保存</v-btn>
-    </v-form>
-  </v-sheet>
+        <!-- 提交按钮 -->
+        <v-btn class="float-lg-right" type="submit" color="primary">保存</v-btn>
+      </v-form>
+    </v-sheet>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* remove unnecessary spacing in navigation for dark mode*/
+.v-input--switch .v-messages {
+  display: none;
+}
+.v-input--switch .v-input__slot {
+  margin-bottom: 0px;
+}
+</style>

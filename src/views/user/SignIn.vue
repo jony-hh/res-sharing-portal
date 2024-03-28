@@ -75,7 +75,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { reqLogin } from '@/api/user'
+import { reqGetLoginUser, reqLogin } from '@/api/user'
 import router from '@/router'
 import { useUserStore } from '@/store/user'
 import { ElMessage } from 'element-plus'
@@ -83,17 +83,19 @@ import { ElMessage } from 'element-plus'
 const visible = ref(false)
 const userStore = useUserStore()
 let loginForm = reactive({ username: 'jony', password: '123456' })
-
 const submit = async () => {
-  await reqLogin(loginForm).then((res) => {
-    if (res.code === 200) {
-      ElMessage.success('登录成功！')
-      router.push('/home')
-      localStorage.setItem('token', res.data.token)
-      userStore.token = res.data.token
-      return
-    }
-    ElMessage.error(res.message)
-  })
+  const res = await reqLogin(loginForm)
+  if (res.code === 200) {
+    ElMessage.success('登录成功！')
+    await router.push('/home')
+    localStorage.setItem('token', res.data.token)
+    userStore.token = res.data.token
+  }
+  const res2 = await reqGetLoginUser(res.data.token)
+  if (res2.code === 200) {
+    userStore.setLoginUser(res2.data.loginUser)
+    return
+  }
+  ElMessage.error(res.message)
 }
 </script>

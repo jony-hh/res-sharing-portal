@@ -285,7 +285,7 @@ img:hover {
   /* 添加半透明 */
   opacity: 0.3;
   top: 50%;
-  left: 0;
+  left: 10px;
   z-index: 999;
   display: none;
 }
@@ -302,7 +302,7 @@ img:hover {
   /* 添加半透明 */
   opacity: 0.3;
   top: 50%;
-  right: 0;
+  right: 10px;
   z-index: 999;
   display: none;
 }

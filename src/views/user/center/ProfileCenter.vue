@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BusinessCard from '@/views/user/center/BusinessCard.vue'
-import WeatherCard from '@/views/user/center/WeatherCard.vue'
 import ItemBar from '@/views/user/center/ItemBar.vue'
+import AttendCalendar from '@/views/user/AttendCalendar.vue'
 </script>
 
 <template>
@@ -11,7 +11,8 @@ import ItemBar from '@/views/user/center/ItemBar.vue'
       <item-bar></item-bar>
     </div>
     <div style="flex: 1">
-      <weather-card></weather-card>
+      <attend-calendar></attend-calendar>
+      <!--<weather-card></weather-card>-->
     </div>
   </div>
 </template>
