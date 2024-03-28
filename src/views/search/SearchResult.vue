@@ -1,25 +1,66 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useCommonStore } from '@/store/common'
 import { useRouter } from 'vue-router'
-import { onMounted } from 'vue'
-import SearchItemBar from '@/views/search/SearchItemBar.vue'
 
+const drawer = ref(false)
+
+// Define your navigation items
+const navItems = [
+  { name: '综合', url: '/search/composite' },
+  { name: '资源', url: '/search/res' },
+  { name: '问答', url: '/search/qa' },
+  { name: 'wiki', url: '/search/wiki' },
+  { name: '用户', url: '/search/user' },
+]
+const common = useCommonStore()
 const router = useRouter()
-onMounted(() => {
-  console.log(router.currentRoute.value.query.keyword)
-})
+// Function to handle navigation
+const navigateRouter = (url: string) => {
+  common.displayBackground = true
+  router.push({
+    path: url,
+    query: {
+      keyword: router.currentRoute.value.query.keyword,
+    },
+  })
+}
+
+const judgeDisplay = (url: string) => {
+  if (url === common.activePath) {
+    return common.displayBackground
+  }
+  return false
+}
 </script>
 
 <template>
-  <div>
-    <search-item-bar></search-item-bar>
-  </div>
+  <v-container>
+    <v-row>
+      <v-col cols="12">
+        <div class="d-flex" style="background-color: #cfd8dc">
+          <!-- Your navigation items -->
+          <v-btn
+            variant="text"
+            class="mx-5"
+            v-for="(item, index) in navItems"
+            :key="index"
+            :active="judgeDisplay(item.url)"
+            @click="navigateRouter(item.url)"
+          >
+            {{ item.name }}
+          </v-btn>
+        </div>
+      </v-col>
+    </v-row>
+
+    <!-- Your main content goes here -->
+    <v-row>
+      <v-col cols="12">
+        <router-view></router-view>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
-<style scoped>
-.search-condition-row {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-}
-</style>
+<style scoped></style>

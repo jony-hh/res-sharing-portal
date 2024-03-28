@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useUserStore } from '@/store/user'
+
 const greetByTime = (): string => {
   const now = new Date()
   const currentHour = now.getHours()
