@@ -22,7 +22,9 @@
       </template>
       <v-list>
         <v-list-item v-for="(item, index) in items" :key="index">
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-title aria-controls @click="operate(item.code)">
+            {{ item.title }}
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -32,4 +34,15 @@
 <script setup lang="ts">
 import { mergeProps } from 'vue'
 import { items } from '@/constant/selectMenu'
+import { useUserStore } from '@/store/user'
+import { ElMessage } from 'element-plus'
+
+const userStore = useUserStore()
+const operate = (code: string) => {
+  if (userStore.token === '') {
+    ElMessage.info('请先登录！')
+    return
+  }
+  ElMessage.info('你没有权限！请去申请。')
+}
 </script>

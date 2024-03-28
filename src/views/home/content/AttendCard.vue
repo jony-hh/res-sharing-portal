@@ -71,27 +71,27 @@ const sortedFestivals = computed(() => {
 
 // 签到
 const attend = () => {
-  if (user.token!=='') {
+  if (user.token !== '') {
     // ...
     ElMessage.success('签到成功')
     return
   }
-  ElMessage.info("请先登录哦！")
-  setTimeout(()=>{
+  ElMessage.info('请先登录哦！')
+  setTimeout(() => {
     router.push('/signin')
-  },1000)
+  }, 1000)
 }
 
 const checkCalendar = () => {
   loading.value = !loading.value
-  if (user.token!=='') {
+  if (user.token !== '') {
     router.push('/profile')
     return
   }
-  ElMessage.info("请先登录哦！")
-  setTimeout(()=>{
+  ElMessage.info('请先登录哦！')
+  setTimeout(() => {
     router.push('/signin')
-  },1000)
+  }, 1000)
 }
 </script>
 
