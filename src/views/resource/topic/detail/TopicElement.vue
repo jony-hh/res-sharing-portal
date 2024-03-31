@@ -2,7 +2,7 @@
 import { LocationQueryValue, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { fetchSingTopicResource } from '@/api/res'
-import { useUserStore } from "@/store/user";
+import { useUserStore } from '@/store/user'
 
 interface topicType {
   id: number

@@ -17,6 +17,9 @@ enum USER_API {
 
   USER_THUMB = '/user/operate/thumb',
   USER_STAR = '/user/operate/star',
+
+  POSE_QUESTION_API = '/user/operate/pose/question',
+  WRITE_ANSWER_API = '/user/operate/write/answer',
 }
 
 //登录接口
@@ -41,3 +44,9 @@ export const userThumb = (data: operateDTO) =>
 
 export const userStar = (data: operateDTO) =>
   request.post<any, any>(USER_API.USER_STAR, data)
+
+export const poseQuestionApi = (question: any) =>
+  request.post<any, any>(QA_API.POSE_QUESTION_API, question)
+
+export const writeAnswerApi = (answer: any) =>
+  request.post<any, any>(QA_API.WRITE_ANSWER_API, answer)

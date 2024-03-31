@@ -33,7 +33,7 @@ const judgeDisplay = (link: string) => {
 </script>
 
 <template>
-  <v-app-bar color="#960A11" style="overflow: visible">
+  <v-app-bar class="j-app-bar" color="#960A11" style="overflow: visible">
     <v-icon icon="mdi-domain"></v-icon>
     <v-btn style="user-select: none" @click="jumpToHomePage">
       思政资源共享平台

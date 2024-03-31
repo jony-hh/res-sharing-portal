@@ -1,5 +1,7 @@
 import request from '@/utils/request'
 import { LocationQueryValue } from 'vue-router'
+import videojs from 'video.js'
+import any = videojs.any
 
 enum QA_API {
   QA_QUESTION = '/qa/question/pagingQuery',

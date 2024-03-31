@@ -5,7 +5,7 @@ import { fetchSingDocumentResource } from '@/api/res'
 
 const docRes = ref<any>({
   id: 0,
-  name:'',
+  name: '',
   type: '',
   typeUrl: '',
   tags: [],
@@ -31,19 +31,11 @@ onMounted(async () => {
 <template>
   <div style="width: 100%; height: 85vh">
     <!-- 头部信息-->
-    <div class="ma-2" style="border: 1px red solid;height: 48px">
+    <div class="ma-2" style="border: 1px red solid; height: 48px">
       <span style="line-height: 48px">毕 业 设 计（论 文）</span>
       <span style="float: right">
-        <v-btn
-          color="#61666D"
-          icon="mdi-thumb-up"
-          variant="text"
-        ></v-btn>
-        <v-btn
-          color="#61666D"
-          icon="mdi-star"
-          variant="text"
-        ></v-btn>
+        <v-btn color="#61666D" icon="mdi-thumb-up" variant="text"></v-btn>
+        <v-btn color="#61666D" icon="mdi-star" variant="text"></v-btn>
       </span>
     </div>
     <!--定义显示策略-->
