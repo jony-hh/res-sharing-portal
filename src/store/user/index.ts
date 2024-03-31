@@ -1,7 +1,6 @@
 // @ts-check
 import { defineStore } from 'pinia'
-import request from '@/utils/request'
-import { userInfo, userResponseData } from '@/api/user/type'
+import { userInfo } from '@/api/user/type'
 
 /**
  * Simulate a login
@@ -19,6 +18,7 @@ export const useUserStore = defineStore({
     nickname: '',
     isAdmin: false,
     loginUser: {
+      id: 0,
       nickname: '',
       motto: '',
       avatar: '',

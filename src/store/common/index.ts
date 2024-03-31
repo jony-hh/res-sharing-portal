@@ -8,7 +8,9 @@ export const useCommonStore = defineStore({
     disableSlide: true,
     // 展示按钮背景
     displayBackground: true,
+    // 激活路径
     activePath: '/compositive',
+    // 当前的课程
     currentVideo: {
       video_url: '',
       video_name: '',

@@ -8,6 +8,9 @@ enum RES_API {
   SINGLE_DOCUMENT_RESOURCE = '/res/document/single',
   SINGLE_VIDEO_RESOURCE = '/res/video/single',
   SINGLE_TOPIC_RESOURCE = '/res/topic/single',
+
+  FETCH_THUMB_NUM = '/res/content/getThumbNum',
+  FETCH_STAR_NUM = '/res/content/getStarNum',
 }
 
 export enum RES_PARAM_CONSTANT {
@@ -63,4 +66,14 @@ export const fetchSingDocumentResource = (
 ) =>
   request.get<any, any>(RES_API.SINGLE_DOCUMENT_RESOURCE, {
     params: { id: id },
+  })
+
+export const fetchThumbNum = (id: number) =>
+  request.get<any, any>(RES_API.FETCH_THUMB_NUM, {
+    params: { contentId: id },
+  })
+
+export const fetchStarNum = (id: number) =>
+  request.get<any, any>(RES_API.FETCH_STAR_NUM, {
+    params: { contentId: id },
   })

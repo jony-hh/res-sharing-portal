@@ -1,7 +1,20 @@
 // 登录接口需要携带的参数ts类型
+
 export interface loginForm {
   username: string
   password: string
+}
+
+export interface registerForm {
+  username: string
+  password: string
+  confirmPassword: string
+}
+
+export interface operateDTO {
+  content_id: number
+  user_id: number
+  content_type: string
 }
 
 // 获取用户信息
