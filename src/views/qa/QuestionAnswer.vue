@@ -31,42 +31,7 @@ const changeTag = (tag: string) => {
 }
 
 // 问题数据列表
-const questions = ref([
-  {
-    id: 101,
-    avatar:
-      'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132',
-    nickname: '空心',
-    title: '简历导出的时候会出现一些问题，这如何解决',
-    tags: ['浏览器'],
-    answerCount: '1',
-    viewCount: '13',
-    askedTime: '19小时前提问',
-  },
-  {
-    id: 102,
-    avatar:
-      'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132',
-    nickname: '空心',
-    title: '简历导出的时候会出现一些问题，这如何解决',
-    tags: ['浏览器'],
-    answerCount: '45',
-    viewCount: '36',
-    askedTime: '19小时前提问',
-  },
-  {
-    id: 103,
-    avatar:
-      'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132',
-    nickname: '空心',
-    title: '简历导出的时候会出现一些问题，这如何解决',
-    tags: ['浏览器'],
-    answerCount: '1',
-    viewCount: '34',
-    askedTime: '19小时前提问',
-  },
-  // 添加更多问题...
-])
+const questions = ref<any>([])
 const router = useRouter()
 const sendQuestionId = (id: number) => {
   if (id === null || id === undefined) {

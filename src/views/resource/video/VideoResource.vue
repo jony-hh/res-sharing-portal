@@ -5,49 +5,12 @@ import { fetchVideoResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { useResStore } from '@/store/res'
 
-const videos = ref([
-  {
-    id: 101,
-    coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
-    college: '海南大学',
-    author: 'jony',
-    student_num: 278,
-    lecturer: '教师：闵义',
-    sign: '国家示范',
-    course_name: '细胞生物学',
-  },
-  {
-    id: 102,
-    coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
-    college: '海南大学',
-    author: 'jony',
-    student_num: 278,
-    lecturer: '教师：闵义',
-    sign: '国家示范',
-    course_name: '细胞生物学',
-  },
-  {
-    id: 103,
-    coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
-    college: '海南大学',
-    author: 'jony',
-    student_num: 278,
-    lecturer: '教师：闵义',
-    sign: '国家示范',
-    course_name: '细胞生物学',
-  },
-  {
-    id: 104,
-    coverUrl: 'http://wj008.xhsz.tisapi.com/upfiles/1642483539176.png',
-    college: '海南大学',
-    author: 'jony',
-    student_num: 278,
-    lecturer: '教师：闵义',
-    sign: '国家示范',
-    course_name: '细胞生物学',
-  },
-])
+const res = useResStore()
+const videos = ref<any>([...res.course])
+const isDisplaySkeleton = ref(true)
+const isDisplayVideo = ref(false)
 const router = useRouter()
 const sendVideoId = (id: number) => {
   if (id === null || id === undefined) {
@@ -63,17 +26,37 @@ const sendVideoId = (id: number) => {
 const getVideoData = async () => {
   const res = await fetchVideoResource()
   videos.value.push(...res.data)
+  res.setCourse(res.data)
 }
 
 onMounted(async () => {
-  await getVideoData()
+  setTimeout(() => {
+    isDisplaySkeleton.value = false
+    isDisplayVideo.value = true
+  }, 1000)
+  if (res.course.length <= 0) {
+    await getVideoData()
+  }
 })
 </script>
 
 <template>
   <div>
     <video-nav-bar></video-nav-bar>
-    <v-container>
+
+    <v-container v-if="isDisplaySkeleton">
+      <v-row v-for="i in 2">
+        <v-col v-for="i in 4" cols="12" md="3">
+          <v-skeleton-loader
+            class="mx-auto border"
+            max-width="300"
+            type="image, list-item-two-line"
+          ></v-skeleton-loader>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container v-if="isDisplayVideo">
       <v-row>
         <v-col
           class="pa-0"

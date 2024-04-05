@@ -5,50 +5,12 @@ import { fetchDocumentResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { useResStore } from '@/store/res'
 
-const documents = ref<any>([
-  {
-    id: 101,
-    type: '',
-    typeUrl:
-      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
-    tags: ['科技', '创新'],
-    author: 'jony',
-    document_url:
-      'http://qn.jonyh.eu.org/2024/03/13/aae4841c69b4479a825e74d21b01dfde.doc',
-  },
-  {
-    id: 102,
-    type: '',
-    typeUrl:
-      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
-    tags: ['科技', '创新'],
-    author: 'leapsss',
-    document_url:
-      'http://qn.jonyh.eu.org/2024/03/13/aae4841c69b4479a825e74d21b01dfde.doc',
-  },
-  {
-    id: 103,
-    type: '',
-    typeUrl:
-      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
-    tags: ['科技', '创新'],
-    author: 'leapsss',
-    document_url:
-      'http://qn.jonyh.eu.org/2024/03/13/aae4841c69b4479a825e74d21b01dfde.doc',
-  },
-  {
-    id: 104,
-    type: '',
-    typeUrl:
-      'https://cdn.pixabay.com/photo/2021/01/30/12/20/microsoft-word-5963679_960_720.png',
-    tags: ['科技', '创新'],
-    author: 'leapsss',
-    document_url:
-      'http://qn.jonyh.eu.org/2024/03/13/aae4841c69b4479a825e74d21b01dfde.doc',
-  },
-])
-
+const res = useResStore()
+const documents = ref<any>([...res.document])
+const isDisplaySkeleton = ref(true)
+const isDisplayDocument = ref(false)
 const router = useRouter()
 const sendDocumentId = (id: number) => {
   if (id === null || id === undefined) {
@@ -67,6 +29,10 @@ const getDocumentData = async () => {
 }
 
 onMounted(async () => {
+  setTimeout(() => {
+    isDisplaySkeleton.value = false
+    isDisplayDocument.value = true
+  }, 2000)
   await getDocumentData()
 })
 </script>
@@ -74,7 +40,20 @@ onMounted(async () => {
 <template>
   <div>
     <doc-nav-bar></doc-nav-bar>
-    <v-container>
+
+    <v-container v-if="isDisplaySkeleton">
+      <v-row v-for="i in 2">
+        <v-col v-for="i in 2" cols="6">
+          <v-skeleton-loader
+            class="mx-auto border"
+            max-width="300"
+            type="image, list-item-two-line"
+          ></v-skeleton-loader>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container v-if="isDisplayDocument">
       <v-row>
         <v-col
           class="pa-0"

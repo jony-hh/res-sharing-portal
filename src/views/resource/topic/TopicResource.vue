@@ -5,30 +5,13 @@ import { fetchTopicResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { useResStore } from '@/store/res'
 
-const topics = ref([
-  {
-    id: 101,
-    backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng5.0ae3783f.jpg',
-    title: '应急管理',
-  },
-  {
-    id: 102,
-    backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng3.a41960d3.jpg',
-    title: '公共安全',
-  },
-  {
-    id: 103,
-    backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng4.4305f6d7.jpg',
-    title: '职业道德',
-  },
-  {
-    id: 104,
-    backgroundUrl: 'https://sz.jiaoyu.cn/img/sizheng2.9e6f562c.jpg',
-    title: '职业健康',
-  },
-])
+const res = useResStore()
+const topics = ref<any>([...res.topic])
 const router = useRouter()
+const isDisplaySkeleton = ref(true)
+const isDisplayTopic = ref(false)
 const sendTopicId = (id: number) => {
   if (id === null || id === undefined) {
     ElMessage.info('数据错误')
@@ -46,6 +29,10 @@ const getTopicData = async () => {
 }
 
 onMounted(async () => {
+  setTimeout(() => {
+    isDisplaySkeleton.value = false
+    isDisplayTopic.value = true
+  }, 1000)
   await getTopicData()
 })
 </script>
@@ -53,7 +40,20 @@ onMounted(async () => {
 <template>
   <div>
     <topic-nav-bar></topic-nav-bar>
-    <v-container>
+
+    <v-container v-if="isDisplaySkeleton">
+      <v-row v-for="i in 2">
+        <v-col v-for="i in 4" cols="12" md="3">
+          <v-skeleton-loader
+            class="mx-auto border"
+            max-width="300"
+            type="image, list-item-two-line"
+          ></v-skeleton-loader>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container v-if="isDisplayTopic">
       <v-row>
         <v-col
           class="pa-0"
