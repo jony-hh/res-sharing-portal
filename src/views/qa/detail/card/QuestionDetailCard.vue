@@ -3,6 +3,7 @@ import { LocationQueryValue, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { fetchSingQuestionResource } from '@/api/qa'
 import AnswerDialog from '@/views/qa/detail/card/AnswerDialog.vue'
+import useClipboard from 'vue-clipboard3'
 
 interface question {
   id: number
@@ -28,12 +29,42 @@ const questionInfo = ref<question>({
   viewCount: 0,
   askedTime: '',
 })
+
+const shareSnackbar = ref({
+  snackbar: false,
+  text: '已复制问题链接...',
+  timeout: 2000,
+})
+
+const focusSnackbar = ref({
+  snackbar: false,
+  text: '已关注该问题...',
+  timeout: 2000,
+})
+
+const { toClipboard } = useClipboard()
+
+const copyLinkToClipboard = () => {
+  const currentUrl = window.location.href
+  toClipboard(currentUrl)
+    .then(() => {
+      // 成功复制到剪贴板
+      console.log('链接已成功复制到剪贴板')
+    })
+    .catch(() => {
+      // 复制失败
+      console.error('复制链接到剪贴板失败')
+    })
+}
+
 const getSingleQuestionData = async (
   id: string | null | LocationQueryValue[],
 ) => {
   const res = await fetchSingQuestionResource(id)
   questionInfo.value = { ...res.data }
 }
+
+// 分享确认
 
 const writeAnswer = () => {}
 
@@ -45,9 +76,9 @@ onMounted(async () => {
 <template>
   <v-card class="ma-5">
     <div class="j-question-main">
-      <h1 class="question-title">{{ questionInfo.title }}</h1>
+      <h1 class="question-title ma-2">{{ questionInfo.title }}</h1>
 
-      <div class="posts-author-info">
+      <div class="posts-author-info ma-2">
         <span class="g-user-popover">
           <span class="g-hover">
             <span class="ant-avatar">
@@ -115,22 +146,30 @@ onMounted(async () => {
         </span>
       </div>
 
-      <div class="description">
+      <div class="description ma-2">
         <h2 style="border-bottom: 1px solid #eaecef">问题描述</h2>
         <div>{{ questionInfo.content }}</div>
       </div>
 
-      <p class="question-tags" style="border-bottom: 1px solid #eaecef">
+      <p class="question-tags ma-2" style="border-bottom: 1px solid #eaecef">
         <strong>问题标签：</strong>
         <span class="tags-line" v-for="tag in questionInfo.tags">
           {{ tag }}
         </span>
       </p>
 
-      <div class="d-flex float-lg-right">
+      <div class="d-flex float-lg-right mb-2">
         <div style="width: 100%"></div>
         <div class="mx-2">
-          <v-btn class="j-btn-primary ma-1">
+          <v-btn
+            class="j-btn-primary ma-1"
+            @click="
+              () => {
+                shareSnackbar.snackbar = true
+                copyLinkToClipboard()
+              }
+            "
+          >
             <i aria-label="图标: share-alt" class="anticon anticon-share-alt">
               <svg
                 viewBox="64 64 896 896"
@@ -140,7 +179,6 @@ onMounted(async () => {
                 fill="currentColor"
                 aria-hidden="true"
                 focusable="false"
-                class=""
               >
                 <path
                   d="M752 664c-28.5 0-54.8 10-75.4 26.7L469.4 540.8a160.68 160.68 0 0 0 0-57.6l207.2-149.9C697.2 350 723.5 360 752 360c66.2 0 120-53.8 120-120s-53.8-120-120-120-120 53.8-120 120c0 11.6 1.6 22.7 4.7 33.3L439.9 415.8C410.7 377.1 364.3 352 312 352c-88.4 0-160 71.6-160 160s71.6 160 160 160c52.3 0 98.7-25.1 127.9-63.8l196.8 142.5c-3.1 10.6-4.7 21.8-4.7 33.3 0 66.2 53.8 120 120 120s120-53.8 120-120-53.8-120-120-120zm0-476c28.7 0 52 23.3 52 52s-23.3 52-52 52-52-23.3-52-52 23.3-52 52-52zM312 600c-48.5 0-88-39.5-88-88s39.5-88 88-88 88 39.5 88 88-39.5 88-88 88zm440 236c-28.7 0-52-23.3-52-52s23.3-52 52-52 52 23.3 52 52-23.3 52-52 52z"
@@ -149,9 +187,28 @@ onMounted(async () => {
             </i>
             <span>分享</span>
           </v-btn>
+          <v-snackbar
+            v-model="shareSnackbar.snackbar"
+            :timeout="shareSnackbar.timeout"
+          >
+            {{ shareSnackbar.text }}
+
+            <template v-slot:actions>
+              <v-btn
+                color="blue"
+                variant="text"
+                @click="shareSnackbar.snackbar = false"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
         </div>
         <div class="mx-2">
-          <v-btn class="j-btn-primary ma-1">
+          <v-btn
+            class="j-btn-primary ma-1"
+            @click="focusSnackbar.snackbar = true"
+          >
             <i aria-label="图标: star" class="anticon anticon-star">
               <svg
                 viewBox="64 64 896 896"
@@ -170,6 +227,22 @@ onMounted(async () => {
             </i>
             <span>关注问题</span>
           </v-btn>
+          <v-snackbar
+            v-model="focusSnackbar.snackbar"
+            :timeout="focusSnackbar.timeout"
+          >
+            {{ focusSnackbar.text }}
+
+            <template v-slot:actions>
+              <v-btn
+                color="blue"
+                variant="text"
+                @click="focusSnackbar.snackbar = false"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
         </div>
         <answer-dialog class="mx-2"></answer-dialog>
       </div>

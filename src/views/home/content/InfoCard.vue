@@ -24,46 +24,40 @@ const messages = ref([
 </script>
 
 <template>
-  <div>
-    <v-card elevation="16" class="j-card" max-width="280">
-      <v-toolbar color="rgba(0, 0, 0, 0)" theme="light">
-        <template v-slot:prepend>
-          <v-btn icon="mdi mdi-alarm-light"></v-btn>
-        </template>
+  <v-card elevation="16" class="ma-2" min-width="280">
+    <v-toolbar color="rgba(0, 0, 0, 0)" theme="light">
+      <template v-slot:prepend>
+        <v-btn icon="mdi mdi-alarm-light"></v-btn>
+      </template>
 
-        <v-toolbar-title class="text-h6">信息与公告</v-toolbar-title>
+      <v-toolbar-title class="text-h6">信息与公告</v-toolbar-title>
 
-        <template v-slot:append>
-          <v-btn icon="mdi-dots-vertical"></v-btn>
-        </template>
-      </v-toolbar>
+      <template v-slot:append>
+        <v-btn icon="mdi-dots-vertical"></v-btn>
+      </template>
+    </v-toolbar>
 
-      <v-card-text>
-        <div class="font-weight-bold ms-1 mb-2">Today</div>
+    <v-card-text>
+      <div class="font-weight-bold ms-1 mb-2">Today</div>
 
-        <v-timeline density="compact" align="start">
-          <v-timeline-item
-            v-for="message in messages"
-            :key="message.time"
-            :dot-color="message.color"
-            size="x-small"
-          >
-            <div class="mb-4">
-              <div class="font-weight-normal">
-                <strong>{{ message.from }}</strong>
-                @{{ message.time }}
-              </div>
-              <div>{{ message.message }}</div>
+      <v-timeline density="compact" align="start">
+        <v-timeline-item
+          v-for="message in messages"
+          :key="message.time"
+          :dot-color="message.color"
+          size="x-small"
+        >
+          <div class="mb-4">
+            <div class="font-weight-normal">
+              <strong>{{ message.from }}</strong>
+              @{{ message.time }}
             </div>
-          </v-timeline-item>
-        </v-timeline>
-      </v-card-text>
-    </v-card>
-  </div>
+            <div>{{ message.message }}</div>
+          </div>
+        </v-timeline-item>
+      </v-timeline>
+    </v-card-text>
+  </v-card>
 </template>
 
-<style scoped>
-.j-card {
-  margin: 10px;
-}
-</style>
+<style scoped></style>

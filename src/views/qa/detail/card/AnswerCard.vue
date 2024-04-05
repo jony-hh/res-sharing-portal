@@ -5,10 +5,10 @@ const props = defineProps(['answer'])
 <template>
   <v-card class="ma-5">
     <div class="j-question-main">
-      <div class="posts-author-info">
+      <div class="posts-author-info ma-2">
         <span class="g-user-popover">
           <span class="g-hover">
-            <span class="ant-avatar">
+            <span class="ant-avatar mr-2">
               <img
                 src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132"
                 alt="avatar"
@@ -73,8 +73,7 @@ const props = defineProps(['answer'])
         </span>
       </div>
 
-      <div class="description">
-        <h2 style="border-bottom: 1px solid #eaecef">回答描述</h2>
+      <div class="description ma-2">
         <div>{{ answer.content }}</div>
       </div>
     </div>

@@ -96,51 +96,45 @@ const checkCalendar = () => {
 </script>
 
 <template>
-  <div>
-    <v-card elevation="16" class="mx-auto j-card" max-width="280">
-      <v-card-text>
-        <div style="color: #6200ea">政党重要节日</div>
-        <p class="text-h6 text--primary" v-if="sortedFestivals.length > 0">
-          距离【{{ sortedFestivals[0].name }}】还剩
-          <span style="color: red">
-            {{ calcResidue(sortedFestivals[0].month, sortedFestivals[0].day) }}
-          </span>
-          天
-        </p>
-        <div class="text--primary">
-          <template v-for="festival in sortedFestivals">
-            {{ festival.name }}（{{ festival.month }}月{{ festival.day }}日）
-            <br />
-          </template>
-        </div>
-      </v-card-text>
-      <v-card-actions style="position: relative">
-        <v-btn
-          style="margin: 0 10px; transform: translateY(30%)"
-          :disabled="loading"
-          :loading="loading"
-          class="text-none mb-4"
-          color="indigo-darken-3"
-          size="x-middle"
-          @click="checkCalendar"
-        >
-          查看签到日历
-        </v-btn>
-        <v-btn
-          style="position: absolute; right: 0; margin: 0 10px"
-          variant="flat"
-          color="deep-purple-accent-4"
-          @click="attend"
-        >
-          今日签到
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </div>
+  <v-card elevation="16" class="ma-2" min-width="280">
+    <v-card-text>
+      <div style="color: #6200ea">政党重要节日</div>
+      <p class="text-h6 text--primary" v-if="sortedFestivals.length > 0">
+        距离【{{ sortedFestivals[0].name }}】还剩
+        <span style="color: red">
+          {{ calcResidue(sortedFestivals[0].month, sortedFestivals[0].day) }}
+        </span>
+        天
+      </p>
+      <div class="text--primary">
+        <template v-for="festival in sortedFestivals">
+          {{ festival.name }}（{{ festival.month }}月{{ festival.day }}日）
+          <br />
+        </template>
+      </div>
+    </v-card-text>
+    <v-card-actions style="position: relative">
+      <v-btn
+        style="margin: 0 10px; transform: translateY(30%)"
+        :disabled="loading"
+        :loading="loading"
+        class="text-none mb-4"
+        color="indigo-darken-3"
+        size="x-middle"
+        @click="checkCalendar"
+      >
+        查看签到日历
+      </v-btn>
+      <v-btn
+        style="position: absolute; right: 0; margin: 0 10px"
+        variant="flat"
+        color="deep-purple-accent-4"
+        @click="attend"
+      >
+        今日签到
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
-<style scoped>
-.j-card {
-  margin: 10px;
-}
-</style>
+<style scoped></style>
