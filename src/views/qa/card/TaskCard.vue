@@ -21,12 +21,6 @@ const reserve = () => {
       ></v-progress-linear>
     </template>
 
-    <v-img
-      cover
-      height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
-
     <v-card-item>
       <v-card-title>Cafe Badilico</v-card-title>
 

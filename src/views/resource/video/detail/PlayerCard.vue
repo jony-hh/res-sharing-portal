@@ -133,10 +133,7 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div
-      class="playerWrap"
-      style="width: 100%; height: 420px; border: 1px red solid"
-    >
+    <div class="playerWrap" style="width: 100%; height: 420px">
       <my-video v-if="flag" :video_url="currentVideo.video_url" />
     </div>
 

@@ -2,15 +2,15 @@
 import QuestionDetailCard from '@/views/qa/detail/card/QuestionDetailCard.vue'
 import AnswerCard from '@/views/qa/detail/card/AnswerCard.vue'
 import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { LocationQueryValue, useRouter } from 'vue-router'
 import { fetchAnswerByQuestionId } from '@/api/qa'
-import AuthorInfoCard from '@/views/qa/detail/card/AuthorInfoCard.vue'
-import RecommendCard from '@/views/qa/detail/card/RecommendCard.vue'
+import AuthorInfoCard from '@/component/user/AuthorInfoCard.vue'
+import RecommendCard from '@/views/qa/detail/card/QaRecommendCard.vue'
 
 const router = useRouter()
-const answers = ref([])
+const answers = ref<any>([])
 
-const getAnswersData = async (id: number) => {
+const getAnswersData = async (id: string | null | LocationQueryValue[]) => {
   const res = await fetchAnswerByQuestionId(id)
   answers.value.push(...res.data)
   console.log(answers.value)

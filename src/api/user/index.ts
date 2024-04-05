@@ -20,6 +20,8 @@ enum USER_API {
 
   POSE_QUESTION_API = '/user/operate/pose/question',
   WRITE_ANSWER_API = '/user/operate/write/answer',
+
+  AUTHOR_INFO = '/user/center/authorInfo',
 }
 
 //登录接口
@@ -46,7 +48,12 @@ export const userStar = (data: operateDTO) =>
   request.post<any, any>(USER_API.USER_STAR, data)
 
 export const poseQuestionApi = (question: any) =>
-  request.post<any, any>(QA_API.POSE_QUESTION_API, question)
+  request.post<any, any>(USER_API.POSE_QUESTION_API, question)
 
 export const writeAnswerApi = (answer: any) =>
-  request.post<any, any>(QA_API.WRITE_ANSWER_API, answer)
+  request.post<any, any>(USER_API.WRITE_ANSWER_API, answer)
+
+export const fetchAuthorInfo = (id: number) =>
+  request.get<any, any>(USER_API.AUTHOR_INFO, {
+    params: { id: id },
+  })

@@ -232,7 +232,5 @@ body {
 /* Right part styling */
 .right-part {
   flex: 1;
-  padding: 0 20px 20px;
-  background-color: #f5f5f5;
 }
 </style>
