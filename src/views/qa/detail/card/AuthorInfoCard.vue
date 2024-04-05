@@ -1,66 +1,60 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <v-card class="ma-5">
     <div
       class="g-sidebar-container"
       style="background-color: #fff; min-width: 305px; max-width: 305px"
-      data-v-65dfe1c6=""
     >
-      <h2 class="slider-title">关于作者 📝</h2>
-      <div class="author-info" data-v-65dfe1c6="">
-        <div class="infos" data-v-65dfe1c6="">
-          <span
-            class="user-header ant-avatar ant-avatar-lg ant-avatar-square ant-avatar-image"
-            data-v-65dfe1c6=""
-          >
-            <img
-              src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132"
-              alt="空心"
-            />
-          </span>
-          <div class="detail-info" data-v-65dfe1c6="">
-            <span class="nickname max-w-[150px] truncate" data-v-65dfe1c6="">
-              空心
-            </span>
-            <button
-              type="button"
-              class="ant-btn ant-btn-primary"
-              data-v-65dfe1c6=""
-              onclick="_gAuthEvents[3](event)"
-            >
-              <span>关 注</span>
-            </button>
+      <h2 class="slider-title ma-2" style="border-bottom: 1px solid #eaecef">关于作者 📝</h2>
+
+      <div class="author-info">
+        <div class="infos d-flex justify-lg-space-between">
+          <div class="ma-2">
+              <img
+                src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkSA49EGsBTREicEiaw9YSLAvDeVk0jwc9z4ibMRLVBvzdnkHDRNnr8FMMk2C3o5zQ40fggVADU094A/132"
+                alt="空心"
+                style="height: 40px;width: 40px"
+              />
+            <span class="j-nickname">空心</span>
           </div>
+         <div class="ma-2">
+           <v-btn color="#004fc4">关 注</v-btn>
+         </div>
         </div>
-        <p class="signature g-hidden-line2" data-v-65dfe1c6="">
-          <span data-v-65dfe1c6="" class="">这个人很懒~</span>
+        <p class="ma-2">
+          <span class="j-author-motto">这个人很懒~</span>
         </p>
-        <div class="achievement-infos" data-v-65dfe1c6="">
-          <div data-v-65dfe1c6="">
-            <p class="acht-item" data-v-65dfe1c6="">
-              <span class="level" data-v-65dfe1c6="">等级</span>
-              <span class="level-number" data-v-65dfe1c6="">LV1</span>
-            </p>
-            <p class="acht-item btm-acht" data-v-65dfe1c6="">
-              <span class="level" data-v-65dfe1c6="">粉丝</span>
-              <span class="level-number" data-v-65dfe1c6="">0</span>
-            </p>
-          </div>
-          <div data-v-65dfe1c6="">
-            <p class="acht-item" data-v-65dfe1c6="">
-              <span class="level" data-v-65dfe1c6="">获赞</span>
-              <span class="level-number" data-v-65dfe1c6="">0</span>
-            </p>
-            <p class="acht-item btm-acht" data-v-65dfe1c6="">
-              <span class="level" data-v-65dfe1c6="">经验</span>
-              <span class="level-number" data-v-65dfe1c6="">4</span>
-            </p>
-          </div>
+        <div class="ma-2">
+          <v-row>
+            <v-col cols="6">
+              <p class="acht-item">
+                <span class="level">等级</span>
+                <span class="level-number">LV1</span>
+              </p>
+              <p class="acht-item btm-acht">
+                <span class="level">粉丝</span>
+                <span class="level-number">0</span>
+              </p>
+            </v-col>
+            <v-col cols="6">
+              <p class="acht-item">
+                <span class="level">获赞</span>
+                <span class="level-number">0</span>
+              </p>
+              <p class="acht-item btm-acht">
+                <span class="level">经验</span>
+                <span class="level-number">4</span>
+              </p>
+            </v-col>
+          </v-row>
         </div>
+
       </div>
     </div>
   </v-card>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
