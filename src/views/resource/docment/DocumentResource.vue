@@ -32,7 +32,7 @@ onMounted(async () => {
   setTimeout(() => {
     isDisplaySkeleton.value = false
     isDisplayDocument.value = true
-  }, 2000)
+  }, 1000)
   await getDocumentData()
 })
 </script>

@@ -12,7 +12,7 @@ const props = defineProps(['documentInfo'])
         alt="头像"
       />
       <v-card-title>
-        二十大代表在基层|廖志斌：守好输电线路，守护万家幸福
+        {{documentInfo.document_name}}
       </v-card-title>
     </div>
 

@@ -149,7 +149,7 @@ const replyPage = ({
 
 // 第二条评论的回复
 const reply = {
-  total: 6,
+  total: 8,
   list: [
     {
       id: '31',

@@ -24,13 +24,13 @@ const props = defineProps(['videoInfo'])
       </div>
     </v-img>
 
-    <div class="content">
+    <div class="content ma-2">
       <div class="title">
         <a style="font-size: 20px">
           {{ videoInfo.course_name }}
         </a>
       </div>
-      <div class="d-flex justify-lg-space-between">
+      <div class="d-flex justify-lg-space-between mt-2">
         <div class="teacher">{{ videoInfo.lecturer }}</div>
         <div class="d-flex">
           <img

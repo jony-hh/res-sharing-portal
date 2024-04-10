@@ -66,10 +66,10 @@ const cancel = () => {
         </v-col>
 
         <v-col cols="12" md="6">
-          <!-- 职位公司 -->
+          <!-- 工作单位 -->
           <v-text-field
             v-model="userStore.loginUser.company"
-            label="职位公司"
+            label="工作单位"
             :rules="requiredRules"
             variant="outlined"
           />
