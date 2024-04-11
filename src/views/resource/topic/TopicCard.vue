@@ -3,7 +3,7 @@ const props = defineProps(['topicInfo'])
 </script>
 
 <template>
-  <v-card class="ma-1">
+  <v-card class="ma-2">
     <v-img
       class="bg-white position-relative"
       :src="topicInfo.backgroundUrl"

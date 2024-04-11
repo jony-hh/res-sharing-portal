@@ -3,8 +3,8 @@ const props = defineProps(['videoInfo'])
 </script>
 
 <template>
-  <v-card class="ma-1">
-    <v-img :src="videoInfo.coverUrl" class="position-relative j-largen">
+  <v-card class="ma-2">
+    <v-img :src="videoInfo.coverUrl" class="position-relative j-largen" style="height: 172px">
       <div
         class="position-absolute ma-1 pa-1 rounded"
         style="background: #ee7c6e; color: #fff; right: 0"
