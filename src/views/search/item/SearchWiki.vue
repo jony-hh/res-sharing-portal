@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { fetchWikiData } from '@/api/search'
 import BlankData from '@/views/search/BlankData.vue'
+import BookCard from '@/views/wiki/BookCard.vue'
 
 const loading = ref(true)
 const router = useRouter()
@@ -10,6 +11,7 @@ const wikiData = ref<any>([])
 const getWikiData = async (keyword: any) => {
   const res = await fetchWikiData(keyword)
   wikiData.value.push(...res.data)
+  loading.value = false
 }
 
 onMounted(async () => {
@@ -25,13 +27,11 @@ onMounted(async () => {
     <v-col
       v-else
       class="pa-5"
-      cols="4"
+      cols="6"
       v-for="(wiki, index) in wikiData"
       :key="index"
     >
-      <v-card>
-        {{ wiki.title }}
-      </v-card>
+      <book-card :bookInfo="wiki" />
     </v-col>
   </v-row>
 </template>

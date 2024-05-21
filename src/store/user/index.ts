@@ -32,7 +32,7 @@ export const useUserStore = defineStore({
   actions: {
     setToken(token: string) {
       this.$patch({
-        token: localStorage.getItem('token'),
+        token: token,
       })
     },
 

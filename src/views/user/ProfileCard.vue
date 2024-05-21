@@ -5,6 +5,7 @@ import 'element-plus/es/components/message/style/css'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useCommonStore } from '@/store/common'
 import { useUserStore } from '@/store/user'
+import { reqLogout } from '@/api/user'
 
 const fav = ref(true)
 const menu = ref(false)
@@ -25,11 +26,16 @@ const logout = () => {
     cancelButtonText: '取消',
     type: 'warning',
   })
-    .then(() => {
+    .then(async () => {
       localStorage.setItem('token', '')
       userStore.token = ''
       router.push('/home')
-      ElMessage.success('成功退出登录！！！')
+      const res = await reqLogout()
+      if (res.code == 200) {
+        ElMessage.success('成功退出登录！！！')
+      } else {
+        ElMessage.success('清除token')
+      }
     })
     .catch(() => {
       ElMessage.info('取消退出登录！！！')

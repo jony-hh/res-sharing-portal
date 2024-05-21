@@ -13,16 +13,16 @@ const authorInfo = ref({
   experience: 0,
 })
 
-const props = defineProps(['authorId'])
+const props = defineProps(['id'])
 const isDisplayCard = ref(false)
 const getAuthorInfo = async (id: number) => {
   const res = await fetchAuthorInfo(id)
-  authorInfo.value = { ...res.data.authorInfo }
+  authorInfo.value = { ...res.data }
   isDisplayCard.value = true
 }
 
 onMounted(async () => {
-  await getAuthorInfo(props.authorId)
+  await getAuthorInfo(props.id)
 })
 </script>
 

@@ -1,20 +1,16 @@
 //统一管理咱们项目用户相关的接口
-import request from '@/utils/request'
-import type {
-  loginForm,
-  loginResponseData,
-  registerForm,
-  userResponseData,
-} from '@/api/user/type'
-import { operateDTO } from '@/api/user/type'
+import request from "@/utils/request";
+import type { loginForm, loginResponseData, registerForm, userResponseData } from "@/api/user/type";
+import { operateDTO } from "@/api/user/type";
 
 //项目用户相关的请求地址
 enum USER_API {
   LOGIN_URL = '/user/center/localLogin',
   REGISTER_URL = '/user/center/localRegister',
   USERINFO_URL = '/user/center/getLoginUser',
-  LOGOUT_URL = '/user/center/localLogout',
+  LOGOUT_URL = '/user/center/logout',
 
+  UPDATE_URL = '/user/operate/updateProfile',
   USER_THUMB = '/user/operate/thumb',
   USER_STAR = '/user/operate/star',
 
@@ -35,11 +31,15 @@ export const reqTegister = (data: registerForm) =>
 //获取用户信息
 export const reqGetLoginUser = (token: string) =>
   request.get<any, userResponseData>(USER_API.USERINFO_URL, {
-    headers: { AuthToken: token },
+    headers: { 'Auth-Token': token },
   })
 
+// 更新用户信息
+export const reqUpdateUser = (data: any) =>
+  request.put<any, any>(USER_API.UPDATE_URL, data)
+
 //退出登录
-export const reqLogout = () => request.post<any, any>(USER_API.LOGOUT_URL)
+export const reqLogout = () => request.get<any, any>(USER_API.LOGOUT_URL)
 
 export const userThumb = (data: operateDTO) =>
   request.post<any, any>(USER_API.USER_THUMB, data)

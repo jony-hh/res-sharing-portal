@@ -22,7 +22,7 @@ const props = defineProps(['questionInfo'])
       </div>
       <div>
         <v-list-item-title>
-          {{ questionInfo.viewCount }}
+          {{ questionInfo.pageview }}
         </v-list-item-title>
         <v-list-item-subtitle>阅读</v-list-item-subtitle>
       </div>
@@ -60,7 +60,7 @@ const props = defineProps(['questionInfo'])
             <v-col>
               <!-- 用户昵称和发问时间 -->
               <div>{{ questionInfo.nickname }}</div>
-              <div>{{ questionInfo.askedTime }}</div>
+              <div>{{ questionInfo.createdTime }}</div>
             </v-col>
           </v-row>
         </template>

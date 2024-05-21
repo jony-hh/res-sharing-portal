@@ -32,7 +32,9 @@ onMounted(async () => {
     </div>
 
     <div style="flex: 1">
-      <author-info-card></author-info-card>
+      <author-info-card
+        :id="router.currentRoute.value.query.id"
+      ></author-info-card>
       <recommend-card></recommend-card>
     </div>
   </div>

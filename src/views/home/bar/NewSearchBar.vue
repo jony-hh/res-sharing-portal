@@ -39,7 +39,7 @@ const submit = (val: string) => {
     return
   }
   router.push({
-    path: '/search',
+    path: '/search/course',
     query: { keyword: val },
   })
 }

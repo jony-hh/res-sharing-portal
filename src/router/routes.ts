@@ -1,5 +1,5 @@
 // 常量路由
-import { RouteRecordRaw } from 'vue-router'
+import { RouteRecordRaw } from "vue-router";
 
 // 根路由404配置
 const rootRoutePage404: RouteRecordRaw[] = [
@@ -66,17 +66,16 @@ export const constantRoute = [
     path: '/search',
     component: () => import('@/views/search/SearchResult.vue'),
     name: 'search',
-    redirect: '/search/composite',
     children: [
       {
-        path: 'composite',
-        component: () => import('@/views/search/item/SearchComposite.vue'),
-        name: 'SearchComposite',
+        path: 'course',
+        component: () => import('@/views/search/item/SearchCourse.vue'),
+        name: 'searchCourse',
       },
       {
-        path: 'res',
-        component: () => import('@/views/search/item/SearchResource.vue'),
-        name: 'searchRes',
+        path: 'document',
+        component: () => import('@/views/search/item/SearchDocument.vue'),
+        name: 'searchDocument',
       },
       {
         path: 'qa',
@@ -105,6 +104,21 @@ export const constantRoute = [
     path: '/resource',
     component: () => import('@/views/resource/ResourceLib.vue'),
     name: 'resource',
+  },
+  {
+    path: '/resource/video/more',
+    component: () => import('@/views/resource/video/MoreVideo.vue'),
+    name: 'MoreVideo',
+  },
+  {
+    path: '/resource/topic/more',
+    component: () => import('@/views/resource/topic/MoreTopic.vue'),
+    name: 'MoreTopic',
+  },
+  {
+    path: '/resource/document/more',
+    component: () => import('@/views/resource/docment/MoreDocument.vue'),
+    name: 'MoreDocument',
   },
   {
     path: '/document/detail',

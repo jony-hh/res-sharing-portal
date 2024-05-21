@@ -7,34 +7,37 @@ import { useCommonStore } from '@/store/common'
 import { useUserStore } from '@/store/user'
 import { operateDTO } from '@/api/user/type'
 
-interface course {
-  id: number
-  coverUrl: string
-  college: string
-  author: string
-  student_num: number
-  lecturer: string
-  sign: string
-  course_name: string
-  video_list: [{ video_name: string; video_url: string }]
-}
+// interface course {
+//   id: number
+//   coverUrl: string
+//   college: string
+//   author: string
+//   studentNum: number
+//   lecturer: string
+//   sign: string
+//   courseName: string
+//   videoDetailList: [{ videoName: string; videoUrl: string }]
+// }
+
+// const courseInfo = ref<course>({
+//   id: 0,
+//   coverUrl: '',
+//   college: '',
+//   author: '',
+//   studentNum: 0,
+//   lecturer: '',
+//   sign: '',
+//   courseName: '',
+//   videoDetailList: [{ videoName: '', videoUrl: '' }],
+// })
+// const currentVideo = ref({
+//   videoName: '',
+//   videoUrl: '',
+// })
+const courseInfo = ref<any>({})
+const currentVideo = ref<any>({})
 const flag = ref(false)
 const router = useRouter()
-const courseInfo = ref<course>({
-  id: 0,
-  coverUrl: '',
-  college: '',
-  author: '',
-  student_num: 0,
-  lecturer: '',
-  sign: '',
-  course_name: '',
-  video_list: [{ video_name: '', video_url: '' }],
-})
-const currentVideo = ref({
-  video_name: '',
-  video_url: '',
-})
 const common = useCommonStore()
 const userStore = useUserStore()
 
@@ -71,24 +74,21 @@ const initializeBtnColor = async () => {}
 
 // 更新数据
 const thumb = async (operateDTO: operateDTO) => {
-  //const res = await userThumb(operateDTO)
-  //thumb_num.value = res.data.thumb_num
   if (!thumb_flag.value) {
-    thumb_num.value++
+    courseInfo.value.thumbNum++
     thumb_flag.value = true
   } else {
-    thumb_num.value--
+    courseInfo.value.thumbNum--
     thumb_flag.value = false
   }
 }
+
 const star = async (operateDTO: operateDTO) => {
-  //const res = await userStar(operateDTO)
-  //star_num.value = res.data.star_num
   if (!star_flag.value) {
-    star_num.value++
+    courseInfo.value.starNum++
     star_flag.value = true
   } else {
-    star_num.value--
+    courseInfo.value.starNum--
     star_flag.value = false
   }
 }
@@ -96,12 +96,15 @@ const star = async (operateDTO: operateDTO) => {
 const getSingleVideoData = async (id: string | null | LocationQueryValue[]) => {
   const res = await fetchSingVideoResource(id)
   courseInfo.value = { ...res.data }
-  currentVideo.value = { ...courseInfo.value.video_list[0] }
+  currentVideo.value = {
+    video_name: courseInfo.value.courseName,
+    video_url: courseInfo.value.videoDetailList[0].url,
+  }
   common.setCurrentVideo(currentVideo.value)
 
   // 获取完课程信息后，再获取点赞收藏信息
-  await getThumbNum(courseInfo.value.id)
-  await getStarNum(courseInfo.value.id)
+  // await getThumbNum(courseInfo.value.id)
+  // await getStarNum(courseInfo.value.id)
 }
 
 onMounted(async () => {
@@ -113,7 +116,7 @@ onMounted(async () => {
 <template>
   <div>
     <div class="viewbox_report">
-      <div class="text-sm-h6">{{ courseInfo.course_name }}</div>
+      <div class="text-sm-h6">{{ courseInfo.courseName }}</div>
       <div class="video-info-detail d-flex">
         <div class="view item my-2 mr-2">
           <img src="/public/static/svg/view-icon.svg" alt="view-icon" />
@@ -124,7 +127,7 @@ onMounted(async () => {
           <span>12</span>
         </div>
         <div class="pubdate item ma-2">
-          <span class="pubdate-text">2024-03-20 08:00:00</span>
+          <span class="pubdate-text">{{ courseInfo.createdTime }}</span>
         </div>
         <div class="copyright item ma-2">
           <img src="/public/static/svg/forbid-icon.svg" alt="forbid-icon" />
@@ -151,7 +154,7 @@ onMounted(async () => {
               @click="thumb(operateDTO)"
             ></v-btn>
             <span class="video-like-info video-toolbar-item-text">
-              {{ thumb_num }}
+              {{ courseInfo.thumbNum }}
             </span>
           </div>
         </div>
@@ -165,7 +168,7 @@ onMounted(async () => {
             variant="text"
             @click="star(operateDTO)"
           ></v-btn>
-          <span>{{ star_num }}</span>
+          <span>{{ courseInfo.starNum }}</span>
         </div>
         <div
           title="分享（W）"

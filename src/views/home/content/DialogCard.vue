@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store/user'
 import Editor from '@tinymce/tinymce-vue'
+import { poseQuestionApi } from '@/api/user'
+import router from '@/router'
 
 const dialog = ref(false)
 
@@ -11,6 +13,7 @@ const userStore = useUserStore()
 
 // 问题信息
 const question = ref({
+  userId: userStore.loginUser.id,
   content: '',
   title: '',
 })
@@ -25,14 +28,29 @@ const operate = (operateItem: any) => {
     dialog.value = true
     return
   }
+  if (operateItem.code === 'build') {
+    dialog.value = false
+    ElMessage.info('此功能正在开发中。')
+    return
+  }
   dialog.value = false
   ElMessage.info('你没有权限！请去申请。')
 }
 
 const poseQuestion = async (question: any) => {
+  if (question.content === '' || question.title === '') {
+    ElMessage.error('请按要求输入！')
+    return
+  }
   dialog.value = false
-  //const res = await poseQuestionApi(question)
+  const res = await poseQuestionApi(question)
+  if (res.code !== 200) {
+    ElMessage.info('发布失败！')
+    return
+  }
   ElMessage.success('发布成功！')
+  router.push('/qa')
+  return
 }
 </script>
 

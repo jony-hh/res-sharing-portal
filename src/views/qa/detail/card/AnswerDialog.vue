@@ -3,21 +3,44 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store/user'
 import Editor from '@tinymce/tinymce-vue'
+import { useRouter } from 'vue-router'
+import { writeAnswerApi } from '@/api/user'
 
+const router = useRouter()
 const dialog = ref(false)
-
+const userStore = useUserStore()
 const props = defineProps(['operateItem'])
 
 // 问题信息
 const answer = ref({
+  questionId: router.currentRoute.value.query.id,
+  userId: userStore.loginUser.id,
   content: '',
   title: '',
 })
 
+const judgeStatus = () => {
+  if (userStore.token === '') {
+    ElMessage.info('请先登录！')
+    dialog.value = false
+    return
+  }
+}
+
 const wirteAnswer = async (answer: any) => {
+  if (answer.content === '' || answer.title === '') {
+    ElMessage.error('请按要求输入！')
+    return
+  }
   dialog.value = false
-  //const res = await wirteAnswerApi(answer)
+  const res = await writeAnswerApi(answer)
+  if (res.code !== 200) {
+    ElMessage.info('发布失败！')
+    return
+  }
   ElMessage.success('发布成功！')
+  router.go(0)
+  return
 }
 </script>
 
@@ -25,7 +48,11 @@ const wirteAnswer = async (answer: any) => {
   <div>
     <v-dialog v-model="dialog" transition="dialog-bottom-transition" fullscreen>
       <template v-slot:activator="{ props: activatorProps }">
-        <v-btn class="j-btn-primary ma-1" v-bind="activatorProps">
+        <v-btn
+          class="j-btn-primary ma-1"
+          v-bind="activatorProps"
+          @click="judgeStatus()"
+        >
           <i aria-label="图标: edit" class="anticon anticon-edit">
             <svg
               viewBox="64 64 896 896"

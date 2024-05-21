@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import router from '@/router'
 
 const docTypes = [
   '新闻传播大类',
@@ -9,7 +10,7 @@ const docTypes = [
 ]
 
 const viewMore = () => {
-  alert('hello')
+  router.push('/resource/document/more')
 }
 
 const activeTag = ref('default')
@@ -23,7 +24,7 @@ const activateTag = (tag: string) => {
     <div class="d-flex align-center">
       <img src="https://s21.ax1x.com/2024/03/05/pFDTmVA.png" alt="" />
       <div class="px-4 j-doc-title">课程思政文档库</div>
-      <div class="d-flex ml-10">
+      <!-- <div class="d-flex ml-10">
         <div
           class="mx-2 px-4 j-item"
           :class="{ 'j-active': activeTag === 'default' }"
@@ -40,7 +41,7 @@ const activateTag = (tag: string) => {
         >
           {{ doctype }}
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="d-flex" @click="viewMore">

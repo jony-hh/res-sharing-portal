@@ -22,7 +22,10 @@
       </template>
 
       <v-list>
-        <v-list-item v-for="(item, index) in items" :key="index">
+        <v-list-item>
+          <send-resource-dialog :operateItem="items[0]"></send-resource-dialog>
+        </v-list-item>
+        <v-list-item v-for="(item, index) in items.slice(1, 3)" :key="index">
           <dialog-card :operateItem="item"></dialog-card>
         </v-list-item>
       </v-list>
@@ -32,6 +35,7 @@
 
 <script setup lang="ts">
 import DialogCard from '@/views/home/content/DialogCard.vue'
+import SendResourceDialog from '@/views/home/content/SendResourceDialog.vue'
 import { mergeProps } from 'vue'
 import { items } from '@/constant/selectMenu'
 </script>

@@ -7,8 +7,8 @@ const drawer = ref(false)
 
 // Define your navigation items
 const navItems = [
-  { name: '综合', url: '/search/composite' },
-  { name: '资源', url: '/search/res' },
+  { name: '课程', url: '/search/course' },
+  { name: '文档', url: '/search/document' },
   { name: '问答', url: '/search/qa' },
   { name: 'wiki', url: '/search/wiki' },
   { name: '用户', url: '/search/user' },

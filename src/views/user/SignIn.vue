@@ -88,10 +88,9 @@ const submit = async () => {
   if (res.code === 200) {
     ElMessage.success('登录成功！')
     await router.push('/home')
-    localStorage.setItem('token', res.data.token)
-    userStore.token = res.data.token
+    localStorage.setItem('token', userStore.token)
   }
-  const res2 = await reqGetLoginUser(res.data.token)
+  const res2 = await reqGetLoginUser(userStore.token)
   if (res2.code === 200) {
     userStore.setLoginUser(res2.data.loginUser)
     return

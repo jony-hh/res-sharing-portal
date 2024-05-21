@@ -78,9 +78,9 @@ import { ElMessage } from 'element-plus'
 const visible = ref(false)
 const userStore = useUserStore()
 let loginForm = reactive({
-  username: 'jony',
+  username: '',
   password: '123456',
-  confirmPassword: '',
+  confirmPassword: '123456',
 })
 
 const submit = async () => {

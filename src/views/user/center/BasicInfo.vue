@@ -2,6 +2,7 @@
 import { ElMessage } from 'element-plus'
 import router from '@/router'
 import { useUserStore } from '@/store/user'
+import { reqUpdateUser } from '@/api/user'
 import { ref } from 'vue'
 
 const formData = ref<any>({})
@@ -22,9 +23,8 @@ const userStore = useUserStore()
 
 const saveProfile = async () => {
   // 在这里处理保存个人信息的逻辑，可以通过 API 请求将数据发送到后端
-  //const res = await reqUpdateUser(userStore.loginUser)
-  const res = 200
-  if (res === 200) {
+  const res = await reqUpdateUser(userStore.loginUser)
+  if (res.code === 200) {
     ElMessage.success('修改成功！！！')
     await router.push('/profile')
     return

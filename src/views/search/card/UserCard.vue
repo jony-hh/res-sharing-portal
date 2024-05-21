@@ -1,18 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps(['user'])
+</script>
 
 <template>
   <v-card>
-    <div class="d-flex">
+    <div class="d-flex ma-2">
       <div>
         <img
+          style="width: 100px; height: 100px; border-radius: 50%"
           alt="faild"
-          src="https://thirdwx.qlogo.cn/mmopen/vi_32/ic5U3c7ibwk0nIRY6CjTtdj5BDzuPxdEibJfvXZVwFsz2O8RgwHUrGREnhbg0qJyCKj2FD75dsxVcZib5mS6HEbd6A/132"
+          :src="user.avatar"
         />
       </div>
-      <div>
-        <h2>hello</h2>
-        <p>2粉丝 · 0个视频</p>
-        <v-btn primary>+ 关注</v-btn>
+      <div
+        style="width: 100%"
+        class="d-flex flex-column justify-lg-space-around ml-2"
+      >
+        <h2 class="ml-2">{{ user.nickname }}</h2>
+        <p class="ml-2">{{ user.introduction }}</p>
+        <v-btn color="#004fc4" class="mr-4 align-self-end">+ 关注</v-btn>
       </div>
     </div>
   </v-card>

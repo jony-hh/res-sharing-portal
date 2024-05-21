@@ -1,49 +1,43 @@
 <script setup lang="ts">
-import VideoNavBar from '@/views/resource/video/VideoNavBar.vue'
-import VideoCard from '@/views/resource/video/VideoCard.vue'
-import { fetchVideoResource } from '@/api/res'
+import TopicCard from '@/views/resource/topic/TopicCard.vue'
+import { fetchWholeTopicResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useResStore } from '@/store/res'
 
 const res = useResStore()
-const videos = ref<any>([])
-const isDisplaySkeleton = ref(true)
-const isDisplayVideo = ref(false)
+const topics = ref<any>([...res.topic])
 const router = useRouter()
-const sendVideoId = (id: number) => {
+const isDisplaySkeleton = ref(true)
+const isDisplayTopic = ref(false)
+const sendTopicId = (id: number) => {
   if (id === null || id === undefined) {
     ElMessage.info('数据错误')
     return
   }
   router.push({
-    path: '/video/detail',
+    path: '/topic/detail',
     query: { id: id },
   })
 }
 
-const getVideoData = async () => {
-  const response = await fetchVideoResource()
-  videos.value.push(...response.data)
-  // res.setCourse(response.data)
+const getTopicData = async () => {
+  const res = await fetchWholeTopicResource()
+  topics.value.push(...res.data)
 }
 
 onMounted(async () => {
   setTimeout(() => {
     isDisplaySkeleton.value = false
-    isDisplayVideo.value = true
+    isDisplayTopic.value = true
   }, 1000)
-  if (videos.value.length <= 0) {
-    await getVideoData()
-  }
+  await getTopicData()
 })
 </script>
 
 <template>
   <div>
-    <video-nav-bar></video-nav-bar>
-
     <v-container v-if="isDisplaySkeleton">
       <v-row v-for="i in 2">
         <v-col v-for="i in 4" cols="12" md="3">
@@ -56,19 +50,19 @@ onMounted(async () => {
       </v-row>
     </v-container>
 
-    <v-container v-if="isDisplayVideo">
+    <v-container v-if="isDisplayTopic">
       <v-row>
         <v-col
           class="pa-0"
           cols="3"
-          v-for="(video, index) in videos"
+          v-for="(topic, index) in topics"
           :key="index"
-          @click="sendVideoId(video.id)"
+          @click="sendTopicId(topic.id)"
         >
-          <video-card
-            :videoInfo="video"
+          <topic-card
+            :topicInfo="topic"
             style="cursor: pointer; user-select: none"
-          ></video-card>
+          ></topic-card>
         </v-col>
       </v-row>
     </v-container>

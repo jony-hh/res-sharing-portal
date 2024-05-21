@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import VideoNavBar from '@/views/resource/video/VideoNavBar.vue'
 import VideoCard from '@/views/resource/video/VideoCard.vue'
-import { fetchVideoResource } from '@/api/res'
+import { fetchWholeVideoResource } from '@/api/res'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useResStore } from '@/store/res'
 
 const res = useResStore()
-const videos = ref<any>([])
+const videos = ref<any>([...res.course])
 const isDisplaySkeleton = ref(true)
 const isDisplayVideo = ref(false)
 const router = useRouter()
@@ -24,9 +23,9 @@ const sendVideoId = (id: number) => {
 }
 
 const getVideoData = async () => {
-  const response = await fetchVideoResource()
-  videos.value.push(...response.data)
-  // res.setCourse(response.data)
+  const res = await fetchWholeVideoResource()
+  videos.value.push(...res.data)
+  res.setCourse(res.data)
 }
 
 onMounted(async () => {
@@ -34,7 +33,7 @@ onMounted(async () => {
     isDisplaySkeleton.value = false
     isDisplayVideo.value = true
   }, 1000)
-  if (videos.value.length <= 0) {
+  if (res.course.length <= 0) {
     await getVideoData()
   }
 })
@@ -42,8 +41,6 @@ onMounted(async () => {
 
 <template>
   <div>
-    <video-nav-bar></video-nav-bar>
-
     <v-container v-if="isDisplaySkeleton">
       <v-row v-for="i in 2">
         <v-col v-for="i in 4" cols="12" md="3">

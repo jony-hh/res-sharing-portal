@@ -12,7 +12,7 @@ const props = defineProps(['documentInfo'])
         alt="头像"
       />
       <v-card-title>
-        {{ documentInfo.document_name }}
+        {{ documentInfo.title }}
       </v-card-title>
     </div>
 

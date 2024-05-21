@@ -4,7 +4,11 @@ const props = defineProps(['videoInfo'])
 
 <template>
   <v-card class="ma-2">
-    <v-img :src="videoInfo.coverUrl" class="position-relative j-largen" style="height: 172px">
+    <v-img
+      :src="videoInfo.coverUrl"
+      class="position-relative j-largen"
+      style="height: 172px"
+    >
       <div
         class="position-absolute ma-1 pa-1 rounded"
         style="background: #ee7c6e; color: #fff; right: 0"
@@ -27,7 +31,7 @@ const props = defineProps(['videoInfo'])
     <div class="content ma-2">
       <div class="title">
         <a style="font-size: 20px">
-          {{ videoInfo.course_name }}
+          {{ videoInfo.courseName }}
         </a>
       </div>
       <div class="d-flex justify-lg-space-between mt-2">
@@ -37,7 +41,7 @@ const props = defineProps(['videoInfo'])
             src="https://xhsz.news.cn/static/home1/images/nxincourse.png"
             alt=""
           />
-          <div class="student">{{ videoInfo.student_num }}人</div>
+          <div class="student">{{ videoInfo.studentNum }}人</div>
         </div>
       </div>
     </div>

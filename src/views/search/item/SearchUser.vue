@@ -11,6 +11,7 @@ const userData = ref<Array<object>>([])
 const getUserData = async (keyword: any) => {
   const res = await fetchUserData(keyword)
   userData.value.push(...res.data)
+  loading.value = false
 }
 
 onMounted(async () => {
@@ -26,11 +27,11 @@ onMounted(async () => {
     <v-col
       v-else
       class="pa-5"
-      cols="4"
+      cols="6"
       v-for="(user, index) in userData"
       :key="index"
     >
-      <user-card></user-card>
+      <user-card :user="user"></user-card>
     </v-col>
   </v-row>
 </template>

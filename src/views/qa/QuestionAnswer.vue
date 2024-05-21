@@ -23,8 +23,16 @@ const tags = ref([
 ])
 const activeStatus = ref('最新')
 const activeTag = ref('')
-const changeStatus = (status: string) => {
-  activeStatus.value = status
+const status = [
+  { id: -1, name: '最新' },
+  { id: 0, name: '未解决' },
+  { id: 1, name: '已解决' },
+]
+const changeStatus = async (item: any) => {
+  questions.value = []
+  activeStatus.value = item.name
+  const res = await fetchQuestion(item.id)
+  questions.value.push(...res.data)
 }
 const changeTag = (tag: string) => {
   activeTag.value = tag
@@ -45,8 +53,8 @@ const sendQuestionId = (id: number) => {
 }
 
 const getQuestionData = async () => {
-  const res = await fetchQuestion()
-  questions.value.push(...res.data)
+  const res = await fetchQuestion(status[0].id)
+  questions.value = [...res.data]
 }
 
 onMounted(async () => {
@@ -57,9 +65,9 @@ onMounted(async () => {
 <template>
   <div>
     <!-- 导航分类 -->
-    <div class="navigation ma-2">
-      <!-- 按问题的标签搜索 -->
-      <nav class="tag-nav">
+    <!-- <div class="navigation ma-2"> -->
+    <!-- 按问题的标签搜索 -->
+    <!-- <nav class="tag-nav">
         <ul>
           <li v-for="(tag, index) in tags" :key="index">
             <a :class="{ active: activeTag === tag }" @click="changeTag(tag)">
@@ -67,8 +75,8 @@ onMounted(async () => {
             </a>
           </li>
         </ul>
-      </nav>
-    </div>
+      </nav> -->
+    <!-- </div> -->
 
     <!-- 主体内容 -->
     <div class="main-content">
@@ -79,19 +87,19 @@ onMounted(async () => {
           <!-- 按解决状态搜索 -->
           <div
             :class="{ active: activeStatus === '最新' }"
-            @click="changeStatus('最新')"
+            @click="changeStatus(status[0])"
           >
             最新
           </div>
           <div
             :class="{ active: activeStatus === '未解决' }"
-            @click="changeStatus('未解决')"
+            @click="changeStatus(status[1])"
           >
             未解决
           </div>
           <div
             :class="{ active: activeStatus === '已解决' }"
-            @click="changeStatus('已解决')"
+            @click="changeStatus(status[2])"
           >
             已解决
           </div>
